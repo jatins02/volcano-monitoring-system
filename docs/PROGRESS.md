@@ -17,7 +17,7 @@ Verification: checked local Markdown link targets, scanned for stale old-filenam
 | Stage | Work | Status | Evidence |
 |---|---|---|---|
 | 0 | Model, rules and expected behaviour | Complete | `spec/`, versioned fixtures, 27 passing tests; `reports/stage0-verification.md` |
-| 1 | Toolchain and directory structure | Not started | Repo defaults only; toolchain gates not run |
+| 1 | Toolchain and directory structure | Complete | Pinned setup/build commands, 49 passing tests, real smoke checks, clean-clone validation; `reports/stage1-verification.md` |
 | 2 | Small Logisim CLI bridge | Not started | None |
 | 3 | Combinational monitor | Not started | None |
 | 4 | Sequential counters | Not started | None |
@@ -37,11 +37,19 @@ Delivered rule version 1, protocol version 1, a complete warning truth table, re
 
 Checks: `python3 -B -m unittest discover -s tests -v` passed all 27 test methods, including exhaustive single-sensor values 0..255, all connectivity masks, 600-sample bounds, preserved tenth readings, repeat/recovery/fault behaviour, null statistics and fractional averages. Local Markdown links and JSON syntax were checked; `git diff --check` and staged whitespace checks passed. See `reports/stage0-verification.md` for scope.
 
-No production application, circuit, native executable, dependency installation or hardware/assembly validation is included. Stages 1-12 remain open; optional Stage 13 remains deferred.
+No production application, circuit, native executable, dependency installation or hardware/assembly validation is included. At the Stage 0 handoff, Stages 1-12 remained open; optional Stage 13 remained deferred.
+
+## Stage 1 completion - 19 October 2026
+
+Pinned project-local Node 22.22.0/npm 10.9.4, Temurin JRE 21.0.12.1 and Logisim-evolution 4.1.0 with verified archive/JAR SHA-256 values. Added complete npm/Python locks, source skeleton, Make targets, offline doctor, safe runtime installer, deterministic rule generation and circuit-map validation. GNU tool versions and the observed Chromium155 user agent are recorded in tools/versions.json.
+
+Validation: `make bootstrap` succeeded in the project directory using exact cached archives/wheels/npm packages; `make check` passed unit tests, doctor, native smoke build/run, TypeScript checks, production web build and actual Logisim execution. A fresh local Git clone of e7bfc5a independently completed `make bootstrap` and `make check`, including the automated Vite startup/HTTP check, with a clean worktree afterward. The browser rendered the setup page correctly. All 49 unit tests passed. An occupied-port startup test failed with the expected nonzero status and cleaned up its child process. See reports/stage1-verification.md for commands and scope.
+
+Stage 1 scaffold code was committed as e7bfc5a. Stage 2 and subsequent monitoring stages remain unstarted; no sensor analysis, replay handshake or warning output is claimed working. No global runtime installs or Git configuration changes were made.
 
 ## Next action
 
-Begin Stage 1 when requested: pin compatible tools and dependencies, implement the doctor/build setup and establish the reproducible skeleton. Preserve Stage 0 rule/protocol version 1 and its acceptance fixtures. Stage 2 must prove actual Logisim input/output before claiming hardware integration.
+Begin Stage 2 when requested. Build the smallest RAM-driven replay proof using pinned Logisim 4.1.0/Java 21, establish deterministic startup/reset, decode indexed change-driven output and prove repeated identical samples are distinct. Do not treat ToolchainSmoke or the unconnected threshold constants bank as the monitoring DUT. Preserve rule/protocol version 1.
 
 ## Handoff rules
 

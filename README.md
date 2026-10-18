@@ -17,7 +17,7 @@ Other coding tools should be directed to read the same files if they do not disc
 
 ## Current status
 
-Stage 0 is complete: versioned rules, requirements, protocol contracts and independent expected fixtures are present with a tested acceptance reference model. The application, Logisim circuit, native analyser and runtime/build commands are not implemented. Stage 1 is next; do not infer working integration from the specification.
+Stages 0 and 1 are complete: frozen specifications/acceptance fixtures, a pinned local toolchain, reproducible dependency locks, generated rule constants and tested build/startup checks are present. The current web page and circuits are explicitly toolchain scaffolds; the monitoring DUT, replay harness, native sensor analyser and API are not implemented. Stage 2 is next.
 
 ## Stage 0 specification and checks
 
@@ -27,13 +27,39 @@ Stage 0 is complete: versioned rules, requirements, protocol contracts and indep
 - [Fixture guide](tests/fixtures/README.md): independently authored expected cases.
 - [Stage 0 verification](reports/stage0-verification.md): evidence and remaining integration limits.
 
-Run from the repository root using Python 3.10 or newer (tested with Python 3.14.4):
+Run from the repository root using Python 3.12-3.14 (tested with Python 3.14.4):
 
 ```bash
 python3 -B -m unittest discover -s tests -v
 ```
 
 No third-party packages are required for these checks. The oracle in `tests/reference_model.py` is test-only; it neither launches Logisim nor replaces assembly calculations. Future production code must not import it.
+
+## Stage 1 setup and commands
+
+Prerequisites: Linux x86_64, GNU GCC/binutils/Make and Python 3.12-3.14 with venv/pip support. First bootstrap needs access to the official download/package hosts. Node and Java are installed only inside ignored tools directories; Python packages use .venv.
+
+```bash
+make bootstrap
+make check
+make dev
+```
+
+Open http://127.0.0.1:5173 after `make dev`. This is a setup page, not the completed simulation interface. Stop it with Ctrl+C.
+
+| Command | What it verifies or produces |
+|---|---|
+| make doctor | Platform, tool versions, JAR checksum/CLI, Python pins/imports, frontend dependencies, runtime writability |
+| make generate-rules | Deterministic assembly/rules.inc and frontend/src/generated-rules.ts |
+| make check-rules | Stale outputs and mismatched/moved/duplicate mapped circuit constants |
+| make build-asm | Build and run a trivial AT&T ABI/toolchain executable |
+| make build-web | TypeScript checks and Vite production assets |
+| make smoke-logisim | Actual pinned Logisim constant/output/halt check |
+| make smoke-web | Start local Vite on port5174, verify HTTP module delivery, then stop it |
+| make test | 49 unit tests for Stage 0 and Stage 1 |
+| make check | All checks above, including real tool and frontend startup checks |
+
+[Toolchain instructions](tools/README.md), [reference versions](tools/versions.json) and [Stage 1 verification](reports/stage1-verification.md) document exact pins, sources and evidence. No monitoring output is fabricated by these setup checks. The full API/application run target comes in later stages.
 
 ## Planned architecture
 
@@ -53,4 +79,4 @@ Sensor sliders edit draft parameters. Run simulation / Step records one sample a
 - `docs/PROGRESS.md`: stage status and evidence across sessions.
 - `docs/DECISIONS.md`: established decisions and explicitly unresolved questions.
 
-Install/pin dependencies and add real build/check commands during the relevant planned stages. No application runtime or global agent/Git settings are configured by this preparation.
+Keep the dependency locks and toolchain manifest under version control. Downloads, caches and environments remain ignored; global agent/Git settings are unchanged. The backend package is reserved for Stage 7 and does not expose an API yet.

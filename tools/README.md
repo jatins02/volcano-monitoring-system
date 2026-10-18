@@ -30,6 +30,6 @@ Generated tools/node, tools/java, tools/cache, .venv, frontend/node_modules, run
 
 ## Command scope
 
-`make doctor` is offline and returns nonzero if the platform, compiler, runtime/JAR, CLI, Python pins/imports, frontend direct dependencies or runtime writability fail. `make check-rules` rejects stale generated views and mismatched/moved circuit constants. `make check` combines doctor, unit tests, native smoke build/run, TypeScript/production build and a real Logisim constant/halt run.
+`make doctor` is offline and returns nonzero if the platform, compiler, runtime/JAR, CLI, Python pins/imports, frontend direct dependencies or runtime writability fail. `make check-rules` rejects stale generated views and mismatched/moved circuit constants. `make check` combines doctor, unit tests, native smoke build/run, TypeScript/production build and a real Logisim constant/halt run and an automatically cleaned-up Vite HTTP startup check on port5174.
 
 `make dev` serves the setup page on http://127.0.0.1:5173 with strict port selection. It does not start monitoring or a FastAPI API. A full `make run` target belongs to the application integration stage and is intentionally not presented as available.
