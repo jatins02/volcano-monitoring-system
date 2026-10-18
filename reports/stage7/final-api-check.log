@@ -1,0 +1,13 @@
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B scripts/generate_rules.py --check
+Generated rules are current.
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B scripts/verify_circuit_rules.py
+Mapped circuit constants and interfaces match the submitted hardware.
+mkdir -p "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system/build"
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && gcc -g -pie -Wl,-z,noexecstack assembly/toolchain_smoke.s -o build/toolchain-smoke
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && ./build/toolchain-smoke
+AT&T assembly toolchain: OK
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B -m scripts.build_native
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && .venv/bin/python -B -m scripts.check_api
+HTTP API acceptance passed; evidence: /mnt/shared/SEM3_/PCS/project/volcano-monitoring-system/runtime/stage7-http/47f79474-7a43-45d5-85d1-3904fa252417
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && .venv/bin/python -B -m scripts.check_api_failures
+API missing dependency and actual native mismatch checks passed; evidence: /mnt/shared/SEM3_/PCS/project/volcano-monitoring-system/runtime/stage7-failures/f142c291-7390-4256-867f-67bac6f8d68d

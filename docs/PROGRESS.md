@@ -23,7 +23,7 @@ Verification: checked local Markdown link targets, scanned for stale old-filenam
 | 4 | Sequential counters | Complete | Actual 600-sample boundary/hold/reset tests; reports/stage4/ |
 | 5 | Replay harness and wire protocol | Complete | 17 actual scenarios, malformed-image failures and post-review full check; reports/stage5/ |
 | 6 | Assembly analyser | Complete | Twelve actual hardware comparisons, statistics and malformed/I/O checks; reports/stage6/ |
-| 7 | Backend and sessions | Not started | None |
+| 7 | Backend and sessions | Complete | Real HTTP/tool workflows and failure/lifecycle tests; reports/stage7/ |
 | 8 | Website shell and theme | Not started | None |
 | 9 | Website-to-hardware integration | Not started | None |
 | 10 | Visualization and replay views | Not started | None |
@@ -55,7 +55,7 @@ Checks: all 64 offline unit tests and four actual Logisim integration tests pass
 
 ## Next action
 
-Begin Stage 3 when requested: implement the actual SensorCheck, Validity, WarningLogic and MonitorGUI circuits in volcano.circ, maintain core-map.json and verify all warning patterns, thresholds and faults. Use Stage 2's measured transport facts; do not confuse the separate bridge proof with the monitoring DUT. Preserve rule/protocol version 1.
+Begin Stage8 when requested: implement the local React website shell, retro #727eba theme and four pre-run sliders. Use docs/backend-api.md for completed API contracts; controls must remain drafts until explicit Run/Step. Preserve the actual hardware/native paths and provenance, and keep Stage9's live control integration distinct from the Stage8 shell.
 
 ## Handoff rules
 
@@ -76,3 +76,7 @@ Full native RAM FSM and actual MonitorCore replay pass all17 scenarios (0..600 s
 ## Stage 6 verification
 
 Standalone x86-64 AT&T analyser and strict native parser pass twelve canonical scenarios, independent statistics and exact actual Logisim bus comparisons; eleven malformed binary inputs fail before success output, and /dev/full produces exit3. All75 offline tests passed. The native suite was rerun after review. See docs/native-analyser.md and reports/stage6/. Stage7 durable async API is next.
+
+## Stage 7 verification
+
+Completed strict API models, version1 SQLite persistence, transactional idempotency and history, managed async single-worker jobs, bounded stdout/stderr and process groups, immutable circuit/native/source snapshots, exact comparison, generation-guarded publication, exports and matching historical source. All89 offline tests pass. Actual HTTP tests cover normal/empty/fault inputs, retries, stale requests, reset during Java execution, durable reload and startup recovery; isolated actual tool failures verify503, MISMATCH, retained success/history and repaired retry. The full combined make check and curated artifacts are recorded in reports/stage7/ and reports/stages3-7-verification.md. No remote push. An ignored .stage-worklog.md records this session's local handoff.

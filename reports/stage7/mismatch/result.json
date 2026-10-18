@@ -1,0 +1,319 @@
+{
+  "provenance": {
+    "id": "8b0dfdfc-5cb8-488b-9438-d8e74c96f8ec",
+    "session": "66f7e29a-dbb8-4291-8771-28efa38abc5b",
+    "generation": 0,
+    "revision": 2,
+    "input_hash": "ba608710d88cd09b66505c0804d62a87c643cb46e039ef86d8223cf18830baa6",
+    "started_at": "2026-10-18T21:13:24.374736+00:00",
+    "status": "mismatch",
+    "sample_count": 2,
+    "rule_hash": "51e30574de5f11febc057f0c5c70fcd3990365b024ee459e07a8d3e6ec31be84",
+    "native": {
+      "source_sha256": "4698b2d42908a4ff195ff290060fd0485c26cf54bd26941fd162b10f98f94612",
+      "rules_sha256": "4e07c7995732202fc256ac01446668f9c8920d2238eb68fb3f291582ed6554b9",
+      "executable_sha256": "2178d2c4f01b3bf67c86760b22614b561a3d435d8ac60a35837743fd8a445aa9",
+      "rule_hash": "51e30574de5f11febc057f0c5c70fcd3990365b024ee459e07a8d3e6ec31be84"
+    },
+    "tools": {
+      "node": {
+        "version": "22.22.0",
+        "url": "https://nodejs.org/dist/v22.22.0/node-v22.22.0-linux-x64.tar.xz",
+        "sha256": "9aa8e9d2298ab68c600bd6fb86a6c13bce11a4eca1ba9b39d79fa021755d7c37",
+        "archive": "tar.xz",
+        "install_directory": "tools/node",
+        "npm_version": "10.9.4"
+      },
+      "java": {
+        "version": "21.0.12.1",
+        "url": "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.12.1%2B1/OpenJDK21U-jre_x64_linux_hotspot_21.0.12.1_1.tar.gz",
+        "sha256": "2413149700df0f7d440500a84a8f764c535f21e5a5e87d38328b64eec2c5b500",
+        "archive": "tar.gz",
+        "install_directory": "tools/java"
+      },
+      "logisim": {
+        "version": "4.1.0",
+        "url": "https://github.com/logisim-evolution/logisim-evolution/releases/download/v4.1.0/logisim-evolution-4.1.0-all.jar",
+        "sha256": "fe6386a3217a591bcc311a4eda49e1f43a389b499dd3d0f6f40f344fc85f2577",
+        "archive": "jar",
+        "install_path": "tools/logisim-evolution-4.1.0-all.jar",
+        "minimum_java": 21
+      }
+    },
+    "circuit_sha256": "93d7580ef3ad4f8067f378285f3048a5f49e0392361dd8f52dc8b6adff279faf",
+    "source_sha256": "4698b2d42908a4ff195ff290060fd0485c26cf54bd26941fd162b10f98f94612",
+    "executable_sha256": "2178d2c4f01b3bf67c86760b22614b561a3d435d8ac60a35837743fd8a445aa9",
+    "logisim_exit": 0,
+    "assembly_exit": 0,
+    "finished_at": "2026-10-18T21:13:25.323035+00:00"
+  },
+  "hardware": [
+    {
+      "index": 0,
+      "time_seconds": 1,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "NORMAL",
+      "warning_code": 0,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 1,
+      "completed_windows": 0,
+      "has_completed": false,
+      "buses": [
+        0,
+        336860180,
+        31,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "index": 1,
+      "time_seconds": 2,
+      "values": [
+        71,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 1,
+      "range_mask": 0,
+      "effective_mask": 1,
+      "k": 1,
+      "warning": "WATCH",
+      "warning_code": 1,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 1,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 1,
+        "abnormal_samples": 1,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 2,
+      "completed_windows": 0,
+      "has_completed": false,
+      "buses": [
+        1,
+        336860231,
+        70207,
+        4259841,
+        0,
+        2
+      ]
+    }
+  ],
+  "assembly": {
+    "records": [
+      {
+        "index": 0,
+        "time_seconds": 1,
+        "values": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false,
+        "current_counts": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "last_completed": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "position": 1,
+        "completed_windows": 0,
+        "has_completed": false,
+        "buses": [
+          0,
+          336860180,
+          31,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "index": 1,
+        "time_seconds": 2,
+        "values": [
+          71,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false,
+        "current_counts": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "last_completed": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "position": 2,
+        "completed_windows": 0,
+        "has_completed": false,
+        "buses": [
+          1,
+          336860231,
+          31,
+          0,
+          0,
+          2
+        ]
+      }
+    ],
+    "summary": {
+      "total_samples": 2,
+      "valid_samples": 2,
+      "fault_samples": 0,
+      "current_warning": "NORMAL",
+      "last_valid_warning": "NORMAL",
+      "worst_valid_warning": "NORMAL",
+      "report_status": "NORMAL",
+      "statistics": {
+        "V": {
+          "count": 2,
+          "minimum": 20,
+          "maximum": 71,
+          "sum": 91,
+          "average_x100": 4550
+        },
+        "T": {
+          "count": 2,
+          "minimum": 20,
+          "maximum": 20,
+          "sum": 40,
+          "average_x100": 2000
+        },
+        "G": {
+          "count": 2,
+          "minimum": 20,
+          "maximum": 20,
+          "sum": 40,
+          "average_x100": 2000
+        },
+        "A": {
+          "count": 2,
+          "minimum": 20,
+          "maximum": 20,
+          "sum": 40,
+          "average_x100": 2000
+        }
+      }
+    },
+    "reports": [
+      "REPORT AVERAGE V 45.50",
+      "REPORT AVERAGE T 20.00",
+      "REPORT AVERAGE G 20.00",
+      "REPORT AVERAGE A 20.00",
+      "REPORT STATUS NORMAL"
+    ]
+  },
+  "comparison": {
+    "equal": false,
+    "first_difference": {
+      "index": 1,
+      "field": "B2",
+      "hardware": 70207,
+      "assembly": 31
+    }
+  },
+  "tool_outputs": {
+    "logisim": {
+      "stdout": "0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0\t0000\n0000 0000 0000 0000 0000 0000 0000 0000\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0001\t1\t0000\n0000 0000 0000 0000 0000 0000 0000 0000\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0001\t0\t0000\n0000 0000 0000 0000 0000 0000 0000 0001\t0001 0100 0001 0100 0001 0100 0100 0111\t0000 0000 0000 0001 0001 0010 0011 1111\t0000 0000 0100 0001 0000 0000 0000 0001\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0010\t1\t0000\n0000 0000 0000 0000 0000 0000 0000 0001\t0001 0100 0001 0100 0001 0100 0100 0111\t0000 0000 0000 0001 0001 0010 0011 1111\t0000 0000 0100 0001 0000 0000 0000 0001\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0010\t0\t0000\n",
+      "stderr": "[main] ERROR com.cburch.logisim.gui.start.TtyInterface - halted due to halt pin\n",
+      "exit_code": 0
+    },
+    "assembly": {
+      "stdout": "VMASM 1\nR 0 336860180 31 0 0 1\nR 1 336860231 31 0 0 2\nS V 2 20 71 91 4550\nREPORT AVERAGE V 45.50\nS T 2 20 20 40 2000\nREPORT AVERAGE T 20.00\nS G 2 20 20 40 2000\nREPORT AVERAGE G 20.00\nS A 2 20 20 40 2000\nREPORT AVERAGE A 20.00\nSUMMARY 2 2 0 0 0\nREPORT STATUS NORMAL\nEND 2\n",
+      "stderr": "",
+      "exit_code": 0
+    }
+  }
+}

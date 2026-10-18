@@ -37,7 +37,7 @@ build-asm: check-rules
 	mkdir -p "$(ROOT)/build"
 	cd "$(ROOT)" && $(CC) -g -pie -Wl,-z,noexecstack assembly/toolchain_smoke.s -o build/toolchain-smoke
 	cd "$(ROOT)" && ./build/toolchain-smoke
-	cd "$(ROOT)" && $(CC) -g -pie -Wl,-z,noexecstack assembly/monitor.s -o build/monitor
+	cd "$(ROOT)" && $(PYTHON) -B -m scripts.build_native
 
 build-web: check-rules
 	cd "$(ROOT)" && sh scripts/npm.sh run build --prefix frontend
@@ -51,7 +51,7 @@ test:
 smoke-web:
 	cd "$(ROOT)" && $(PYTHON) -B scripts/smoke_web.py
 
-check: check-circuit test-combinational test-counters test-replay test-native doctor test build-asm build-web smoke-logisim smoke-web smoke-bridge test-bridge
+check: check-circuit test-combinational test-counters test-replay test-native test-api doctor test build-asm build-web smoke-logisim smoke-web smoke-bridge test-bridge
 
 dev:
 	cd "$(ROOT)" && sh scripts/npm.sh run dev --prefix frontend
@@ -80,3 +80,12 @@ test-replay:
 .PHONY: test-native
 test-native: build-asm
 	cd "$(ROOT)" && $(PYTHON) -B -m scripts.check_native
+
+.PHONY: dev-api
+dev-api: build-asm
+	cd "$(ROOT)" && .venv/bin/python -B -m uvicorn backend.app.main:create_app --factory --host 127.0.0.1 --port 8000 --workers 1
+
+.PHONY: test-api
+test-api: build-asm
+	cd "$(ROOT)" && .venv/bin/python -B -m scripts.check_api
+	cd "$(ROOT)" && .venv/bin/python -B -m scripts.check_api_failures

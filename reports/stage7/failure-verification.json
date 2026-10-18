@@ -1,0 +1,18 @@
+{
+  "missing_jar_503": true,
+  "no_append_on_dependency_failure": true,
+  "acknowledged_request_survives_missing_tool": true,
+  "real_native_bug_produces_mismatch": {
+    "equal": false,
+    "first_difference": {
+      "index": 1,
+      "field": "B2",
+      "hardware": 70207,
+      "assembly": 31
+    }
+  },
+  "hot_configuration_change_rejected": true,
+  "previous_success_retained": true,
+  "actual_native_failure_retains_history_and_retry_succeeds": true,
+  "old_matching_source_retained": true
+}

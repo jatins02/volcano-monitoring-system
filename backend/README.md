@@ -1,5 +1,5 @@
-# Backend scaffold
+# Durable local backend
 
-FastAPI and Uvicorn are pinned in the root requirements.in/requirements.lock and installed into .venv by `make setup-python`. Stage 1 checks their versions and importability, but does not implement an API or start a backend server. Stage 7 owns typed routes, validation, SQLite and subprocess coordination.
+Stage7 implements the FastAPI session/job API, SQLite persistence, strict input models, managed async worker, bounded subprocess lifecycle, actual Logisim/native execution, output parsers, comparison and immutable provenance artifacts. Python does not compute replacement warning/statistical results.
 
-Production modules must not import tests/reference_model.py. Do not substitute Python monitoring calculations for Logisim or assembly results.
+Run `make dev-api` from the repository root and open http://127.0.0.1:8000/docs. Use one worker. `make test-api` runs real localhost workflows with actual tools. See [API contracts](../docs/backend-api.md) and [verification](../reports/stages3-7-verification.md). Browser controls and full website integration remain later stages.

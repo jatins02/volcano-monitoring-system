@@ -17,7 +17,7 @@ Other coding tools should be directed to read the same files if they do not disc
 
 ## Current status
 
-Stages 0, 1 and 2 are complete: frozen specifications/acceptance fixtures, a pinned local toolchain, reproducible dependency locks, generated rule constants and tested build/startup checks are present. A standalone RAM-driven Logisim transport proof now passes actual replay checks. The current web page remains a toolchain scaffold; the full monitoring DUT, Stage 5 replay harness, native sensor analyser and API are not implemented. Stage 3 is next.
+Stages 0–7 are complete: frozen specifications, pinned toolchain, actual combinational/counter circuits, full RAM replay, standalone x86-64 AT&T analysis and the durable asynchronous session API. The frontend remains the Stage1 setup page; Stage8's website shell is next. Hardware and native outputs are computed by their actual tools, with no Python/JavaScript replacement. See [Stages3–7 verification](reports/stages3-7-verification.md).
 
 ## Stage 0 specification and checks
 
@@ -52,22 +52,32 @@ Open http://127.0.0.1:5173 after `make dev`. This is a setup page, not the compl
 | make doctor | Platform, tool versions, JAR checksum/CLI, Python pins/imports, frontend dependencies, runtime writability |
 | make generate-rules | Deterministic assembly/rules.inc and frontend/src/generated-rules.ts |
 | make check-rules | Stale outputs and mismatched/moved/duplicate mapped circuit constants |
-| make build-asm | Build and run a trivial AT&T ABI/toolchain executable |
+| make build-asm | Build/run ABI smoke and build the actual analyser with source provenance |
 | make build-web | TypeScript checks and Vite production assets |
 | make smoke-logisim | Actual pinned Logisim constant/output/halt check |
 | make smoke-web | Start local Vite on port5174, verify HTTP module delivery, then stop it |
-| make test | 64 offline unit tests for Stages 0-2 |
+| make test | 89 offline unit tests for Stages0–7 |
 | make smoke-bridge | Encode four sensor rows and verify two fresh actual Logisim replays |
 | make test-bridge | Four actual RAM/clock/comparator/reset integration tests |
-| make check | All checks above, including real tool and frontend startup checks |
+| make test-combinational |43 fixed cases on actual core and GUI |
+| make test-counters |600 commits, boundary/hold/reset/restart hardware checks |
+| make test-replay |17 actual full-harness scenarios and malformed images |
+| make test-native |12 native/hardware comparisons, statistics and malformed binaries |
+| make test-api |Real HTTP success/failure workflows with actual tools |
+| make dev-api |Start the local API on127.0.0.1:8000 |
+| make check |All checks above, builds and frontend startup/shutdown |
 
-[Toolchain instructions](tools/README.md), [reference versions](tools/versions.json) and [Stage 1 verification](reports/stage1-verification.md) document exact pins, sources and evidence. No monitoring output is fabricated by these setup checks. The full API/application run target comes in later stages.
+[Toolchain instructions](tools/README.md), [reference versions](tools/versions.json) and [Stage 1 verification](reports/stage1-verification.md) document exact pins, sources and evidence. No monitoring output is fabricated by these setup checks. The API is available now via `make dev-api`; the complete website/application launch remains later work.
 
 ## Stage 2 bridge proof
 
 Run `make smoke-bridge` to encode inputs, load actual RAM and recover four indexed outputs, including repeated readings. Run `make test-bridge` for real simulator regressions. Both are included in `make check`; missing tools fail. The temporary proof has a fixed four-row format; Stage 5's full protocol is unchanged.
 
 [Bridge commands and timing](docs/stage2-bridge.md), [verification report](reports/stage2-verification.md) and [captured output](reports/stage2/run-1/logisim.stdout) document the measured result.
+
+## Local API and native analysis
+
+Run `make dev-api` and open http://127.0.0.1:8000/docs. [API contracts and lifecycle](docs/backend-api.md), [native analyser](docs/native-analyser.md), [monitor core](docs/monitor-core.md), [counter timing](docs/window-counters.md) and [full replay](docs/replay-harness.md) explain the completed stages. `build/monitor` accepts the documented binary stream on stdin. Java/node/dependency installation remains project-local.
 
 ## Planned architecture
 
@@ -87,4 +97,4 @@ Sensor sliders edit draft parameters. Run simulation / Step records one sample a
 - `docs/PROGRESS.md`: stage status and evidence across sessions.
 - `docs/DECISIONS.md`: established decisions and explicitly unresolved questions.
 
-Keep the dependency locks and toolchain manifest under version control. Downloads, caches and environments remain ignored; global agent/Git settings are unchanged. The backend package is reserved for Stage 7 and does not expose an API yet.
+Keep the dependency locks and toolchain manifest under version control. Downloads, caches and environments remain ignored; global agent/Git settings are unchanged. The API uses ignored runtime storage; reset archives older generations and clears only active state.

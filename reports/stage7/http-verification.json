@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "session": "0004b843-26df-4f57-aa15-5ba7accbd685",
+  "initial_job": "52bb69eb-f088-48e0-a86e-fe0f6d3aa9a6",
+  "new_generation_job": "0ac09c5e-4277-4b45-9c1e-1dc7efcbc546",
+  "checks": [
+    "actual HTTP/native/hardware",
+    "idempotency",
+    "strict validation",
+    "stale revision",
+    "retry",
+    "export",
+    "built source",
+    "reset during job",
+    "generation guard",
+    "durable reload",
+    "interrupted-job recovery",
+    "retry after restart"
+  ]
+}

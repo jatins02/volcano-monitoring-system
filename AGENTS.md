@@ -7,7 +7,7 @@ These instructions apply throughout this repository. Use this standard uppercase
 Before editing code, changing a circuit, installing dependencies or selecting implementation work:
 
 1. Read `volcano_monitoring_staged_coding_plan.md` in full. Read it again in a new coding session; do not rely solely on previous chat memory or a summary. After context recovery, revisit the relevant stage and protocol sections before continuing.
-2. Read this file, `project_context.md`, `README.md`, `docs/PROGRESS.md` and any applicable nested `AGENTS.md` files. Read `docs/DECISIONS.md` for recorded decisions and unresolved questions.
+2. Read this file, `project_context.md`, `README.md`, `docs/PROGRESS.md` and any applicable nested `AGENTS.md` files. Read `docs/DECISIONS.md` for recorded decisions and unresolved questions. If the ignored `.stage-worklog.md` exists, read it as a local session handoff and verify its claims against current sources/tests.
 3. Inspect `git status --short` and the relevant existing source files. Preserve user changes, including untracked files. Treat existing code and measured tool behaviour as evidence; distinguish them from unimplemented proposals.
 4. Identify the requested stage, its dependencies, deliverables and completion criteria. Briefly state which stage or maintenance task you will work on and the checks you intend to run.
 5. Resolve material ambiguity before implementing dependent behaviour. If the plan is missing or unreadable, report that and obtain the document rather than reconstructing requirements from memory.

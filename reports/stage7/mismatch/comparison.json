@@ -1,0 +1,9 @@
+{
+  "equal": false,
+  "first_difference": {
+    "index": 1,
+    "field": "B2",
+    "hardware": 70207,
+    "assembly": 31
+  }
+}

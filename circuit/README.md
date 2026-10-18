@@ -1,7 +1,9 @@
-# Circuit status and Stage 2 proof
+# Submitted monitoring hardware
 
-volcano.circ currently contains ToolchainSmoke (constant 1 -> smoke_ok and halt) and RuleConstants (the four explicit 8-bit threshold constants). It does not contain MonitorCore, MonitorGUI or ReplayHarness yet. The map identifies components by semantic ID, circuit, Wiring library and exact location; verification rejects moved/duplicated/mismatched constants.
+volcano.circ contains SensorCheck, Validity, WarningLogic, WindowCounters, MonitorCore, MonitorGUI and the full ReplayHarness, plus the preserved ToolchainSmoke and shared mapped RuleConstants. Select MonitorGUI in native Logisim to inspect sensor pins, status/fault LEDs and sampling controls; the GUI and harness instantiate the same core.
 
-`make smoke-logisim` runs the real pinned simulator with the top-level circuit selected explicitly. The observed CLI is `--tty table,halt --toplevel-circuit ToolchainSmoke`. Version 4.1.0 prints `1` to stdout and logs `halted due to halt pin` at ERROR level despite exit code 0. The wrapper recognizes only that intentional halt diagnostic; unrelated errors fail the check.
+The separate bridge-proof.circ remains the fixed four-row Stage2 transport experiment. Its schema/format are distinct from the full version1 magic/count/two-word protocol and six snapshot buses. Do not feed full-harness images into the proof.
 
-The separate `bridge-proof.circ` now contains the Stage 2 RAM/clock/reset transport proof with its own explicitly selected `ReplayHarness` top-level. `make smoke-bridge` and `make test-bridge` exercise actual loading, byte order, publication, reset and halt. See [bridge documentation](../docs/stage2-bridge.md) and [physical output schema](bridge-proof-schema.json). The proof uses exactly four sensor words; it is not the full Stage 5 monitoring harness. Stage 3 adds the real monitoring core to this project and updates the explicit map. Do not mistake a passing constant smoke test for sensor monitoring or replay validation.
+`make check-circuit` verifies deterministic generated hardware/map/output schema; `make check-rules` verifies mapped constants/interfaces. `make test-combinational`, `make test-counters` and `make test-replay` run the actual submitted hardware. `make smoke-logisim` preserves the old constant/halt check; `make smoke-bridge` preserves the Stage2 proof.
+
+See [core](../docs/monitor-core.md), [counter timing](../docs/window-counters.md), [full replay and review](../docs/replay-harness.md) and [full output schema](output-schema.json). The headless CLI always selects its top-level explicitly.

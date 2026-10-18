@@ -47,7 +47,7 @@ Resolve remaining technical investigations from documentation and experiments; a
 
 ## Open requirement questions
 
-None remaining for Stages 0-2; tool-specific facts listed above remain scheduled investigations. Future agents must add concrete questions when encountered rather than treating this heading as permission to guess.
+None remaining for Stages 0-7; tool-specific facts listed above remain scheduled investigations. Future agents must add concrete questions when encountered rather than treating this heading as permission to guess.
 
 For each new entry record the question, relevant plan section, impact, evidence, status and resolution. Mark user decisions as such only after an explicit response. Update affected specifications and the plan when requirements are changed by the user.
 
@@ -67,3 +67,9 @@ Native components are generated reproducibly with explicit custom ports and pass
 ## Stage 5 transport verified
 
 The exact version1 magic/count/two-word format now runs in the actual17-state replay harness. PUBLISH uses six snapshot registers; ADVANCE is non-valid before halt. Error codes1/2/3 were observed for deliberately bad images. Strict duplicate rejection is the documented full-parser policy. Stage3–5 review and all acceptance checks passed after cleanup; see docs/replay-harness.md.
+
+## Stages 6–7 implementation contracts
+
+Native output includes documented REPORT AVERAGE and REPORT STATUS lines alongside version1 machine fields. Stage7 uses explicit generation/revision/request_id envelopes; revision equals accepted sample count, including batch samples. Reset accepts generation/revision; retries add jobs without readings. Only one server worker may own a database, enforced by a local file lock. Completed original requests remain idempotently addressable during subsequent dependency outages. Exact archived assembly source can be retrieved using the job query parameter after a rebuild.
+
+Jobs snapshot the actual circuit, executable and matching source/rules; stdout/stderr are capped at2MiB each, with60s Java and5s native process limits and group cleanup. Unexpected startup leftovers become SERVER_RESTART failures; graceful shutdown cancels active work. MISMATCH/failure preserves previous confirmed output and accepted history. These internal interface choices preserve all specified numerical/timing/protocol rules. Stages3–7 verification and post-5 review are documented in reports/stages3-7-verification.md.

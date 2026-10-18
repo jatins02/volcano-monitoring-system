@@ -1,0 +1,99 @@
+{
+  "records": [
+    {
+      "index": 0,
+      "time_seconds": 1,
+      "values": [
+        71,
+        61,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 3,
+      "range_mask": 0,
+      "effective_mask": 3,
+      "k": 2,
+      "warning": "DANGER",
+      "warning_code": 2,
+      "emergency": true,
+      "fault": false,
+      "current_counts": {
+        "V": 1,
+        "T": 1,
+        "G": 0,
+        "A": 0,
+        "readings": 2,
+        "abnormal_samples": 1,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 1,
+      "completed_windows": 0,
+      "has_completed": false,
+      "buses": [
+        0,
+        336870727,
+        222335,
+        4325393,
+        0,
+        1
+      ]
+    }
+  ],
+  "summary": {
+    "total_samples": 1,
+    "valid_samples": 1,
+    "fault_samples": 0,
+    "current_warning": "DANGER",
+    "last_valid_warning": "DANGER",
+    "worst_valid_warning": "DANGER",
+    "report_status": "DANGER",
+    "statistics": {
+      "V": {
+        "count": 1,
+        "minimum": 71,
+        "maximum": 71,
+        "sum": 71,
+        "average_x100": 7100
+      },
+      "T": {
+        "count": 1,
+        "minimum": 61,
+        "maximum": 61,
+        "sum": 61,
+        "average_x100": 6100
+      },
+      "G": {
+        "count": 1,
+        "minimum": 20,
+        "maximum": 20,
+        "sum": 20,
+        "average_x100": 2000
+      },
+      "A": {
+        "count": 1,
+        "minimum": 20,
+        "maximum": 20,
+        "sum": 20,
+        "average_x100": 2000
+      }
+    }
+  },
+  "reports": [
+    "REPORT AVERAGE V 71.00",
+    "REPORT AVERAGE T 61.00",
+    "REPORT AVERAGE G 20.00",
+    "REPORT AVERAGE A 20.00",
+    "REPORT STATUS DANGER"
+  ]
+}

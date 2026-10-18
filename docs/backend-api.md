@@ -1,0 +1,56 @@
+# Stage 7 local API and durable evaluations
+
+Run `make dev-api` from the project root after bootstrap. This builds/verifies the native analyser and starts one Uvicorn worker at http://127.0.0.1:8000. Interactive API documentation is at /docs. The frontend remains the Stage1 setup page until Stage8; this API does not serve a completed dashboard.
+
+By default SQLite is runtime/sessions.sqlite3 and job artifacts are under runtime/<session>/<generation>/<revision>/<job>/. Operators may set VOLCANO_DATABASE and VOLCANO_RUNTIME before startup; browser requests cannot set filesystem paths, executables or shell arguments. A database ownership lock prevents a second server worker from interrupting the same durable sessions. No public binding or wildcard CORS is configured.
+
+## Request contracts
+
+POST /api/sessions creates an empty session and returns id,generation=0,revision=0. Generation identifies a reset session; revision equals its accepted reading count. A batch increments revision by its sample count. The server assigns zero-based indices and time_seconds=index+1. The frozen four-sensor JSON/range policy is validated by strict Pydantic models: booleans/floats in numeric fields, extra/missing fields, values outside0..255 and values>100 without explicit fault_injection are rejected.
+
+Append example (replace session-id/request-id with UUID strings):
+
+```json
+{
+  "generation": 0,
+  "revision": 0,
+  "request_id": "6e1df10d-37b6-4627-8ba3-b1b9ba0e5a13",
+  "sample": {"values": [71,61,20,20], "connectivity_mask": 15, "fault_injection": false}
+}
+```
+
+POST /api/sessions/{id}/samples accepts that body. /batch replaces sample with a nonempty samples array, bounded by remaining capacity600. /retry accepts generation,revision,request_id and evaluates unchanged history. /reset accepts generation,revision, advances generation, clears the active history/result pointer, and cancels queued/running work for the old generation. Old records and artifacts remain archived. Retry after a tool failure never appends another reading.
+
+An identical request ID and payload in the active generation returns the original job even if a dependency later becomes unavailable. Reusing it for different data returns409. A stale generation/revision or conflicting in-flight append returns409. A representable intentional fault is an accepted sample, while malformed requests return422 without appending. A missing session/job returns404; unavailable/mismatched tool builds return503 before new readings are accepted.
+
+## Endpoints
+
+| Endpoint | Behaviour |
+|---|---|
+| GET /api/health | Tool/build availability, issues, versions and rule hash |
+| GET /api/config | Versioned sensor/range/threshold/window configuration |
+| POST /api/sessions | Create empty session (201) |
+| GET /api/sessions/{id} | Active immutable readings, latest job and explicitly identified last successful result |
+| POST /api/sessions/{id}/samples | Idempotent single append (202) |
+| POST /api/sessions/{id}/batch | Atomic bounded batch append (202) |
+| POST /api/sessions/{id}/retry | New job for unchanged history (202) |
+| POST /api/sessions/{id}/reset | New generation; cancel obsolete work |
+| GET /api/jobs/{id} | queued/running/succeeded/mismatch/failed/cancelled and provenance/error metadata |
+| GET /api/jobs/{id}/result | Immutable successful or mismatched result;409 until available |
+| GET /api/sessions/{id}/export?format=json | History and report snapshot with provenance |
+| GET /api/sessions/{id}/export?format=csv | Canonical input readings |
+| GET /api/source/assembly | Exact current built source, included rules and executable/source hashes |
+| GET /api/source/assembly?job={job-id} | Exact archived source for a successful/mismatched job, including after rebuild |
+| GET /api/circuit/project | Submitted native Logisim project |
+
+## Execution, provenance and recovery
+
+SQLite schema version1 stores sessions, canonical samples, immutable job histories and idempotency identities. Append, revision update and queued-job creation occur in one transaction. Reset and result publication use generation/revision guards. Only a matching succeeded job can update last_success; mismatches and failures retain the previous confirmed result with its original IDs.
+
+One managed async worker serializes tool evaluations globally, with one queued/running job per session. Actual Java/native processes use argument arrays without a shell, concurrent stdout/stderr drains, a2MiB cap per stream, Java timeout60s and native timeout5s. Cancellation/timeout terminates the process group, then kills survivors and reaps the direct child. Limits are conservative for the verified600-row workload; they are not playback-rate promises.
+
+Each job snapshots circuit, native executable, matching assembly/rules source and physical output schema. It records rule/input/circuit/JAR/source/executable hashes, all IDs, count, timestamps, statuses and exit codes. Native build provenance is generated by scripts/build_native.py and checked before accepting/evaluating work. Raw logs, both input formats, decoded results, comparison and manifest are retained. Results expose the actual captured stdout/stderr and exit codes for later website panels. Python serializes/decodes/compares; Logisim and assembly perform their own required calculations.
+
+The first mismatched bus/index is returned as MISMATCH; neither implementation silently replaces the other. Results and manifests use atomic file replacement. The database result pointer is published only if its generation/revision is still current. Graceful shutdown cancels active work; on startup, remaining queued/running database jobs become failed with SERVER_RESTART and can be retried. Session/result history survives reopening the database. The API freezes its rule configuration at startup; a hot rule/build change is rejected, and queued jobs independently verify their session rule hash. Restart and create a new session to adopt rebuilt rules.
+
+`make test-api` runs real localhost HTTP workflows and actual Java/native jobs, including strict requests, empty/fault samples, idempotency, retries, active-Java reset, exports, matching old source, durable reload and interrupted-job recovery. A separate isolated project removes its JAR, compiles deliberately incorrect native thresholds, and forces a native process failure to verify503, MISMATCH, retained success/history and a successful retry after repair. These are real-tool tests; no production computation is mocked.

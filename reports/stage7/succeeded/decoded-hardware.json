@@ -1,0 +1,51 @@
+[
+  {
+    "index": 0,
+    "time_seconds": 1,
+    "values": [
+      71,
+      61,
+      20,
+      20
+    ],
+    "connectivity_mask": 15,
+    "valid": true,
+    "raw_mask": 3,
+    "range_mask": 0,
+    "effective_mask": 3,
+    "k": 2,
+    "warning": "DANGER",
+    "warning_code": 2,
+    "emergency": true,
+    "fault": false,
+    "current_counts": {
+      "V": 1,
+      "T": 1,
+      "G": 0,
+      "A": 0,
+      "readings": 2,
+      "abnormal_samples": 1,
+      "faults": 0
+    },
+    "last_completed": {
+      "V": 0,
+      "T": 0,
+      "G": 0,
+      "A": 0,
+      "readings": 0,
+      "abnormal_samples": 0,
+      "faults": 0
+    },
+    "position": 1,
+    "completed_windows": 0,
+    "has_completed": false,
+    "buses": [
+      0,
+      336870727,
+      222335,
+      4325393,
+      0,
+      1
+    ]
+  }
+]
