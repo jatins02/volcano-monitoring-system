@@ -1,0 +1,144 @@
+{
+  "records": [
+    {
+      "index": 0,
+      "time_seconds": 1,
+      "values": [
+        255,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": false,
+      "raw_mask": 1,
+      "range_mask": 1,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "FAULT",
+      "warning_code": 3,
+      "emergency": false,
+      "fault": true,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 1
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 1,
+      "completed_windows": 0,
+      "has_completed": false,
+      "buses": [
+        0,
+        336860415,
+        1159183,
+        67108864,
+        0,
+        1
+      ]
+    },
+    {
+      "index": 1,
+      "time_seconds": 2,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 0,
+      "valid": false,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "FAULT",
+      "warning_code": 3,
+      "emergency": false,
+      "fault": true,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 2
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 2,
+      "completed_windows": 0,
+      "has_completed": false,
+      "buses": [
+        1,
+        336860180,
+        45056,
+        134217728,
+        0,
+        2
+      ]
+    }
+  ],
+  "summary": {
+    "total_samples": 2,
+    "valid_samples": 0,
+    "fault_samples": 2,
+    "current_warning": "FAULT",
+    "last_valid_warning": null,
+    "worst_valid_warning": null,
+    "report_status": "NO_VALID_DATA",
+    "statistics": {
+      "V": {
+        "count": 0,
+        "minimum": null,
+        "maximum": null,
+        "sum": 0,
+        "average_x100": null
+      },
+      "T": {
+        "count": 0,
+        "minimum": null,
+        "maximum": null,
+        "sum": 0,
+        "average_x100": null
+      },
+      "G": {
+        "count": 0,
+        "minimum": null,
+        "maximum": null,
+        "sum": 0,
+        "average_x100": null
+      },
+      "A": {
+        "count": 0,
+        "minimum": null,
+        "maximum": null,
+        "sum": 0,
+        "average_x100": null
+      }
+    }
+  },
+  "reports": [
+    "REPORT STATUS NO_VALID_DATA"
+  ]
+}

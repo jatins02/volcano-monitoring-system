@@ -1,0 +1,45 @@
+{
+  "records": [],
+  "summary": {
+    "total_samples": 0,
+    "valid_samples": 0,
+    "fault_samples": 0,
+    "current_warning": null,
+    "last_valid_warning": null,
+    "worst_valid_warning": null,
+    "report_status": "NO_VALID_DATA",
+    "statistics": {
+      "V": {
+        "count": 0,
+        "minimum": null,
+        "maximum": null,
+        "sum": 0,
+        "average_x100": null
+      },
+      "T": {
+        "count": 0,
+        "minimum": null,
+        "maximum": null,
+        "sum": 0,
+        "average_x100": null
+      },
+      "G": {
+        "count": 0,
+        "minimum": null,
+        "maximum": null,
+        "sum": 0,
+        "average_x100": null
+      },
+      "A": {
+        "count": 0,
+        "minimum": null,
+        "maximum": null,
+        "sum": 0,
+        "average_x100": null
+      }
+    }
+  },
+  "reports": [
+    "REPORT STATUS NO_VALID_DATA"
+  ]
+}

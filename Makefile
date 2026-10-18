@@ -37,6 +37,7 @@ build-asm: check-rules
 	mkdir -p "$(ROOT)/build"
 	cd "$(ROOT)" && $(CC) -g -pie -Wl,-z,noexecstack assembly/toolchain_smoke.s -o build/toolchain-smoke
 	cd "$(ROOT)" && ./build/toolchain-smoke
+	cd "$(ROOT)" && $(CC) -g -pie -Wl,-z,noexecstack assembly/monitor.s -o build/monitor
 
 build-web: check-rules
 	cd "$(ROOT)" && sh scripts/npm.sh run build --prefix frontend
@@ -50,7 +51,7 @@ test:
 smoke-web:
 	cd "$(ROOT)" && $(PYTHON) -B scripts/smoke_web.py
 
-check: check-circuit test-combinational test-counters test-replay doctor test build-asm build-web smoke-logisim smoke-web smoke-bridge test-bridge
+check: check-circuit test-combinational test-counters test-replay test-native doctor test build-asm build-web smoke-logisim smoke-web smoke-bridge test-bridge
 
 dev:
 	cd "$(ROOT)" && sh scripts/npm.sh run dev --prefix frontend
@@ -75,3 +76,7 @@ test-counters:
 .PHONY: test-replay
 test-replay:
 	cd "$(ROOT)" && $(PYTHON) -B -m scripts.check_replay
+
+.PHONY: test-native
+test-native: build-asm
+	cd "$(ROOT)" && $(PYTHON) -B -m scripts.check_native

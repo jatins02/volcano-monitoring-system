@@ -22,7 +22,7 @@ Verification: checked local Markdown link targets, scanned for stale old-filenam
 | 3 | Combinational monitor | Complete | 43 fixed cases on core and GUI; reports/stage3/ and docs/monitor-core.md |
 | 4 | Sequential counters | Complete | Actual 600-sample boundary/hold/reset tests; reports/stage4/ |
 | 5 | Replay harness and wire protocol | Complete | 17 actual scenarios, malformed-image failures and post-review full check; reports/stage5/ |
-| 6 | Assembly analyser | Not started | None |
+| 6 | Assembly analyser | Complete | Twelve actual hardware comparisons, statistics and malformed/I/O checks; reports/stage6/ |
 | 7 | Backend and sessions | Not started | None |
 | 8 | Website shell and theme | Not started | None |
 | 9 | Website-to-hardware integration | Not started | None |
@@ -72,3 +72,7 @@ Actual counter bank passed two complete 635-tick scenarios: 600 commits, abnorma
 ## Stage 5 and post-5 review
 
 Full native RAM FSM and actual MonitorCore replay pass all17 scenarios (0..600 samples), exact input echoes, counters, faults, fresh-process repeatability and bad magic/count/metadata. Seventy unit tests and the full make check passed after the Stages3–5 structural/timing/code-quality review and cleanup. See docs/replay-harness.md and reports/stage5/post-review-check.log. Stage6 native analyser is next.
+
+## Stage 6 verification
+
+Standalone x86-64 AT&T analyser and strict native parser pass twelve canonical scenarios, independent statistics and exact actual Logisim bus comparisons; eleven malformed binary inputs fail before success output, and /dev/full produces exit3. All75 offline tests passed. The native suite was rerun after review. See docs/native-analyser.md and reports/stage6/. Stage7 durable async API is next.

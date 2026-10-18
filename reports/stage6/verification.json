@@ -1,0 +1,18 @@
+{
+  "canonical_scenarios": [
+    "empty",
+    "all_faults",
+    "known_statistics",
+    "fractional_statistics",
+    "invalid_exclusion",
+    "window_10_and_11",
+    "fault_on_tenth",
+    "two_distinct_windows",
+    "repeated_danger_recovery_trailing_fault",
+    "maximum_600",
+    "all-combinational-fixtures",
+    "required-statistics"
+  ],
+  "malformed_inputs_rejected": 11,
+  "actual_hardware_comparison": true
+}
