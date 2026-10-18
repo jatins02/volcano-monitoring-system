@@ -1,0 +1,43 @@
+# Dependencies and local environments
+node_modules/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Generated application builds and per-session execution artifacts
+/build/
+/runtime/
+/frontend/dist/
+/frontend/.vite/
+*.o
+*.a
+*.so
+
+# Python, test and static-analysis caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+
+# Local tool downloads; version/checksum instructions remain tracked
+/tools/*.jar
+
+# OS/editor temporary files
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+
+# Keep plans, instructions, lockfiles, circuits, fixtures and reports tracked.

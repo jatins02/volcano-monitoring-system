@@ -1,0 +1,19 @@
+# Stable Linux line endings, including executable scripts and assembly.
+* text=auto eol=lf
+*.circ text eol=lf
+*.s text eol=lf
+*.S text eol=lf
+*.inc text eol=lf
+
+# Preserve media and intentional binary test fixtures byte for byte.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.bin binary
+*.jar binary
