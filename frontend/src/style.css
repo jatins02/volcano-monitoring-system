@@ -1,0 +1,13 @@
+:root {
+  font-family: Tahoma, Arial, sans-serif;
+  color: #111111;
+  background: #c0c0c0;
+}
+
+main {
+  margin: 3rem auto;
+  max-width: 48rem;
+  padding: 1.5rem;
+  border-top: 0.75rem solid #727eba;
+  background: #ffffff;
+}

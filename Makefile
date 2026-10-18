@@ -1,0 +1,56 @@
+SHELL := /bin/sh
+.SHELLFLAGS := -eu -c
+.DEFAULT_GOAL := help
+PYTHON ?= python3
+CC := gcc
+ROOT := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
+
+.PHONY: help bootstrap bootstrap-tools setup-python setup-web generate-rules check-rules \
+        doctor build-asm build-web test check smoke-logisim smoke-web dev
+
+help:
+	@echo "Stage 1: bootstrap, doctor, generate-rules, check-rules, build-asm, build-web, test, check, dev"
+
+bootstrap: setup-python setup-web generate-rules
+
+bootstrap-tools:
+	cd "$(ROOT)" && $(PYTHON) -B scripts/toolchain.py
+
+setup-python:
+	cd "$(ROOT)" && $(PYTHON) -m venv .venv
+	cd "$(ROOT)" && .venv/bin/python -m pip install -r requirements.lock
+
+setup-web: bootstrap-tools
+	cd "$(ROOT)" && sh scripts/npm.sh ci --prefix frontend --cache runtime/npm-cache
+
+generate-rules:
+	cd "$(ROOT)" && $(PYTHON) -B scripts/generate_rules.py
+
+check-rules:
+	cd "$(ROOT)" && $(PYTHON) -B scripts/generate_rules.py --check
+	cd "$(ROOT)" && $(PYTHON) -B scripts/verify_circuit_rules.py
+
+doctor:
+	cd "$(ROOT)" && sh scripts/doctor.sh
+
+build-asm: check-rules
+	mkdir -p "$(ROOT)/build"
+	cd "$(ROOT)" && $(CC) -g -pie -Wl,-z,noexecstack assembly/toolchain_smoke.s -o build/toolchain-smoke
+	cd "$(ROOT)" && ./build/toolchain-smoke
+
+build-web: check-rules
+	cd "$(ROOT)" && sh scripts/npm.sh run build --prefix frontend
+
+smoke-logisim: check-rules
+	cd "$(ROOT)" && $(PYTHON) -B scripts/logisim.py --smoke
+
+test:
+	cd "$(ROOT)" && $(PYTHON) -B -m unittest discover -s tests -v
+
+smoke-web:
+	cd "$(ROOT)" && $(PYTHON) -B scripts/smoke_web.py
+
+check: doctor test build-asm build-web smoke-logisim smoke-web
+
+dev:
+	cd "$(ROOT)" && sh scripts/npm.sh run dev --prefix frontend

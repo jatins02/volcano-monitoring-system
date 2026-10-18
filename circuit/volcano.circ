@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project source="4.1.0" version="1.0">
+  This file contains Stage 1 toolchain checks only, not the monitoring DUT.
+  <lib desc="#Wiring" name="0"/>
+  <main name="ToolchainSmoke"/>
+  <options><a name="gateUndefined" val="ignore"/></options>
+  <circuit name="ToolchainSmoke">
+    <a name="circuit" val="ToolchainSmoke"/>
+    <wire from="(100,100)" to="(160,100)"/>
+    <wire from="(100,100)" to="(100,140)"/>
+    <wire from="(100,140)" to="(160,140)"/>
+    <comp lib="0" loc="(100,100)" name="Constant">
+      <a name="value" val="0x1"/>
+    </comp>
+    <comp lib="0" loc="(160,100)" name="Pin">
+      <a name="facing" val="west"/><a name="output" val="true"/>
+      <a name="label" val="smoke_ok"/>
+    </comp>
+    <comp lib="0" loc="(160,140)" name="Pin">
+      <a name="facing" val="west"/><a name="output" val="true"/>
+      <a name="label" val="halt"/>
+    </comp>
+  </circuit>
+  <circuit name="RuleConstants">
+    <a name="circuit" val="RuleConstants"/>
+    <comp lib="0" loc="(100,100)" name="Constant"><a name="width" val="8"/><a name="value" val="0x46"/></comp>
+    <comp lib="0" loc="(100,160)" name="Constant"><a name="width" val="8"/><a name="value" val="0x3c"/></comp>
+    <comp lib="0" loc="(100,220)" name="Constant"><a name="width" val="8"/><a name="value" val="0x41"/></comp>
+    <comp lib="0" loc="(100,280)" name="Constant"><a name="width" val="8"/><a name="value" val="0x46"/></comp>
+  </circuit>
+</project>

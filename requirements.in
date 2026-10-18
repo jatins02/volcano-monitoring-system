@@ -1,0 +1,3 @@
+# Direct runtime dependencies; requirements.lock pins the complete resolution.
+fastapi==0.146.0
+uvicorn==0.54.0

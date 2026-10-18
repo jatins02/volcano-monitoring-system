@@ -41,3 +41,8 @@ Thumbs.db
 *.swo
 
 # Keep plans, instructions, lockfiles, circuits, fixtures and reports tracked.
+
+# Checksum-pinned downloaded runtimes and archives (never commit binaries)
+/tools/node/
+/tools/java/
+/tools/cache/

@@ -1,0 +1,16 @@
+{
+  "recorded_on": "2026-10-19",
+  "scope": "Stage 1 reference environment; exact runtime pins are in toolchain.json",
+  "platform": "Linux x86_64",
+  "python": "3.14.4",
+  "gcc": "15.2.0 (Ubuntu 15.2.0-16ubuntu1)",
+  "gnu_as": "2.46",
+  "gnu_ld": "2.46",
+  "gnu_make": "4.4.1",
+  "java": "Temurin 21.0.12.1+1-LTS",
+  "node": "22.22.0",
+  "npm": "10.9.4",
+  "logisim": "4.1.0 main/499134ec",
+  "browser_user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+  "browser_evidence": "Observed from the rendered local setup page in the in-app Chromium browser; user-agent version, not a separately pinned browser binary."
+}

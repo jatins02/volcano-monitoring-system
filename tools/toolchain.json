@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "platform": "linux-x86_64",
+  "tools": {
+    "node": {
+      "version": "22.22.0",
+      "url": "https://nodejs.org/dist/v22.22.0/node-v22.22.0-linux-x64.tar.xz",
+      "sha256": "9aa8e9d2298ab68c600bd6fb86a6c13bce11a4eca1ba9b39d79fa021755d7c37",
+      "archive": "tar.xz",
+      "install_directory": "tools/node",
+      "npm_version": "10.9.4"
+    },
+    "java": {
+      "version": "21.0.12.1",
+      "url": "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.12.1%2B1/OpenJDK21U-jre_x64_linux_hotspot_21.0.12.1_1.tar.gz",
+      "sha256": "2413149700df0f7d440500a84a8f764c535f21e5a5e87d38328b64eec2c5b500",
+      "archive": "tar.gz",
+      "install_directory": "tools/java"
+    },
+    "logisim": {
+      "version": "4.1.0",
+      "url": "https://github.com/logisim-evolution/logisim-evolution/releases/download/v4.1.0/logisim-evolution-4.1.0-all.jar",
+      "sha256": "fe6386a3217a591bcc311a4eda49e1f43a389b499dd3d0f6f40f344fc85f2577",
+      "archive": "jar",
+      "install_path": "tools/logisim-evolution-4.1.0-all.jar",
+      "minimum_java": 21
+    }
+  },
+  "python": {
+    "minimum": "3.12",
+    "maximum_exclusive": "3.15",
+    "tested": "3.14.4"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "project": "circuit/volcano.circ",
+  "scope": "Stage 1 constants bank only; no monitoring DUT",
+  "circuits": [
+    "ToolchainSmoke",
+    "RuleConstants"
+  ],
+  "constants": [
+    {
+      "id": "THRESHOLD_V",
+      "circuit": "RuleConstants",
+      "location": "(100,100)",
+      "rule_path": [
+        "sensors",
+        "V",
+        "threshold"
+      ]
+    },
+    {
+      "id": "THRESHOLD_T",
+      "circuit": "RuleConstants",
+      "location": "(100,160)",
+      "rule_path": [
+        "sensors",
+        "T",
+        "threshold"
+      ]
+    },
+    {
+      "id": "THRESHOLD_G",
+      "circuit": "RuleConstants",
+      "location": "(100,220)",
+      "rule_path": [
+        "sensors",
+        "G",
+        "threshold"
+      ]
+    },
+    {
+      "id": "THRESHOLD_A",
+      "circuit": "RuleConstants",
+      "location": "(100,280)",
+      "rule_path": [
+        "sensors",
+        "A",
+        "threshold"
+      ]
+    }
+  ]
+}
