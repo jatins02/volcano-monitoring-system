@@ -1,0 +1,374 @@
+{
+  "fixture_version": 1,
+  "rule_version": 1,
+  "cases": [
+    {
+      "id": "flags_0000",
+      "input": {
+        "values": [
+          70,
+          60,
+          65,
+          70
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false
+      }
+    },
+    {
+      "id": "flags_0001",
+      "input": {
+        "values": [
+          71,
+          60,
+          65,
+          70
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 1,
+        "range_mask": 0,
+        "effective_mask": 1,
+        "k": 1,
+        "warning": "WATCH",
+        "warning_code": 1,
+        "emergency": false,
+        "fault": false
+      }
+    },
+    {
+      "id": "flags_0010",
+      "input": {
+        "values": [
+          70,
+          61,
+          65,
+          70
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 2,
+        "range_mask": 0,
+        "effective_mask": 2,
+        "k": 1,
+        "warning": "WATCH",
+        "warning_code": 1,
+        "emergency": false,
+        "fault": false
+      }
+    },
+    {
+      "id": "flags_0011",
+      "input": {
+        "values": [
+          71,
+          61,
+          65,
+          70
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 3,
+        "range_mask": 0,
+        "effective_mask": 3,
+        "k": 2,
+        "warning": "DANGER",
+        "warning_code": 2,
+        "emergency": true,
+        "fault": false
+      }
+    },
+    {
+      "id": "flags_0100",
+      "input": {
+        "values": [
+          70,
+          60,
+          66,
+          70
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 4,
+        "range_mask": 0,
+        "effective_mask": 4,
+        "k": 1,
+        "warning": "WATCH",
+        "warning_code": 1,
+        "emergency": false,
+        "fault": false
+      }
+    },
+    {
+      "id": "flags_0101",
+      "input": {
+        "values": [
+          71,
+          60,
+          66,
+          70
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 5,
+        "range_mask": 0,
+        "effective_mask": 5,
+        "k": 2,
+        "warning": "DANGER",
+        "warning_code": 2,
+        "emergency": true,
+        "fault": false
+      }
+    },
+    {
+      "id": "flags_0110",
+      "input": {
+        "values": [
+          70,
+          61,
+          66,
+          70
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 6,
+        "range_mask": 0,
+        "effective_mask": 6,
+        "k": 2,
+        "warning": "DANGER",
+        "warning_code": 2,
+        "emergency": true,
+        "fault": false
+      }
+    },
+    {
+      "id": "flags_0111",
+      "input": {
+        "values": [
+          71,
+          61,
+          66,
+          70
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 7,
+        "range_mask": 0,
+        "effective_mask": 7,
+        "k": 3,
+        "warning": "DANGER",
+        "warning_code": 2,
+        "emergency": true,
+        "fault": false
+      }
+    },
+    {
+      "id": "flags_1000",
+      "input": {
+        "values": [
+          70,
+          60,
+          65,
+          71
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 8,
+        "range_mask": 0,
+        "effective_mask": 8,
+        "k": 1,
+        "warning": "WATCH",
+        "warning_code": 1,
+        "emergency": false,
+        "fault": false
+      }
+    },
+    {
+      "id": "flags_1001",
+      "input": {
+        "values": [
+          71,
+          60,
+          65,
+          71
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 9,
+        "range_mask": 0,
+        "effective_mask": 9,
+        "k": 2,
+        "warning": "DANGER",
+        "warning_code": 2,
+        "emergency": true,
+        "fault": false
+      }
+    },
+    {
+      "id": "flags_1010",
+      "input": {
+        "values": [
+          70,
+          61,
+          65,
+          71
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 10,
+        "range_mask": 0,
+        "effective_mask": 10,
+        "k": 2,
+        "warning": "DANGER",
+        "warning_code": 2,
+        "emergency": true,
+        "fault": false
+      }
+    },
+    {
+      "id": "flags_1011",
+      "input": {
+        "values": [
+          71,
+          61,
+          65,
+          71
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 11,
+        "range_mask": 0,
+        "effective_mask": 11,
+        "k": 3,
+        "warning": "DANGER",
+        "warning_code": 2,
+        "emergency": true,
+        "fault": false
+      }
+    },
+    {
+      "id": "flags_1100",
+      "input": {
+        "values": [
+          70,
+          60,
+          66,
+          71
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 12,
+        "range_mask": 0,
+        "effective_mask": 12,
+        "k": 2,
+        "warning": "DANGER",
+        "warning_code": 2,
+        "emergency": true,
+        "fault": false
+      }
+    },
+    {
+      "id": "flags_1101",
+      "input": {
+        "values": [
+          71,
+          60,
+          66,
+          71
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 13,
+        "range_mask": 0,
+        "effective_mask": 13,
+        "k": 3,
+        "warning": "DANGER",
+        "warning_code": 2,
+        "emergency": true,
+        "fault": false
+      }
+    },
+    {
+      "id": "flags_1110",
+      "input": {
+        "values": [
+          70,
+          61,
+          66,
+          71
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 14,
+        "range_mask": 0,
+        "effective_mask": 14,
+        "k": 3,
+        "warning": "DANGER",
+        "warning_code": 2,
+        "emergency": true,
+        "fault": false
+      }
+    },
+    {
+      "id": "flags_1111",
+      "input": {
+        "values": [
+          71,
+          61,
+          66,
+          71
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 15,
+        "range_mask": 0,
+        "effective_mask": 15,
+        "k": 4,
+        "warning": "DANGER",
+        "warning_code": 2,
+        "emergency": true,
+        "fault": false
+      }
+    }
+  ]
+}

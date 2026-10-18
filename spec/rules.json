@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "rule_version": 1,
+  "sensor_order": ["V", "T", "G", "A"],
+  "sensors": {
+    "V": {"label": "Ground vibration", "threshold": 70, "connectivity_bit": 0},
+    "T": {"label": "Temperature anomaly", "threshold": 60, "connectivity_bit": 1},
+    "G": {"label": "Gas concentration", "threshold": 65, "connectivity_bit": 2},
+    "A": {"label": "Surface deformation/activity", "threshold": 70, "connectivity_bit": 3}
+  },
+  "input": {
+    "units": "normalized educational index",
+    "bus_bits": 8,
+    "minimum": 0,
+    "normal_maximum": 100,
+    "transport_maximum": 255,
+    "slider_step": 1,
+    "default_values": [20, 20, 20, 20],
+    "connected_mask": 15,
+    "comparison": "strictly_greater_than",
+    "invalid_statistics_policy": "exclude_entire_record"
+  },
+  "warnings": {"NORMAL": 0, "WATCH": 1, "DANGER": 2, "FAULT": 3},
+  "danger_minimum_abnormal_sensors": 2,
+  "sampling": {
+    "seconds_per_sample": 1,
+    "maximum_samples": 600,
+    "window_samples": 10,
+    "window_policy": "fixed_non_overlapping",
+    "fault_samples_advance_window": true,
+    "alarm_latched": false
+  },
+  "counter_bits": {
+    "per_sensor": 4,
+    "readings": 6,
+    "abnormal_samples": 4,
+    "faults": 4,
+    "position": 4,
+    "completed_windows": 6
+  },
+  "statistics": {
+    "accumulator_bits": 64,
+    "average_scale": 100,
+    "rounding": "floor",
+    "empty_report": "NO_VALID_DATA"
+  },
+  "protocol": {
+    "version": 1,
+    "logisim_magic": "0x564D0001",
+    "ram_word_bits": 32,
+    "ram_address_bits": 11,
+    "ram_header_words": 2,
+    "ram_words_per_sample": 2,
+    "assembly_magic": "0x564D4153",
+    "assembly_header_bytes": 16,
+    "assembly_record_bytes": 24,
+    "assembly_byte_order": "little"
+  }
+}

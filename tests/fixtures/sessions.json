@@ -1,0 +1,1052 @@
+{
+  "fixture_version": 1,
+  "rule_version": 1,
+  "cases": [
+    {
+      "id": "empty",
+      "segments": [],
+      "expected_snapshots": [],
+      "expected_summary": {
+        "total_samples": 0,
+        "valid_samples": 0,
+        "fault_samples": 0,
+        "current_warning": null,
+        "last_valid_warning": null,
+        "worst_valid_warning": null,
+        "report_status": "NO_VALID_DATA",
+        "statistics": {
+          "V": {
+            "count": 0,
+            "minimum": null,
+            "maximum": null,
+            "sum": 0,
+            "average_x100": null
+          },
+          "T": {
+            "count": 0,
+            "minimum": null,
+            "maximum": null,
+            "sum": 0,
+            "average_x100": null
+          },
+          "G": {
+            "count": 0,
+            "minimum": null,
+            "maximum": null,
+            "sum": 0,
+            "average_x100": null
+          },
+          "A": {
+            "count": 0,
+            "minimum": null,
+            "maximum": null,
+            "sum": 0,
+            "average_x100": null
+          }
+        }
+      }
+    },
+    {
+      "id": "all_faults",
+      "segments": [
+        {
+          "values": [
+            255,
+            20,
+            20,
+            20
+          ],
+          "connectivity_mask": 15,
+          "repeat": 1
+        },
+        {
+          "values": [
+            20,
+            20,
+            20,
+            20
+          ],
+          "connectivity_mask": 0,
+          "repeat": 1
+        }
+      ],
+      "expected_snapshots": [
+        {
+          "index": 1,
+          "time_seconds": 2,
+          "position": 2,
+          "completed_windows": 0,
+          "has_completed": false,
+          "current_counts": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 2
+          },
+          "last_completed": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 0
+          },
+          "warning": "FAULT",
+          "k": 0
+        }
+      ],
+      "expected_summary": {
+        "total_samples": 2,
+        "valid_samples": 0,
+        "fault_samples": 2,
+        "current_warning": "FAULT",
+        "last_valid_warning": null,
+        "worst_valid_warning": null,
+        "report_status": "NO_VALID_DATA",
+        "statistics": {
+          "V": {
+            "count": 0,
+            "minimum": null,
+            "maximum": null,
+            "sum": 0,
+            "average_x100": null
+          },
+          "T": {
+            "count": 0,
+            "minimum": null,
+            "maximum": null,
+            "sum": 0,
+            "average_x100": null
+          },
+          "G": {
+            "count": 0,
+            "minimum": null,
+            "maximum": null,
+            "sum": 0,
+            "average_x100": null
+          },
+          "A": {
+            "count": 0,
+            "minimum": null,
+            "maximum": null,
+            "sum": 0,
+            "average_x100": null
+          }
+        }
+      }
+    },
+    {
+      "id": "known_statistics",
+      "segments": [
+        {
+          "values": [
+            10,
+            20,
+            30,
+            40
+          ],
+          "connectivity_mask": 15,
+          "repeat": 1
+        },
+        {
+          "values": [
+            30,
+            40,
+            50,
+            60
+          ],
+          "connectivity_mask": 15,
+          "repeat": 1
+        }
+      ],
+      "expected_snapshots": [
+        {
+          "index": 1,
+          "time_seconds": 2,
+          "position": 2,
+          "completed_windows": 0,
+          "has_completed": false,
+          "current_counts": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 0
+          },
+          "last_completed": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 0
+          },
+          "warning": "NORMAL"
+        }
+      ],
+      "expected_summary": {
+        "total_samples": 2,
+        "valid_samples": 2,
+        "fault_samples": 0,
+        "current_warning": "NORMAL",
+        "last_valid_warning": "NORMAL",
+        "worst_valid_warning": "NORMAL",
+        "report_status": "NORMAL",
+        "statistics": {
+          "V": {
+            "count": 2,
+            "minimum": 10,
+            "maximum": 30,
+            "sum": 40,
+            "average_x100": 2000
+          },
+          "T": {
+            "count": 2,
+            "minimum": 20,
+            "maximum": 40,
+            "sum": 60,
+            "average_x100": 3000
+          },
+          "G": {
+            "count": 2,
+            "minimum": 30,
+            "maximum": 50,
+            "sum": 80,
+            "average_x100": 4000
+          },
+          "A": {
+            "count": 2,
+            "minimum": 40,
+            "maximum": 60,
+            "sum": 100,
+            "average_x100": 5000
+          }
+        }
+      }
+    },
+    {
+      "id": "fractional_statistics",
+      "segments": [
+        {
+          "values": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "connectivity_mask": 15,
+          "repeat": 2
+        },
+        {
+          "values": [
+            1,
+            2,
+            2,
+            1
+          ],
+          "connectivity_mask": 15,
+          "repeat": 1
+        }
+      ],
+      "expected_snapshots": [
+        {
+          "index": 2,
+          "time_seconds": 3,
+          "position": 3,
+          "completed_windows": 0,
+          "has_completed": false,
+          "current_counts": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 0
+          },
+          "last_completed": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 0
+          }
+        }
+      ],
+      "expected_summary": {
+        "total_samples": 3,
+        "valid_samples": 3,
+        "fault_samples": 0,
+        "current_warning": "NORMAL",
+        "last_valid_warning": "NORMAL",
+        "worst_valid_warning": "NORMAL",
+        "report_status": "NORMAL",
+        "statistics": {
+          "V": {
+            "count": 3,
+            "minimum": 0,
+            "maximum": 1,
+            "sum": 1,
+            "average_x100": 33
+          },
+          "T": {
+            "count": 3,
+            "minimum": 0,
+            "maximum": 2,
+            "sum": 2,
+            "average_x100": 66
+          },
+          "G": {
+            "count": 3,
+            "minimum": 0,
+            "maximum": 2,
+            "sum": 2,
+            "average_x100": 66
+          },
+          "A": {
+            "count": 3,
+            "minimum": 0,
+            "maximum": 1,
+            "sum": 1,
+            "average_x100": 33
+          }
+        }
+      }
+    },
+    {
+      "id": "invalid_exclusion",
+      "segments": [
+        {
+          "values": [
+            10,
+            20,
+            30,
+            40
+          ],
+          "connectivity_mask": 15,
+          "repeat": 1
+        },
+        {
+          "values": [
+            255,
+            99,
+            99,
+            99
+          ],
+          "connectivity_mask": 15,
+          "repeat": 1
+        },
+        {
+          "values": [
+            30,
+            40,
+            50,
+            60
+          ],
+          "connectivity_mask": 15,
+          "repeat": 1
+        }
+      ],
+      "expected_snapshots": [
+        {
+          "index": 2,
+          "time_seconds": 3,
+          "position": 3,
+          "completed_windows": 0,
+          "has_completed": false,
+          "current_counts": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 1
+          },
+          "last_completed": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 0
+          },
+          "warning": "NORMAL"
+        }
+      ],
+      "expected_summary": {
+        "total_samples": 3,
+        "valid_samples": 2,
+        "fault_samples": 1,
+        "current_warning": "NORMAL",
+        "last_valid_warning": "NORMAL",
+        "worst_valid_warning": "NORMAL",
+        "report_status": "NORMAL",
+        "statistics": {
+          "V": {
+            "count": 2,
+            "minimum": 10,
+            "maximum": 30,
+            "sum": 40,
+            "average_x100": 2000
+          },
+          "T": {
+            "count": 2,
+            "minimum": 20,
+            "maximum": 40,
+            "sum": 60,
+            "average_x100": 3000
+          },
+          "G": {
+            "count": 2,
+            "minimum": 30,
+            "maximum": 50,
+            "sum": 80,
+            "average_x100": 4000
+          },
+          "A": {
+            "count": 2,
+            "minimum": 40,
+            "maximum": 60,
+            "sum": 100,
+            "average_x100": 5000
+          }
+        }
+      }
+    },
+    {
+      "id": "window_10_and_11",
+      "segments": [
+        {
+          "values": [
+            20,
+            20,
+            20,
+            20
+          ],
+          "connectivity_mask": 15,
+          "repeat": 9
+        },
+        {
+          "values": [
+            100,
+            100,
+            100,
+            100
+          ],
+          "connectivity_mask": 15,
+          "repeat": 1
+        },
+        {
+          "values": [
+            20,
+            20,
+            20,
+            20
+          ],
+          "connectivity_mask": 15,
+          "repeat": 1
+        }
+      ],
+      "expected_snapshots": [
+        {
+          "index": 8,
+          "time_seconds": 9,
+          "position": 9,
+          "completed_windows": 0,
+          "has_completed": false,
+          "current_counts": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 0
+          },
+          "last_completed": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 0
+          }
+        },
+        {
+          "index": 9,
+          "time_seconds": 10,
+          "position": 0,
+          "completed_windows": 1,
+          "has_completed": true,
+          "current_counts": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 0
+          },
+          "last_completed": {
+            "V": 1,
+            "T": 1,
+            "G": 1,
+            "A": 1,
+            "readings": 4,
+            "abnormal_samples": 1,
+            "faults": 0
+          }
+        },
+        {
+          "index": 10,
+          "time_seconds": 11,
+          "position": 1,
+          "completed_windows": 1,
+          "has_completed": true,
+          "current_counts": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 0
+          },
+          "last_completed": {
+            "V": 1,
+            "T": 1,
+            "G": 1,
+            "A": 1,
+            "readings": 4,
+            "abnormal_samples": 1,
+            "faults": 0
+          }
+        }
+      ],
+      "expected_summary": {
+        "total_samples": 11,
+        "valid_samples": 11,
+        "fault_samples": 0,
+        "current_warning": "NORMAL",
+        "last_valid_warning": "NORMAL",
+        "worst_valid_warning": "DANGER",
+        "report_status": "DANGER",
+        "statistics": {
+          "V": {
+            "count": 11,
+            "minimum": 20,
+            "maximum": 100,
+            "sum": 300,
+            "average_x100": 2727
+          },
+          "T": {
+            "count": 11,
+            "minimum": 20,
+            "maximum": 100,
+            "sum": 300,
+            "average_x100": 2727
+          },
+          "G": {
+            "count": 11,
+            "minimum": 20,
+            "maximum": 100,
+            "sum": 300,
+            "average_x100": 2727
+          },
+          "A": {
+            "count": 11,
+            "minimum": 20,
+            "maximum": 100,
+            "sum": 300,
+            "average_x100": 2727
+          }
+        }
+      }
+    },
+    {
+      "id": "fault_on_tenth",
+      "segments": [
+        {
+          "values": [
+            20,
+            20,
+            20,
+            20
+          ],
+          "connectivity_mask": 15,
+          "repeat": 9
+        },
+        {
+          "values": [
+            101,
+            20,
+            20,
+            20
+          ],
+          "connectivity_mask": 15,
+          "repeat": 1
+        }
+      ],
+      "expected_snapshots": [
+        {
+          "index": 9,
+          "time_seconds": 10,
+          "position": 0,
+          "completed_windows": 1,
+          "has_completed": true,
+          "current_counts": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 0
+          },
+          "last_completed": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 1
+          },
+          "warning": "FAULT",
+          "k": 0
+        }
+      ],
+      "expected_summary": {
+        "total_samples": 10,
+        "valid_samples": 9,
+        "fault_samples": 1,
+        "current_warning": "FAULT",
+        "last_valid_warning": "NORMAL",
+        "worst_valid_warning": "NORMAL",
+        "report_status": "NORMAL",
+        "statistics": {
+          "V": {
+            "count": 9,
+            "minimum": 20,
+            "maximum": 20,
+            "sum": 180,
+            "average_x100": 2000
+          },
+          "T": {
+            "count": 9,
+            "minimum": 20,
+            "maximum": 20,
+            "sum": 180,
+            "average_x100": 2000
+          },
+          "G": {
+            "count": 9,
+            "minimum": 20,
+            "maximum": 20,
+            "sum": 180,
+            "average_x100": 2000
+          },
+          "A": {
+            "count": 9,
+            "minimum": 20,
+            "maximum": 20,
+            "sum": 180,
+            "average_x100": 2000
+          }
+        }
+      }
+    },
+    {
+      "id": "two_distinct_windows",
+      "segments": [
+        {
+          "values": [
+            71,
+            20,
+            20,
+            20
+          ],
+          "connectivity_mask": 15,
+          "repeat": 10
+        },
+        {
+          "values": [
+            20,
+            20,
+            20,
+            20
+          ],
+          "connectivity_mask": 15,
+          "repeat": 10
+        }
+      ],
+      "expected_snapshots": [
+        {
+          "index": 9,
+          "time_seconds": 10,
+          "position": 0,
+          "completed_windows": 1,
+          "has_completed": true,
+          "current_counts": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 0
+          },
+          "last_completed": {
+            "V": 10,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 10,
+            "abnormal_samples": 10,
+            "faults": 0
+          }
+        },
+        {
+          "index": 19,
+          "time_seconds": 20,
+          "position": 0,
+          "completed_windows": 2,
+          "has_completed": true,
+          "current_counts": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 0
+          },
+          "last_completed": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 0
+          },
+          "warning": "NORMAL"
+        }
+      ],
+      "expected_summary": {
+        "total_samples": 20,
+        "valid_samples": 20,
+        "fault_samples": 0,
+        "current_warning": "NORMAL",
+        "last_valid_warning": "NORMAL",
+        "worst_valid_warning": "WATCH",
+        "report_status": "WATCH",
+        "statistics": {
+          "V": {
+            "count": 20,
+            "minimum": 20,
+            "maximum": 71,
+            "sum": 910,
+            "average_x100": 4550
+          },
+          "T": {
+            "count": 20,
+            "minimum": 20,
+            "maximum": 20,
+            "sum": 400,
+            "average_x100": 2000
+          },
+          "G": {
+            "count": 20,
+            "minimum": 20,
+            "maximum": 20,
+            "sum": 400,
+            "average_x100": 2000
+          },
+          "A": {
+            "count": 20,
+            "minimum": 20,
+            "maximum": 20,
+            "sum": 400,
+            "average_x100": 2000
+          }
+        }
+      }
+    },
+    {
+      "id": "repeated_danger_recovery_trailing_fault",
+      "segments": [
+        {
+          "values": [
+            71,
+            61,
+            20,
+            20
+          ],
+          "connectivity_mask": 15,
+          "repeat": 2
+        },
+        {
+          "values": [
+            20,
+            20,
+            20,
+            20
+          ],
+          "connectivity_mask": 15,
+          "repeat": 1
+        },
+        {
+          "values": [
+            20,
+            20,
+            20,
+            20
+          ],
+          "connectivity_mask": 14,
+          "repeat": 1
+        }
+      ],
+      "expected_snapshots": [
+        {
+          "index": 1,
+          "time_seconds": 2,
+          "position": 2,
+          "completed_windows": 0,
+          "has_completed": false,
+          "current_counts": {
+            "V": 2,
+            "T": 2,
+            "G": 0,
+            "A": 0,
+            "readings": 4,
+            "abnormal_samples": 2,
+            "faults": 0
+          },
+          "last_completed": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 0
+          },
+          "warning": "DANGER",
+          "emergency": true
+        },
+        {
+          "index": 2,
+          "time_seconds": 3,
+          "position": 3,
+          "completed_windows": 0,
+          "has_completed": false,
+          "current_counts": {
+            "V": 2,
+            "T": 2,
+            "G": 0,
+            "A": 0,
+            "readings": 4,
+            "abnormal_samples": 2,
+            "faults": 0
+          },
+          "last_completed": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 0
+          },
+          "warning": "NORMAL",
+          "emergency": false
+        },
+        {
+          "index": 3,
+          "time_seconds": 4,
+          "position": 4,
+          "completed_windows": 0,
+          "has_completed": false,
+          "current_counts": {
+            "V": 2,
+            "T": 2,
+            "G": 0,
+            "A": 0,
+            "readings": 4,
+            "abnormal_samples": 2,
+            "faults": 1
+          },
+          "last_completed": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 0
+          },
+          "warning": "FAULT",
+          "emergency": false
+        }
+      ],
+      "expected_summary": {
+        "total_samples": 4,
+        "valid_samples": 3,
+        "fault_samples": 1,
+        "current_warning": "FAULT",
+        "last_valid_warning": "NORMAL",
+        "worst_valid_warning": "DANGER",
+        "report_status": "DANGER",
+        "statistics": {
+          "V": {
+            "count": 3,
+            "minimum": 20,
+            "maximum": 71,
+            "sum": 162,
+            "average_x100": 5400
+          },
+          "T": {
+            "count": 3,
+            "minimum": 20,
+            "maximum": 61,
+            "sum": 142,
+            "average_x100": 4733
+          },
+          "G": {
+            "count": 3,
+            "minimum": 20,
+            "maximum": 20,
+            "sum": 60,
+            "average_x100": 2000
+          },
+          "A": {
+            "count": 3,
+            "minimum": 20,
+            "maximum": 20,
+            "sum": 60,
+            "average_x100": 2000
+          }
+        }
+      }
+    },
+    {
+      "id": "maximum_600",
+      "segments": [
+        {
+          "values": [
+            100,
+            100,
+            100,
+            100
+          ],
+          "connectivity_mask": 15,
+          "repeat": 600
+        }
+      ],
+      "expected_snapshots": [
+        {
+          "index": 598,
+          "time_seconds": 599,
+          "position": 9,
+          "completed_windows": 59,
+          "has_completed": true,
+          "current_counts": {
+            "V": 9,
+            "T": 9,
+            "G": 9,
+            "A": 9,
+            "readings": 36,
+            "abnormal_samples": 9,
+            "faults": 0
+          },
+          "last_completed": {
+            "V": 10,
+            "T": 10,
+            "G": 10,
+            "A": 10,
+            "readings": 40,
+            "abnormal_samples": 10,
+            "faults": 0
+          }
+        },
+        {
+          "index": 599,
+          "time_seconds": 600,
+          "position": 0,
+          "completed_windows": 60,
+          "has_completed": true,
+          "current_counts": {
+            "V": 0,
+            "T": 0,
+            "G": 0,
+            "A": 0,
+            "readings": 0,
+            "abnormal_samples": 0,
+            "faults": 0
+          },
+          "last_completed": {
+            "V": 10,
+            "T": 10,
+            "G": 10,
+            "A": 10,
+            "readings": 40,
+            "abnormal_samples": 10,
+            "faults": 0
+          }
+        }
+      ],
+      "expected_summary": {
+        "total_samples": 600,
+        "valid_samples": 600,
+        "fault_samples": 0,
+        "current_warning": "DANGER",
+        "last_valid_warning": "DANGER",
+        "worst_valid_warning": "DANGER",
+        "report_status": "DANGER",
+        "statistics": {
+          "V": {
+            "count": 600,
+            "minimum": 100,
+            "maximum": 100,
+            "sum": 60000,
+            "average_x100": 10000
+          },
+          "T": {
+            "count": 600,
+            "minimum": 100,
+            "maximum": 100,
+            "sum": 60000,
+            "average_x100": 10000
+          },
+          "G": {
+            "count": 600,
+            "minimum": 100,
+            "maximum": 100,
+            "sum": 60000,
+            "average_x100": 10000
+          },
+          "A": {
+            "count": 600,
+            "minimum": 100,
+            "maximum": 100,
+            "sum": 60000,
+            "average_x100": 10000
+          }
+        }
+      }
+    }
+  ]
+}

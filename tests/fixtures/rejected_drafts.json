@@ -1,0 +1,236 @@
+{
+  "fixture_version": 1,
+  "rule_version": 1,
+  "cases": [
+    {
+      "id": "negative",
+      "payload": {
+        "values": [
+          -1,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "fault_injection": false
+      }
+    },
+    {
+      "id": "oversized",
+      "payload": {
+        "values": [
+          256,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "fault_injection": false
+      }
+    },
+    {
+      "id": "unapproved_range_fault",
+      "payload": {
+        "values": [
+          101,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "fault_injection": false
+      }
+    },
+    {
+      "id": "bool_measurement",
+      "payload": {
+        "values": [
+          true,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "fault_injection": false
+      }
+    },
+    {
+      "id": "float_measurement",
+      "payload": {
+        "values": [
+          20.0,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "fault_injection": false
+      }
+    },
+    {
+      "id": "string_measurement",
+      "payload": {
+        "values": [
+          "20",
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "fault_injection": false
+      }
+    },
+    {
+      "id": "null_measurement",
+      "payload": {
+        "values": [
+          null,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "fault_injection": false
+      }
+    },
+    {
+      "id": "short_values",
+      "payload": {
+        "values": [
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "fault_injection": false
+      }
+    },
+    {
+      "id": "long_values",
+      "payload": {
+        "values": [
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "fault_injection": false
+      }
+    },
+    {
+      "id": "object_values",
+      "payload": {
+        "values": {
+          "V": 20
+        },
+        "connectivity_mask": 15,
+        "fault_injection": false
+      }
+    },
+    {
+      "id": "mask_bool",
+      "payload": {
+        "values": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": true,
+        "fault_injection": false
+      }
+    },
+    {
+      "id": "mask_float",
+      "payload": {
+        "values": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15.0,
+        "fault_injection": false
+      }
+    },
+    {
+      "id": "mask_negative",
+      "payload": {
+        "values": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": -1,
+        "fault_injection": false
+      }
+    },
+    {
+      "id": "mask_reserved_bit",
+      "payload": {
+        "values": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 16,
+        "fault_injection": false
+      }
+    },
+    {
+      "id": "injection_integer",
+      "payload": {
+        "values": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "fault_injection": 1
+      }
+    },
+    {
+      "id": "injection_string",
+      "payload": {
+        "values": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "fault_injection": "true"
+      }
+    },
+    {
+      "id": "unexpected_field",
+      "payload": {
+        "values": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "fault_injection": false,
+        "surprise": 0
+      }
+    },
+    {
+      "id": "missing_values",
+      "payload": {
+        "connectivity_mask": 15,
+        "fault_injection": false
+      }
+    },
+    {
+      "id": "not_object",
+      "payload": null
+    }
+  ]
+}

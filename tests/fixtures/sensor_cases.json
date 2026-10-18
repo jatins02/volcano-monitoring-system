@@ -1,0 +1,627 @@
+{
+  "fixture_version": 1,
+  "rule_version": 1,
+  "cases": [
+    {
+      "id": "minimum_zero",
+      "input": {
+        "values": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false
+      }
+    },
+    {
+      "id": "maximum_valid",
+      "input": {
+        "values": [
+          100,
+          100,
+          100,
+          100
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 15,
+        "range_mask": 0,
+        "effective_mask": 15,
+        "k": 4,
+        "warning": "DANGER",
+        "warning_code": 2,
+        "emergency": true,
+        "fault": false
+      }
+    },
+    {
+      "id": "V_below",
+      "input": {
+        "values": [
+          69,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false
+      }
+    },
+    {
+      "id": "V_equal",
+      "input": {
+        "values": [
+          70,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false
+      }
+    },
+    {
+      "id": "V_above",
+      "input": {
+        "values": [
+          71,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 1,
+        "range_mask": 0,
+        "effective_mask": 1,
+        "k": 1,
+        "warning": "WATCH",
+        "warning_code": 1,
+        "emergency": false,
+        "fault": false
+      }
+    },
+    {
+      "id": "V_range_101",
+      "input": {
+        "values": [
+          101,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": false,
+        "raw_mask": 1,
+        "range_mask": 1,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "FAULT",
+        "warning_code": 3,
+        "emergency": false,
+        "fault": true
+      }
+    },
+    {
+      "id": "V_range_255",
+      "input": {
+        "values": [
+          255,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": false,
+        "raw_mask": 1,
+        "range_mask": 1,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "FAULT",
+        "warning_code": 3,
+        "emergency": false,
+        "fault": true
+      }
+    },
+    {
+      "id": "V_disconnected_high",
+      "input": {
+        "values": [
+          100,
+          100,
+          100,
+          100
+        ],
+        "connectivity_mask": 14
+      },
+      "expected": {
+        "valid": false,
+        "raw_mask": 15,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "FAULT",
+        "warning_code": 3,
+        "emergency": false,
+        "fault": true
+      }
+    },
+    {
+      "id": "T_below",
+      "input": {
+        "values": [
+          20,
+          59,
+          20,
+          20
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false
+      }
+    },
+    {
+      "id": "T_equal",
+      "input": {
+        "values": [
+          20,
+          60,
+          20,
+          20
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false
+      }
+    },
+    {
+      "id": "T_above",
+      "input": {
+        "values": [
+          20,
+          61,
+          20,
+          20
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 2,
+        "range_mask": 0,
+        "effective_mask": 2,
+        "k": 1,
+        "warning": "WATCH",
+        "warning_code": 1,
+        "emergency": false,
+        "fault": false
+      }
+    },
+    {
+      "id": "T_range_101",
+      "input": {
+        "values": [
+          20,
+          101,
+          20,
+          20
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": false,
+        "raw_mask": 2,
+        "range_mask": 2,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "FAULT",
+        "warning_code": 3,
+        "emergency": false,
+        "fault": true
+      }
+    },
+    {
+      "id": "T_range_255",
+      "input": {
+        "values": [
+          20,
+          255,
+          20,
+          20
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": false,
+        "raw_mask": 2,
+        "range_mask": 2,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "FAULT",
+        "warning_code": 3,
+        "emergency": false,
+        "fault": true
+      }
+    },
+    {
+      "id": "T_disconnected_high",
+      "input": {
+        "values": [
+          100,
+          100,
+          100,
+          100
+        ],
+        "connectivity_mask": 13
+      },
+      "expected": {
+        "valid": false,
+        "raw_mask": 15,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "FAULT",
+        "warning_code": 3,
+        "emergency": false,
+        "fault": true
+      }
+    },
+    {
+      "id": "G_below",
+      "input": {
+        "values": [
+          20,
+          20,
+          64,
+          20
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false
+      }
+    },
+    {
+      "id": "G_equal",
+      "input": {
+        "values": [
+          20,
+          20,
+          65,
+          20
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false
+      }
+    },
+    {
+      "id": "G_above",
+      "input": {
+        "values": [
+          20,
+          20,
+          66,
+          20
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 4,
+        "range_mask": 0,
+        "effective_mask": 4,
+        "k": 1,
+        "warning": "WATCH",
+        "warning_code": 1,
+        "emergency": false,
+        "fault": false
+      }
+    },
+    {
+      "id": "G_range_101",
+      "input": {
+        "values": [
+          20,
+          20,
+          101,
+          20
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": false,
+        "raw_mask": 4,
+        "range_mask": 4,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "FAULT",
+        "warning_code": 3,
+        "emergency": false,
+        "fault": true
+      }
+    },
+    {
+      "id": "G_range_255",
+      "input": {
+        "values": [
+          20,
+          20,
+          255,
+          20
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": false,
+        "raw_mask": 4,
+        "range_mask": 4,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "FAULT",
+        "warning_code": 3,
+        "emergency": false,
+        "fault": true
+      }
+    },
+    {
+      "id": "G_disconnected_high",
+      "input": {
+        "values": [
+          100,
+          100,
+          100,
+          100
+        ],
+        "connectivity_mask": 11
+      },
+      "expected": {
+        "valid": false,
+        "raw_mask": 15,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "FAULT",
+        "warning_code": 3,
+        "emergency": false,
+        "fault": true
+      }
+    },
+    {
+      "id": "A_below",
+      "input": {
+        "values": [
+          20,
+          20,
+          20,
+          69
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false
+      }
+    },
+    {
+      "id": "A_equal",
+      "input": {
+        "values": [
+          20,
+          20,
+          20,
+          70
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false
+      }
+    },
+    {
+      "id": "A_above",
+      "input": {
+        "values": [
+          20,
+          20,
+          20,
+          71
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": true,
+        "raw_mask": 8,
+        "range_mask": 0,
+        "effective_mask": 8,
+        "k": 1,
+        "warning": "WATCH",
+        "warning_code": 1,
+        "emergency": false,
+        "fault": false
+      }
+    },
+    {
+      "id": "A_range_101",
+      "input": {
+        "values": [
+          20,
+          20,
+          20,
+          101
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": false,
+        "raw_mask": 8,
+        "range_mask": 8,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "FAULT",
+        "warning_code": 3,
+        "emergency": false,
+        "fault": true
+      }
+    },
+    {
+      "id": "A_range_255",
+      "input": {
+        "values": [
+          20,
+          20,
+          20,
+          255
+        ],
+        "connectivity_mask": 15
+      },
+      "expected": {
+        "valid": false,
+        "raw_mask": 8,
+        "range_mask": 8,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "FAULT",
+        "warning_code": 3,
+        "emergency": false,
+        "fault": true
+      }
+    },
+    {
+      "id": "A_disconnected_high",
+      "input": {
+        "values": [
+          100,
+          100,
+          100,
+          100
+        ],
+        "connectivity_mask": 7
+      },
+      "expected": {
+        "valid": false,
+        "raw_mask": 15,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "FAULT",
+        "warning_code": 3,
+        "emergency": false,
+        "fault": true
+      }
+    },
+    {
+      "id": "all_disconnected",
+      "input": {
+        "values": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 0
+      },
+      "expected": {
+        "valid": false,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "FAULT",
+        "warning_code": 3,
+        "emergency": false,
+        "fault": true
+      }
+    }
+  ]
+}
