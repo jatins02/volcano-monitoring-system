@@ -19,7 +19,9 @@ def verify(root: Path) -> None:
     if len(mapping["circuits"]) != len(set(mapping["circuits"])):
         raise ValueError("duplicate circuit declarations in map")
     if len(names) != len(set(names)) or set(names) != set(mapping["circuits"]):
-        raise ValueError("unexpected or duplicate circuit names; update the explicit core map")
+        raise ValueError(
+            "unexpected or duplicate circuit names; update the explicit core map"
+        )
     libraries = {item.get("name"): item.get("desc") for item in project.findall("lib")}
     rules = read_json(root / "spec/rules.json")
     seen_ids, seen_locations = set(), set()
@@ -33,14 +35,23 @@ def verify(root: Path) -> None:
         seen_ids.add(item["id"])
         seen_locations.add(identity)
         circuit = next(node for node in circuits if node.get("name") == item["circuit"])
-        matches = [node for node in circuit.findall("comp") if node.get("loc") == item["location"]]
+        matches = [
+            node
+            for node in circuit.findall("comp")
+            if node.get("loc") == item["location"]
+        ]
         if len(matches) != 1:
-            raise ValueError(f"{item['id']}: missing or overlapping component at mapped location")
+            raise ValueError(
+                f"{item['id']}: missing or overlapping component at mapped location"
+            )
         component = matches[0]
-        if component.get("name") != "Constant" or libraries.get(component.get("lib")) != "#Wiring":
+        if (
+            component.get("name") != "Constant"
+            or libraries.get(component.get("lib")) != "#Wiring"
+        ):
             raise ValueError(f"{item['id']}: expected a Wiring Constant")
         attrs = component.findall("a")
-        if len({attr.get('name') for attr in attrs}) != len(attrs):
+        if len({attr.get("name") for attr in attrs}) != len(attrs):
             raise ValueError(f"{item['id']}: duplicate attributes")
         values = {attr.get("name"): attr.get("val") for attr in attrs}
         expected = rules
@@ -50,8 +61,13 @@ def verify(root: Path) -> None:
             raise ValueError(f"{item['id']}: wrong bus width")
         if int(values["value"], 0) != expected:
             raise ValueError(f"{item['id']}: constant differs from spec/rules.json")
-    constants = [node for circuit in circuits if circuit.get("name") == "RuleConstants"
-                 for node in circuit.findall("comp") if node.get("name") == "Constant"]
+    constants = [
+        node
+        for circuit in circuits
+        if circuit.get("name") == "RuleConstants"
+        for node in circuit.findall("comp")
+        if node.get("name") == "Constant"
+    ]
     if len(constants) != len(mapping["constants"]):
         raise ValueError("unmapped or duplicate rule-bank constants")
     # Interfaces are physical circuit pins, not illustrative website labels.
@@ -60,11 +76,18 @@ def verify(root: Path) -> None:
         actual = []
         for pin in circuit.findall("comp[@name='Pin']"):
             attrs = {a.get("name"): a.get("val") for a in pin.findall("a")}
-            actual.append({"label": attrs["label"], "location": pin.get("loc"),
-                           "width": int(attrs.get("width", "1")),
-                           "output": attrs.get("output") == "true"})
+            actual.append(
+                {
+                    "label": attrs["label"],
+                    "location": pin.get("loc"),
+                    "width": int(attrs.get("width", "1")),
+                    "output": attrs.get("output") == "true",
+                }
+            )
         if actual != expected_pins:
-            raise ValueError(f"{circuit_name}: physical pin interface differs from core map")
+            raise ValueError(
+                f"{circuit_name}: physical pin interface differs from core map"
+            )
     expected_ids = {f"THRESHOLD_{name}" for name in rules["sensor_order"]}
     if seen_ids != expected_ids:
         raise ValueError("missing sensor threshold mapping")

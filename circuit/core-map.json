@@ -5,6 +5,7 @@
   "circuits": [
     "ToolchainSmoke",
     "RuleConstants",
+    "WindowCounters",
     "SensorCheck",
     "Validity",
     "WarningLogic",
@@ -54,6 +55,62 @@
     }
   ],
   "interfaces": {
+    "WindowCounters": [
+      {
+        "label": "clk",
+        "location": "(100,100)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "reset",
+        "location": "(100,140)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "sample_enable",
+        "location": "(100,180)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "flags",
+        "location": "(100,220)",
+        "width": 4,
+        "output": false
+      },
+      {
+        "label": "k",
+        "location": "(100,260)",
+        "width": 3,
+        "output": false
+      },
+      {
+        "label": "fault",
+        "location": "(100,300)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "current_counts",
+        "location": "(5000,100)",
+        "width": 32,
+        "output": true
+      },
+      {
+        "label": "last_completed",
+        "location": "(5000,140)",
+        "width": 32,
+        "output": true
+      },
+      {
+        "label": "window_meta",
+        "location": "(5000,180)",
+        "width": 32,
+        "output": true
+      }
+    ],
     "SensorCheck": [
       {
         "label": "value",
@@ -212,6 +269,24 @@
         "output": false
       },
       {
+        "label": "clk",
+        "location": "(100,300)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "reset",
+        "location": "(100,340)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "sample_enable",
+        "location": "(100,380)",
+        "width": 1,
+        "output": false
+      },
+      {
         "label": "status",
         "location": "(1500,100)",
         "width": 32,
@@ -288,6 +363,24 @@
         "location": "(1500,580)",
         "width": 1,
         "output": true
+      },
+      {
+        "label": "current_counts",
+        "location": "(1500,620)",
+        "width": 32,
+        "output": true
+      },
+      {
+        "label": "last_completed",
+        "location": "(1500,660)",
+        "width": 32,
+        "output": true
+      },
+      {
+        "label": "window_meta",
+        "location": "(1500,700)",
+        "width": 32,
+        "output": true
       }
     ],
     "MonitorGUI": [
@@ -319,6 +412,24 @@
         "label": "mask",
         "location": "(100,260)",
         "width": 4,
+        "output": false
+      },
+      {
+        "label": "clk",
+        "location": "(100,300)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "reset",
+        "location": "(100,340)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "sample_enable",
+        "location": "(100,380)",
+        "width": 1,
         "output": false
       },
       {
@@ -397,6 +508,24 @@
         "label": "fault",
         "location": "(1850,580)",
         "width": 1,
+        "output": true
+      },
+      {
+        "label": "current_counts",
+        "location": "(1850,620)",
+        "width": 32,
+        "output": true
+      },
+      {
+        "label": "last_completed",
+        "location": "(1850,660)",
+        "width": 32,
+        "output": true
+      },
+      {
+        "label": "window_meta",
+        "location": "(1850,700)",
+        "width": 32,
         "output": true
       }
     ]

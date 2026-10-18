@@ -20,7 +20,7 @@ Verification: checked local Markdown link targets, scanned for stale old-filenam
 | 1 | Toolchain and directory structure | Complete | Pinned setup/build commands, 49 passing tests, real smoke checks, clean-clone validation; `reports/stage1-verification.md` |
 | 2 | Small Logisim CLI bridge | Complete | Four ordered hardware publications, deterministic boot, real RAM/reset regressions; `reports/stage2-verification.md` |
 | 3 | Combinational monitor | Complete | 43 fixed cases on core and GUI; reports/stage3/ and docs/monitor-core.md |
-| 4 | Sequential counters | Not started | None |
+| 4 | Sequential counters | Complete | Actual 600-sample boundary/hold/reset tests; reports/stage4/ |
 | 5 | Replay harness and wire protocol | Not started | None |
 | 6 | Assembly analyser | Not started | None |
 | 7 | Backend and sessions | Not started | None |
@@ -64,3 +64,7 @@ After substantive work, record the affected stage, changed deliverables, exact v
 ## Stage 3 verification
 
 Actual core and GUI paths passed 43 independent cases (86 outputs). All 64 existing unit tests passed. Circuit regeneration and mapped constant/interface checks passed. See docs/monitor-core.md and reports/stage3/. Stage 4 counters are next.
+
+## Stage 4 verification
+
+Actual counter bank passed two complete 635-tick scenarios: 600 commits, abnormal/fault tenth readings, hold, reset and restart. Core and GUI still passed all 43 combinational fixtures; all 64 offline unit tests passed. See docs/window-counters.md and reports/stage4/. Stage 5 full RAM replay is next.

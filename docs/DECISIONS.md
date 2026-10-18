@@ -59,3 +59,7 @@ For each new entry record the question, relevant plan section, impact, evidence,
 - Explicitly map every splitter bit. Missing per-bit attributes did not preserve the intended byte distribution during the initial experiment. Actual 04030201 now splits into V,T,G,A=(1,2,3,4).
 - Publish only stable captured data in phase 3, advance at the edge leaving phase 7 and halt only after address 4 with valid low. The proof parser rejects duplicate publications, including exact duplicate lines. Stage 5 may define its own documented transport duplicate policy.
 - The observed intentional-halt stderr line and zero exit are required alongside complete records; additional stderr fails. Initial four-row child-process latency is around 0.47 seconds on this host, not a UI/end-to-end rate guarantee. No thresholds, validity rules, full protocol layouts or stage dependencies changed.
+
+## Stages 3–4 hardware choices
+
+Native components are generated reproducibly with explicit custom ports and passive splitter bit maps. The shared threshold bank feeds actual SensorCheck instances. The core/GUI paths both run in automated headless checks; manual native desktop inspection is not claimed. The counter bank uses direct C+d completed latches, shared rising-edge clock, asynchronous reset priority and synchronous enables. These preserve the specified rules and window semantics.

@@ -50,7 +50,7 @@ test:
 smoke-web:
 	cd "$(ROOT)" && $(PYTHON) -B scripts/smoke_web.py
 
-check: check-circuit test-combinational doctor test build-asm build-web smoke-logisim smoke-web smoke-bridge test-bridge
+check: check-circuit test-combinational test-counters doctor test build-asm build-web smoke-logisim smoke-web smoke-bridge test-bridge
 
 dev:
 	cd "$(ROOT)" && sh scripts/npm.sh run dev --prefix frontend
@@ -67,3 +67,7 @@ check-circuit:
 
 test-combinational:
 	cd "$(ROOT)" && $(PYTHON) -B scripts/check_combinational.py
+
+.PHONY: test-counters
+test-counters:
+	cd "$(ROOT)" && $(PYTHON) -B -m scripts.check_counters
