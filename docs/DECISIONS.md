@@ -63,3 +63,7 @@ For each new entry record the question, relevant plan section, impact, evidence,
 ## Stages 3–4 hardware choices
 
 Native components are generated reproducibly with explicit custom ports and passive splitter bit maps. The shared threshold bank feeds actual SensorCheck instances. The core/GUI paths both run in automated headless checks; manual native desktop inspection is not claimed. The counter bank uses direct C+d completed latches, shared rising-edge clock, asynchronous reset priority and synchronous enables. These preserve the specified rules and window semantics.
+
+## Stage 5 transport verified
+
+The exact version1 magic/count/two-word format now runs in the actual17-state replay harness. PUBLISH uses six snapshot registers; ADVANCE is non-valid before halt. Error codes1/2/3 were observed for deliberately bad images. Strict duplicate rejection is the documented full-parser policy. Stage3–5 review and all acceptance checks passed after cleanup; see docs/replay-harness.md.

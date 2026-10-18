@@ -1,0 +1,95 @@
+{
+  "scenarios": [
+    {
+      "case": "length-0",
+      "samples": 0,
+      "elapsed_seconds": 0.8555678959965007
+    },
+    {
+      "case": "length-1",
+      "samples": 1,
+      "elapsed_seconds": 0.8780317729979288
+    },
+    {
+      "case": "length-2",
+      "samples": 2,
+      "elapsed_seconds": 0.89737894400605
+    },
+    {
+      "case": "length-10",
+      "samples": 10,
+      "elapsed_seconds": 0.891178663005121
+    },
+    {
+      "case": "length-11",
+      "samples": 11,
+      "elapsed_seconds": 0.9307458809998934
+    },
+    {
+      "case": "length-20",
+      "samples": 20,
+      "elapsed_seconds": 0.8948494910000591
+    },
+    {
+      "case": "length-600",
+      "samples": 600,
+      "elapsed_seconds": 1.5677072969992878
+    },
+    {
+      "case": "empty",
+      "samples": 0,
+      "elapsed_seconds": 0.8969095339998603
+    },
+    {
+      "case": "all_faults",
+      "samples": 2,
+      "elapsed_seconds": 0.9239316390012391
+    },
+    {
+      "case": "known_statistics",
+      "samples": 2,
+      "elapsed_seconds": 0.8948525349987904
+    },
+    {
+      "case": "fractional_statistics",
+      "samples": 3,
+      "elapsed_seconds": 0.947753136002575
+    },
+    {
+      "case": "invalid_exclusion",
+      "samples": 3,
+      "elapsed_seconds": 0.9022825299980468
+    },
+    {
+      "case": "window_10_and_11",
+      "samples": 11,
+      "elapsed_seconds": 0.88715090900223
+    },
+    {
+      "case": "fault_on_tenth",
+      "samples": 10,
+      "elapsed_seconds": 0.9365448480020859
+    },
+    {
+      "case": "two_distinct_windows",
+      "samples": 20,
+      "elapsed_seconds": 0.9067752830014797
+    },
+    {
+      "case": "repeated_danger_recovery_trailing_fault",
+      "samples": 4,
+      "elapsed_seconds": 0.885781095996208
+    },
+    {
+      "case": "maximum_600",
+      "samples": 600,
+      "elapsed_seconds": 1.3784662280013436
+    }
+  ],
+  "fresh_repeat": true,
+  "malformed_images_rejected": [
+    1,
+    2,
+    3
+  ]
+}

@@ -7,12 +7,12 @@ try:
     from .common import ROOT, run
     from .logisim import command
     from .bridge_proof import validate_exit
-    from .circuit_dsl import Circuit, Signal
+    from .circuit_dsl import Circuit, CircuitInterface, Signal
 except ImportError:
     from common import ROOT, run
     from logisim import command
     from bridge_proof import validate_exit
-    from circuit_dsl import Circuit, Signal
+    from circuit_dsl import Circuit, CircuitInterface, Signal
 # The independent model stays strictly in this test command, never the backend.
 from tests.reference_model import Sample, evaluate_session
 
@@ -43,8 +43,13 @@ def check(root=ROOT):
         test.register(
             12, test.add(tick, test.constant(12, 1)), clock, boot_reset, one, tick.name
         )
-        eq = lambda n: test.compare(tick, test.constant(12, n))
-        lt = lambda n: test.compare(tick, test.constant(12, n), "lt")
+
+        def eq(n: int) -> Signal:
+            return test.compare(tick, test.constant(12, n))
+
+        def lt(n: int) -> Signal:
+            return test.compare(tick, test.constant(12, n), "lt")
+
         active = lt(600)
         resume = test.gate("AND", test.gate("NOT", lt(630)), lt(633))
         enable = test.gate("OR", active, resume)
@@ -54,9 +59,7 @@ def check(root=ROOT):
         effective = test.gate("AND", abnormal, test.gate("NOT", fault))
         flags = test.join([effective] * 4)
         k = test.join([zero, zero, effective])
-        child = Circuit.__new__(Circuit)
-        child.name = "WindowCounters"
-        child.inputs = [
+        inputs_spec = [
             ("clk", 1),
             ("reset", 1),
             ("sample_enable", 1),
@@ -64,11 +67,12 @@ def check(root=ROOT):
             ("k", 3),
             ("fault", 1),
         ]
-        child.outputs = [
+        outputs_spec = [
             ("current_counts", 32),
             ("last_completed", 32),
             ("window_meta", 32),
         ]
+        child = CircuitInterface("WindowCounters", inputs_spec, outputs_spec)
         results = test.instance(
             child,
             {

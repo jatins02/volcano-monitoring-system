@@ -21,7 +21,7 @@ Verification: checked local Markdown link targets, scanned for stale old-filenam
 | 2 | Small Logisim CLI bridge | Complete | Four ordered hardware publications, deterministic boot, real RAM/reset regressions; `reports/stage2-verification.md` |
 | 3 | Combinational monitor | Complete | 43 fixed cases on core and GUI; reports/stage3/ and docs/monitor-core.md |
 | 4 | Sequential counters | Complete | Actual 600-sample boundary/hold/reset tests; reports/stage4/ |
-| 5 | Replay harness and wire protocol | Not started | None |
+| 5 | Replay harness and wire protocol | Complete | 17 actual scenarios, malformed-image failures and post-review full check; reports/stage5/ |
 | 6 | Assembly analyser | Not started | None |
 | 7 | Backend and sessions | Not started | None |
 | 8 | Website shell and theme | Not started | None |
@@ -68,3 +68,7 @@ Actual core and GUI paths passed 43 independent cases (86 outputs). All 64 exist
 ## Stage 4 verification
 
 Actual counter bank passed two complete 635-tick scenarios: 600 commits, abnormal/fault tenth readings, hold, reset and restart. Core and GUI still passed all 43 combinational fixtures; all 64 offline unit tests passed. See docs/window-counters.md and reports/stage4/. Stage 5 full RAM replay is next.
+
+## Stage 5 and post-5 review
+
+Full native RAM FSM and actual MonitorCore replay pass all17 scenarios (0..600 samples), exact input echoes, counters, faults, fresh-process repeatability and bad magic/count/metadata. Seventy unit tests and the full make check passed after the Stages3–5 structural/timing/code-quality review and cleanup. See docs/replay-harness.md and reports/stage5/post-review-check.log. Stage6 native analyser is next.

@@ -6,17 +6,18 @@ RAM images, never circuit regeneration. --check verifies the checked-in design.
 
 import argparse
 import json
-from pathlib import Path
 import xml.etree.ElementTree as ET
 
 try:
-    from .circuit_dsl import Circuit, Signal
+    from .circuit_dsl import Circuit, CircuitInterface, Signal
     from .common import ROOT, read_json
     from .window_counters import build_window_counters
+    from .replay_hardware import build_replay
 except ImportError:
-    from circuit_dsl import Circuit, Signal
+    from circuit_dsl import Circuit, CircuitInterface, Signal
     from common import ROOT, read_json
     from window_counters import build_window_counters
+    from replay_hardware import build_replay
 
 
 def combinational(
@@ -84,15 +85,9 @@ def combinational(
     )
     s = core.signals
     # The shared threshold bank remains visible and is checked against rules.json.
-    bank = next(
-        node
-        for node in project.findall("circuit")
-        if node.get("name") == "RuleConstants"
+    bank_interface = CircuitInterface(
+        "RuleConstants", [], [("threshold_" + name, 8) for name in "VTGA"]
     )
-    bank_interface = Circuit.__new__(Circuit)
-    bank_interface.name = "RuleConstants"
-    bank_interface.inputs = []
-    bank_interface.outputs = [("threshold_" + name, 8) for name in "VTGA"]
     thresholds = core.instance(bank_interface, {}, "THRESHOLDS")
     masks = core.split(s["mask"], [1] * 4)
     checks = [
@@ -169,7 +164,7 @@ def combinational(
     return core, gui, outputs
 
 
-def build() -> tuple[str, str]:
+def build() -> tuple[str, str, str]:
     project = ET.parse(ROOT / "circuit/volcano.circ").getroot()
     # Preserve the established smoke and mapped bank; regenerate owned circuits.
     for node in list(project.findall("circuit")):
@@ -194,22 +189,16 @@ def build() -> tuple[str, str]:
             or child.tag == "wire"
         ):
             bank.remove(child)
-    bank_builder = Circuit.__new__(Circuit)
-    bank_builder.node = bank
-    bank_builder.name = "RuleConstants"
-    bank_builder.inputs = []
-    bank_builder.outputs = []
-    bank_builder.pin_locations = []
-    bank_builder.index = 0
+    bank_builder = Circuit(project, "RuleConstants", [], node=bank)
     for i, name in enumerate("VTGA"):
         bank_builder.wire(100, 100 + i * 60, 140, 100 + i * 60)
         bank_builder.net(140, 100 + i * 60, Signal("THRESHOLD_" + name, 8))
     bank_builder.finish(
         {"threshold_" + name: Signal("THRESHOLD_" + name, 8) for name in "VTGA"}
     )
-    ET.SubElement(bank, "a", name="appearance", val="custom")
     counters = build_window_counters(project)
     core, gui, _ = combinational(project, counters)
+    build_replay(project, core)
     mapping = read_json(ROOT / "circuit/core-map.json")
     mapping["scope"] = (
         "Submitted monitoring circuits; constants and interface locations are explicit"
@@ -228,10 +217,22 @@ def build() -> tuple[str, str]:
         for c in project.findall("circuit")
         if c.get("name") not in ("ToolchainSmoke", "RuleConstants")
     }
+    replay_pins = mapping["interfaces"]["ReplayHarness"]
+    pins = [
+        {"name": p["label"], "width": p["width"], "location": p["location"]}
+        for p in replay_pins
+    ]
+    schema = {
+        "version": 1,
+        "top_level": "ReplayHarness",
+        "columns": pins[:-1],
+        "halt": pins[-1],
+    }
     ET.indent(project, space="  ")
     return (
         ET.tostring(project, encoding="unicode") + "\n",
         json.dumps(mapping, indent=2) + "\n",
+        json.dumps(schema, indent=2) + "\n",
     )
 
 
@@ -239,10 +240,11 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
-    xml, mapping = build()
+    xml, mapping, schema = build()
     for filename, content in [
         ("circuit/volcano.circ", xml),
         ("circuit/core-map.json", mapping),
+        ("circuit/output-schema.json", schema),
     ]:
         path = ROOT / filename
         if args.check:

@@ -10,7 +10,8 @@
     "Validity",
     "WarningLogic",
     "MonitorCore",
-    "MonitorGUI"
+    "MonitorGUI",
+    "ReplayHarness"
   ],
   "constants": [
     {
@@ -526,6 +527,62 @@
         "label": "window_meta",
         "location": "(1850,700)",
         "width": 32,
+        "output": true
+      }
+    ],
+    "ReplayHarness": [
+      {
+        "label": "B0",
+        "location": "(11300,100)",
+        "width": 32,
+        "output": true
+      },
+      {
+        "label": "B1",
+        "location": "(11300,140)",
+        "width": 32,
+        "output": true
+      },
+      {
+        "label": "B2",
+        "location": "(11300,180)",
+        "width": 32,
+        "output": true
+      },
+      {
+        "label": "B3",
+        "location": "(11300,220)",
+        "width": 32,
+        "output": true
+      },
+      {
+        "label": "B4",
+        "location": "(11300,260)",
+        "width": 32,
+        "output": true
+      },
+      {
+        "label": "B5",
+        "location": "(11300,300)",
+        "width": 32,
+        "output": true
+      },
+      {
+        "label": "result_valid",
+        "location": "(11300,340)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "harness_error",
+        "location": "(11300,380)",
+        "width": 4,
+        "output": true
+      },
+      {
+        "label": "halt",
+        "location": "(11300,420)",
+        "width": 1,
         "output": true
       }
     ]

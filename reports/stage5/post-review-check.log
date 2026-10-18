@@ -1,0 +1,145 @@
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B scripts/build_monitor.py --check
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B scripts/check_combinational.py
+Combinational hardware: 43 independent fixture cases passed for core and GUI
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B -m scripts.check_counters
+Window counters: 600 commits, tenth-sample fault/abnormal, enable hold, reset and restart passed
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B -m scripts.check_replay
+Replay: 17 scenarios, 0..600 samples, fresh repeat and 3 malformed images passed
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && sh scripts/doctor.sh
+PASS platform: Linux x86_64
+PASS python: 3.14.4
+PASS gcc: gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+PASS as: GNU assembler (GNU Binutils for Ubuntu) 2.46
+PASS ld: GNU ld (GNU Binutils for Ubuntu) 2.46
+PASS make: GNU Make 4.4.1
+PASS java: openjdk version "21.0.12.1" 2026-08-18 LTS
+PASS node: v22.22.0
+PASS npm: 10.9.4
+PASS logisim-cli: Logisim-evolution v4.1.0
+PASS logisim-version: Logisim-evolution v4.1.0
+PASS runtime: writable
+PASS python-lock: all Python lock pins installed
+PASS python-dependencies: No broken requirements found.
+PASS npm:react: 19.2.0
+PASS npm:react-dom: 19.2.0
+PASS npm:@types/react: 19.2.2
+PASS npm:@types/react-dom: 19.2.2
+PASS npm:@vitejs/plugin-react: 5.1.2
+PASS npm:typescript: 5.9.3
+PASS npm:vite: 7.3.7
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B -m unittest discover -s tests -v
+test_duplicate_missing_reordered_and_unfinished (unit.test_protocol.ProtocolTests.test_duplicate_missing_reordered_and_unfinished) ... ok
+test_known_encodings (unit.test_protocol.ProtocolTests.test_known_encodings) ... ok
+test_reserved_and_impossible_snapshot_fields (unit.test_protocol.ProtocolTests.test_reserved_and_impossible_snapshot_fields) ... ok
+test_strict_fields_and_bounds (unit.test_protocol.ProtocolTests.test_strict_fields_and_bounds) ... ok
+test_trace_and_repeated_inputs (unit.test_protocol.ProtocolTests.test_trace_and_repeated_inputs) ... ok
+test_unknown_bits_and_unexpected_columns (unit.test_protocol.ProtocolTests.test_unknown_bits_and_unexpected_columns) ... ok
+test_all_connectivity_masks_override_danger (unit.test_stage0.ClassificationTests.test_all_connectivity_masks_override_danger) ... ok
+test_all_representable_values_for_each_sensor (unit.test_stage0.ClassificationTests.test_all_representable_values_for_each_sensor) ... ok
+test_combined_range_and_connectivity_faults (unit.test_stage0.ClassificationTests.test_combined_range_and_connectivity_faults) ... ok
+test_enumerated_truth_table (unit.test_stage0.ClassificationTests.test_enumerated_truth_table) ... ok
+test_sensor_boundary_fixtures (unit.test_stage0.ClassificationTests.test_sensor_boundary_fixtures) ... ok
+test_connectivity_fault_does_not_require_range_injection (unit.test_stage0.InputValidationTests.test_connectivity_fault_does_not_require_range_injection) ... ok
+test_domain_rejects_invalid_shapes_and_numeric_types (unit.test_stage0.InputValidationTests.test_domain_rejects_invalid_shapes_and_numeric_types) ... ok
+test_injected_range_fault_is_accepted_not_clamped (unit.test_stage0.InputValidationTests.test_injected_range_fault_is_accepted_not_clamped) ... ok
+test_injection_switch_alone_is_not_a_fault (unit.test_stage0.InputValidationTests.test_injection_switch_alone_is_not_a_fault) ... ok
+test_non_finite_values_are_rejected (unit.test_stage0.InputValidationTests.test_non_finite_values_are_rejected) ... ok
+test_rejected_draft_fixtures (unit.test_stage0.InputValidationTests.test_rejected_draft_fixtures) ... ok
+test_byte_order_golden_vector (unit.test_stage0.RulesContractTests.test_byte_order_golden_vector) ... ok
+test_counter_widths_cover_exact_bounds (unit.test_stage0.RulesContractTests.test_counter_widths_cover_exact_bounds) ... ok
+test_fixture_inventory_has_unique_cases (unit.test_stage0.RulesContractTests.test_fixture_inventory_has_unique_cases) ... ok
+test_input_and_warning_contract (unit.test_stage0.RulesContractTests.test_input_and_warning_contract) ... ok
+test_sampling_and_statistics_contract (unit.test_stage0.RulesContractTests.test_sampling_and_statistics_contract) ... ok
+test_version_sensor_order_and_thresholds (unit.test_stage0.RulesContractTests.test_version_sensor_order_and_thresholds) ... ok
+test_wire_contract_and_storage_bounds (unit.test_stage0.RulesContractTests.test_wire_contract_and_storage_bounds) ... ok
+test_all_session_snapshots_have_valid_bounds_and_provenance (unit.test_stage0.SessionTests.test_all_session_snapshots_have_valid_bounds_and_provenance) ... ok
+test_bad_fixture_repeat_is_not_silently_expanded (unit.test_stage0.SessionTests.test_bad_fixture_repeat_is_not_silently_expanded) ... ok
+test_every_tenth_sample_contribution_is_preserved (unit.test_stage0.SessionTests.test_every_tenth_sample_contribution_is_preserved) ... ok
+test_fixed_session_expectations (unit.test_stage0.SessionTests.test_fixed_session_expectations) ... ok
+test_fresh_session_resets_state (unit.test_stage0.SessionTests.test_fresh_session_resets_state) ... ok
+test_input_and_prior_results_are_not_mutated (unit.test_stage0.SessionTests.test_input_and_prior_results_are_not_mutated) ... ok
+test_maximum_session_and_atomic_overflow (unit.test_stage0.SessionTests.test_maximum_session_and_atomic_overflow) ... ok
+test_prefix_evaluation_matches_full_session (unit.test_stage0.SessionTests.test_prefix_evaluation_matches_full_session) ... ok
+test_small_sequences_conserve_all_counts (unit.test_stage0.SessionTests.test_small_sequences_conserve_all_counts) ... ok
+test_changed_constant_is_rejected (unit.test_stage1.CircuitMappingTests.test_changed_constant_is_rejected) ... ok
+test_changed_width_is_rejected (unit.test_stage1.CircuitMappingTests.test_changed_width_is_rejected) ... ok
+test_current_constants_bank_passes (unit.test_stage1.CircuitMappingTests.test_current_constants_bank_passes) ... ok
+test_duplicate_attributes_are_rejected (unit.test_stage1.CircuitMappingTests.test_duplicate_attributes_are_rejected) ... ok
+test_duplicate_identity_is_rejected (unit.test_stage1.CircuitMappingTests.test_duplicate_identity_is_rejected) ... ok
+test_equal_valued_sensor_alias_is_rejected (unit.test_stage1.CircuitMappingTests.test_equal_valued_sensor_alias_is_rejected) ... ok
+test_extra_unmapped_constant_is_rejected (unit.test_stage1.CircuitMappingTests.test_extra_unmapped_constant_is_rejected) ... ok
+test_moved_component_is_rejected (unit.test_stage1.CircuitMappingTests.test_moved_component_is_rejected) ... ok
+test_unexpected_circuit_or_schema_is_rejected (unit.test_stage1.CircuitMappingTests.test_unexpected_circuit_or_schema_is_rejected) ... ok
+test_incomplete_setup_reports_all_missing_dependencies (unit.test_stage1.DoctorAndSmokeTests.test_incomplete_setup_reports_all_missing_dependencies) ... ok
+test_missing_executable_is_actionable (unit.test_stage1.DoctorAndSmokeTests.test_missing_executable_is_actionable) ... ok
+test_smoke_rejects_incorrect_or_additional_errors (unit.test_stage1.DoctorAndSmokeTests.test_smoke_rejects_incorrect_or_additional_errors) ... ok
+test_timeout_is_reported_as_failure (unit.test_stage1.DoctorAndSmokeTests.test_timeout_is_reported_as_failure) ... ok
+test_unwritable_runtime_is_reported (unit.test_stage1.DoctorAndSmokeTests.test_unwritable_runtime_is_reported) ... ok
+test_wrong_version_and_nonzero_exit_fail (unit.test_stage1.DoctorAndSmokeTests.test_wrong_version_and_nonzero_exit_fail) ... ok
+test_changed_rules_invalidate_both_generated_files (unit.test_stage1.GeneratedRulesTests.test_changed_rules_invalidate_both_generated_files) ... ok
+test_generation_is_deterministic_and_check_is_read_only (unit.test_stage1.GeneratedRulesTests.test_generation_is_deterministic_and_check_is_read_only) ... ok
+test_rule_hash_is_semantic_not_whitespace_dependent (unit.test_stage1.GeneratedRulesTests.test_rule_hash_is_semantic_not_whitespace_dependent) ... ok
+test_corrupt_download_is_rejected_before_execution (unit.test_stage1.RuntimeIntegrityTests.test_corrupt_download_is_rejected_before_execution) ... ok
+test_missing_jar_does_not_launch_java (unit.test_stage1.RuntimeIntegrityTests.test_missing_jar_does_not_launch_java) ... ok
+test_unsafe_tar_path_is_rejected (unit.test_stage1.RuntimeIntegrityTests.test_unsafe_tar_path_is_rejected) ... ok
+test_valid_runtime_archive_extracts_one_root (unit.test_stage1.RuntimeIntegrityTests.test_valid_runtime_archive_extracts_one_root) ... ok
+test_circuit_has_one_read_only_asynchronous_ram_and_explicit_bit_map (unit.test_stage2.BridgeProofTests.test_circuit_has_one_read_only_asynchronous_ram_and_explicit_bit_map) ... ok
+test_duplicate_publication_is_rejected (unit.test_stage2.BridgeProofTests.test_duplicate_publication_is_rejected) ... ok
+test_encoder_rejects_malformed_bytes_and_row_counts (unit.test_stage2.BridgeProofTests.test_encoder_rejects_malformed_bytes_and_row_counts) ... ok
+test_failed_boot_and_early_halt_are_rejected (unit.test_stage2.BridgeProofTests.test_failed_boot_and_early_halt_are_rejected) ... ok
+test_headers_blank_lines_extra_or_missing_columns_are_rejected (unit.test_stage2.BridgeProofTests.test_headers_blank_lines_extra_or_missing_columns_are_rejected) ... ok
+test_missing_publication_fails_even_with_normal_terminal_row (unit.test_stage2.BridgeProofTests.test_missing_publication_fails_even_with_normal_terminal_row) ... ok
+test_normal_exit_requires_exact_intentional_halt_diagnostic (unit.test_stage2.BridgeProofTests.test_normal_exit_requires_exact_intentional_halt_diagnostic) ... ok
+test_publication_in_wrong_phase_is_rejected (unit.test_stage2.BridgeProofTests.test_publication_in_wrong_phase_is_rejected) ... ok
+test_real_trace_recovers_four_ordered_rows_including_identical_values (unit.test_stage2.BridgeProofTests.test_real_trace_recovers_four_ordered_rows_including_identical_values) ... ok
+test_reordered_publications_are_rejected (unit.test_stage2.BridgeProofTests.test_reordered_publications_are_rejected) ... ok
+test_schema_rejects_swapped_or_moved_pins (unit.test_stage2.BridgeProofTests.test_schema_rejects_swapped_or_moved_pins) ... ok
+test_swapped_sensor_columns_and_bad_echo_are_rejected (unit.test_stage2.BridgeProofTests.test_swapped_sensor_columns_and_bad_echo_are_rejected) ... ok
+test_timeout_preserves_partial_evidence_and_rejects_old_decoded_output (unit.test_stage2.BridgeProofTests.test_timeout_preserves_partial_evidence_and_rejects_old_decoded_output) ... ok
+test_two_row_encoder_matches_inspectable_golden_image (unit.test_stage2.BridgeProofTests.test_two_row_encoder_matches_inspectable_golden_image) ... ok
+test_unknown_error_wrong_width_and_nonbinary_cells_are_rejected (unit.test_stage2.BridgeProofTests.test_unknown_error_wrong_width_and_nonbinary_cells_are_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 70 tests in 0.353s
+
+OK
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B scripts/generate_rules.py --check
+Generated rules are current.
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B scripts/verify_circuit_rules.py
+Mapped circuit constants and interfaces match the submitted hardware.
+mkdir -p "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system/build"
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && gcc -g -pie -Wl,-z,noexecstack assembly/toolchain_smoke.s -o build/toolchain-smoke
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && ./build/toolchain-smoke
+AT&T assembly toolchain: OK
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && sh scripts/npm.sh run build --prefix frontend
+
+> volcano-monitoring-system@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 29 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.42 kB │ gzip:  0.28 kB
+dist/assets/index-B2DJuXOR.css    0.17 kB │ gzip:  0.16 kB
+dist/assets/index-DhC_K5En.js   193.67 kB │ gzip: 60.87 kB
+✓ built in 732ms
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B scripts/logisim.py --smoke
+Logisim toolchain smoke: OK (constant=1, intentional halt)
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B scripts/smoke_web.py
+Frontend startup: OK (HTML and transformed TSX served; server stopped)
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B scripts/bridge_proof.py
+Logisim RAM bridge: OK (four ordered records, repeated readings, two fresh processes)
+Process times: 0.511s, 0.519s
+Evidence: /mnt/shared/SEM3_/PCS/project/volcano-monitoring-system/runtime/stage2-proof
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B -m unittest discover -s tests/integration -p test_stage2_bridge.py -v
+test_acceptance_fixture_is_identical_in_two_fresh_processes (test_stage2_bridge.ActualBridgeTests.test_acceptance_fixture_is_identical_in_two_fresh_processes) ... ok
+test_four_identical_rows_still_publish_four_indices (test_stage2_bridge.ActualBridgeTests.test_four_identical_rows_still_publish_four_indices) ... ok
+test_reset_connected_to_ram_clear_reproduces_detectable_erasure (test_stage2_bridge.ActualBridgeTests.test_reset_connected_to_ram_clear_reproduces_detectable_erasure) ... ok
+test_unsigned_byte_boundaries_and_strict_comparator (test_stage2_bridge.ActualBridgeTests.test_unsigned_byte_boundaries_and_strict_comparator) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 2.726s
+
+OK

@@ -2,19 +2,18 @@
 
 import json
 from pathlib import Path
-import tempfile
 import xml.etree.ElementTree as ET
 
 try:
     from .common import ROOT, read_json, run
     from .logisim import command
     from .bridge_proof import validate_exit
-    from .circuit_dsl import Circuit
+    from .circuit_dsl import Circuit, CircuitInterface
 except ImportError:
     from common import ROOT, read_json, run
     from logisim import command
     from bridge_proof import validate_exit
-    from circuit_dsl import Circuit
+    from circuit_dsl import Circuit, CircuitInterface
 
 
 def status_word(expected: dict, mask: int) -> int:
@@ -41,9 +40,7 @@ def check(root: Path = ROOT) -> int:
     test = Circuit(project, "CombinationalCheck", [])
     for i, case in enumerate(cases):
         for kind in ["MonitorCore", "MonitorGUI"]:
-            child = Circuit.__new__(Circuit)
-            child.name = kind
-            child.inputs = [(s, 8) for s in "VTGA"] + [
+            inputs_spec = [(s, 8) for s in "VTGA"] + [
                 ("mask", 4),
                 ("clk", 1),
                 ("reset", 1),
@@ -55,13 +52,14 @@ def check(root: Path = ROOT) -> int:
                 for p in node.findall("comp[@name='Pin']")
                 if p.find("a[@name='output']").get("val") == "true"
             ]
-            child.outputs = [
+            outputs_spec = [
                 (
                     p.find("a[@name='label']").get("val"),
                     int(p.find("a[@name='width']").get("val")),
                 )
                 for p in pins
             ]
+            child = CircuitInterface(kind, inputs_spec, outputs_spec)
             inputs = {
                 s: test.constant(8, case["input"]["values"][j])
                 for j, s in enumerate("VTGA")

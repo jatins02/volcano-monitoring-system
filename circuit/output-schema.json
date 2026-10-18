@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "top_level": "ReplayHarness",
+  "columns": [
+    {
+      "name": "B0",
+      "width": 32,
+      "location": "(11300,100)"
+    },
+    {
+      "name": "B1",
+      "width": 32,
+      "location": "(11300,140)"
+    },
+    {
+      "name": "B2",
+      "width": 32,
+      "location": "(11300,180)"
+    },
+    {
+      "name": "B3",
+      "width": 32,
+      "location": "(11300,220)"
+    },
+    {
+      "name": "B4",
+      "width": 32,
+      "location": "(11300,260)"
+    },
+    {
+      "name": "B5",
+      "width": 32,
+      "location": "(11300,300)"
+    },
+    {
+      "name": "result_valid",
+      "width": 1,
+      "location": "(11300,340)"
+    },
+    {
+      "name": "harness_error",
+      "width": 4,
+      "location": "(11300,380)"
+    }
+  ],
+  "halt": {
+    "name": "halt",
+    "width": 1,
+    "location": "(11300,420)"
+  }
+}

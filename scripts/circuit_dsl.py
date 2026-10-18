@@ -15,9 +15,27 @@ class Signal:
     width: int
 
 
+@dataclass(frozen=True)
+class CircuitInterface:
+    """Declared ports for an existing subcircuit, without a partially built object."""
+
+    name: str
+    inputs: list[tuple[str, int]]
+    outputs: list[tuple[str, int]]
+
+
 class Circuit:
-    def __init__(self, project: ET.Element, name: str, inputs: list[tuple[str, int]]):
-        self.node = ET.SubElement(project, "circuit", name=name)
+    def __init__(
+        self,
+        project: ET.Element,
+        name: str,
+        inputs: list[tuple[str, int]],
+        *,
+        node: ET.Element | None = None,
+    ):
+        self.node = (
+            node if node is not None else ET.SubElement(project, "circuit", name=name)
+        )
         ET.SubElement(self.node, "a", name="appearance", val="custom")
         self.name = name
         self.inputs = inputs
@@ -116,7 +134,7 @@ class Circuit:
         ET.SubElement(appear, "circ-anchor", x="200", y="100", facing="east")
 
     def instance(
-        self, child: "Circuit", inputs: dict[str, Signal], label: str
+        self, child: "Circuit | CircuitInterface", inputs: dict[str, Signal], label: str
     ) -> dict[str, Signal]:
         x, y = self.cell()
         # A child symbol may be tall; reserve enough cell rows to prevent overlap.

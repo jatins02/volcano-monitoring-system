@@ -1,6 +1,6 @@
 # Version 1 data contracts
 
-This contract specifies intended encoding and outputs. Logisim CLI compatibility, actual pin ordering and process behaviour must still be established in Stage 2. Do not treat these definitions as an implemented transport. See [rules.json](rules.json), [requirements](requirements.md) and Stages 5-7 of the [plan](../volcano_monitoring_staged_coding_plan.md).
+This contract specifies intended encoding and outputs. The pinned CLI and the full RAM replay transport are now verified through Stages 2 and 5; see ../docs/replay-harness.md. Native analysis and coordinator status are recorded in docs/PROGRESS.md. See [rules.json](rules.json), [requirements](requirements.md) and Stages 5-7 of the [plan](../volcano_monitoring_staged_coding_plan.md).
 
 ## Sample semantics and JSON boundary
 
@@ -27,7 +27,7 @@ One 32-bit asynchronous-read stimulus RAM, 11 address bits, write disabled and c
 | 2+2*i | V + (T<<8) + (G<<16) + (A<<24) |
 | 3+2*i | Connectivity mask in bits 0..3; bits 4..31 zero |
 
-The memory-image format is subject to Stage 2 verification; the proposed representation is v2.0 raw followed by eight-digit hex word values. Hex word order is distinct from byte order of an x86 binary file. V,T,G,A=1,2,3,4 -> 04030201. The example draft above -> 14143d47 and 0000000f. N=0 cleanly halts without publishing readings; it is not a fictitious normal sample.
+The verified memory-image representation is v2.0 raw followed by eight-digit hex word values. Hex word order is distinct from byte order of an x86 binary file. V,T,G,A=1,2,3,4 -> 04030201. The example draft above -> 14143d47 and 0000000f. N=0 cleanly halts without publishing readings; it is not a fictitious normal sample.
 
 Harness order: boot/reset -> validate header -> load data -> load metadata -> commit exactly one rising edge -> settle -> snapshot -> publish -> advance. Halt only after the final publication has ended. See Stage 5 for complete FSM states; a minimum five-bit state register is needed. Preserve stable inputs across commit and separate post-commit snapshotting from publication.
 
