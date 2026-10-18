@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "records": [
+    {
+      "index": 0,
+      "sensor_word": 67305985,
+      "values": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "v_above_70": 0
+    },
+    {
+      "index": 1,
+      "sensor_word": 1684300871,
+      "values": [
+        71,
+        100,
+        100,
+        100
+      ],
+      "v_above_70": 1
+    },
+    {
+      "index": 2,
+      "sensor_word": 336860230,
+      "values": [
+        70,
+        20,
+        20,
+        20
+      ],
+      "v_above_70": 0
+    },
+    {
+      "index": 3,
+      "sensor_word": 336860230,
+      "values": [
+        70,
+        20,
+        20,
+        20
+      ],
+      "v_above_70": 0
+    }
+  ],
+  "elapsed_seconds": 0.4706350230044336,
+  "exit_code": 0,
+  "circuit_sha256": "d7d9f548fe24754c7abcbddd736900ef4f63c2732476189374839433f05a265d",
+  "schema_sha256": "719165950de3841b689cb4d00c1d74abfd111ca3429a4abd6df43c474c5c0189",
+  "stimulus_sha256": "035be05d7edd511bfff9319aeb5143d1e0b44c4a6533d9a3d771ac09d18e93a1"
+}

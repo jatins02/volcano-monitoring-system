@@ -6,10 +6,10 @@ CC := gcc
 ROOT := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
 
 .PHONY: help bootstrap bootstrap-tools setup-python setup-web generate-rules check-rules \
-        doctor build-asm build-web test check smoke-logisim smoke-web dev
+        doctor build-asm build-web test check smoke-logisim smoke-web smoke-bridge test-bridge dev
 
 help:
-	@echo "Stage 1: bootstrap, doctor, generate-rules, check-rules, build-asm, build-web, test, check, dev"
+	@echo "Project: bootstrap, doctor, generate-rules, check-rules, build-asm, build-web, test, smoke-bridge, test-bridge, check, dev"
 
 bootstrap: setup-python setup-web generate-rules
 
@@ -50,7 +50,13 @@ test:
 smoke-web:
 	cd "$(ROOT)" && $(PYTHON) -B scripts/smoke_web.py
 
-check: doctor test build-asm build-web smoke-logisim smoke-web
+check: doctor test build-asm build-web smoke-logisim smoke-web smoke-bridge test-bridge
 
 dev:
 	cd "$(ROOT)" && sh scripts/npm.sh run dev --prefix frontend
+
+smoke-bridge:
+	cd "$(ROOT)" && $(PYTHON) -B scripts/bridge_proof.py
+
+test-bridge:
+	cd "$(ROOT)" && $(PYTHON) -B -m unittest discover -s tests/integration -p test_stage2_bridge.py -v

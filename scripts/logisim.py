@@ -12,14 +12,14 @@ except ImportError:
     from toolchain import require_hash
 
 
-def command(root: Path, arguments: list[str]) -> list[str]:
+def command(root: Path, arguments: list[str], *, preferences: Path | None = None) -> list[str]:
     item = read_json(root / "tools/toolchain.json")["tools"]["logisim"]
     jar = root / item["install_path"]
     require_hash(jar, item["sha256"])
     java = root / "tools/java/bin/java"
     if not java.is_file():
         raise ValueError("missing project Java runtime; run make bootstrap-tools")
-    prefs = root / "runtime/java-prefs"
+    prefs = preferences if preferences is not None else root / "runtime/java-prefs"
     prefs.mkdir(parents=True, exist_ok=True)
     return [str(java), "-Djava.awt.headless=true", f"-Djava.util.prefs.userRoot={prefs}",
             "-jar", str(jar), *arguments]

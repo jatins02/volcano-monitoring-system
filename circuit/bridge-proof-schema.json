@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "top_level": "ReplayHarness",
+  "rows": 4,
+  "format": "tab-separated grouped binary; halt excluded; no header",
+  "columns": [
+    {
+      "name": "sample_index",
+      "width": 3,
+      "x": 1700,
+      "y": 100
+    },
+    {
+      "name": "sensor_word",
+      "width": 32,
+      "x": 1700,
+      "y": 140
+    },
+    {
+      "name": "V",
+      "width": 8,
+      "x": 1700,
+      "y": 180
+    },
+    {
+      "name": "T",
+      "width": 8,
+      "x": 1700,
+      "y": 220
+    },
+    {
+      "name": "G",
+      "width": 8,
+      "x": 1700,
+      "y": 260
+    },
+    {
+      "name": "A",
+      "width": 8,
+      "x": 1700,
+      "y": 300
+    },
+    {
+      "name": "v_above_70",
+      "width": 1,
+      "x": 1700,
+      "y": 340
+    },
+    {
+      "name": "result_valid",
+      "width": 1,
+      "x": 1700,
+      "y": 380
+    },
+    {
+      "name": "phase",
+      "width": 3,
+      "x": 1700,
+      "y": 420
+    },
+    {
+      "name": "reset",
+      "width": 1,
+      "x": 1700,
+      "y": 460
+    },
+    {
+      "name": "address",
+      "width": 3,
+      "x": 1700,
+      "y": 500
+    },
+    {
+      "name": "ram_word",
+      "width": 32,
+      "x": 1700,
+      "y": 540
+    },
+    {
+      "name": "boot_ready",
+      "width": 1,
+      "x": 1700,
+      "y": 580
+    }
+  ]
+}
