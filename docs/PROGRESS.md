@@ -19,7 +19,7 @@ Verification: checked local Markdown link targets, scanned for stale old-filenam
 | 0 | Model, rules and expected behaviour | Complete | `spec/`, versioned fixtures, 27 passing tests; `reports/stage0-verification.md` |
 | 1 | Toolchain and directory structure | Complete | Pinned setup/build commands, 49 passing tests, real smoke checks, clean-clone validation; `reports/stage1-verification.md` |
 | 2 | Small Logisim CLI bridge | Complete | Four ordered hardware publications, deterministic boot, real RAM/reset regressions; `reports/stage2-verification.md` |
-| 3 | Combinational monitor | Not started | None |
+| 3 | Combinational monitor | Complete | 43 fixed cases on core and GUI; reports/stage3/ and docs/monitor-core.md |
 | 4 | Sequential counters | Not started | None |
 | 5 | Replay harness and wire protocol | Not started | None |
 | 6 | Assembly analyser | Not started | None |
@@ -60,3 +60,7 @@ Begin Stage 3 when requested: implement the actual SensorCheck, Validity, Warnin
 ## Handoff rules
 
 After substantive work, record the affected stage, changed deliverables, exact verification commands and outcomes, any skipped checks and why, remaining work, and the next concrete action. Never invent evidence or mark a partial stage complete. Keep this file a concise current handoff, with detailed logs in the stage's evidence artifacts when available.
+
+## Stage 3 verification
+
+Actual core and GUI paths passed 43 independent cases (86 outputs). All 64 existing unit tests passed. Circuit regeneration and mapped constant/interface checks passed. See docs/monitor-core.md and reports/stage3/. Stage 4 counters are next.

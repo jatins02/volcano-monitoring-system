@@ -54,6 +54,17 @@ def verify(root: Path) -> None:
                  for node in circuit.findall("comp") if node.get("name") == "Constant"]
     if len(constants) != len(mapping["constants"]):
         raise ValueError("unmapped or duplicate rule-bank constants")
+    # Interfaces are physical circuit pins, not illustrative website labels.
+    for circuit_name, expected_pins in mapping.get("interfaces", {}).items():
+        circuit = next(node for node in circuits if node.get("name") == circuit_name)
+        actual = []
+        for pin in circuit.findall("comp[@name='Pin']"):
+            attrs = {a.get("name"): a.get("val") for a in pin.findall("a")}
+            actual.append({"label": attrs["label"], "location": pin.get("loc"),
+                           "width": int(attrs.get("width", "1")),
+                           "output": attrs.get("output") == "true"})
+        if actual != expected_pins:
+            raise ValueError(f"{circuit_name}: physical pin interface differs from core map")
     expected_ids = {f"THRESHOLD_{name}" for name in rules["sensor_order"]}
     if seen_ids != expected_ids:
         raise ValueError("missing sensor threshold mapping")
@@ -65,7 +76,7 @@ def main() -> int:
     except (ValueError, KeyError, OSError, ET.ParseError, StopIteration) as error:
         print(f"Circuit rule verification failed: {error}")
         return 1
-    print("Mapped circuit constants match rules; monitoring DUT is not yet implemented.")
+    print("Mapped circuit constants and interfaces match the submitted hardware.")
     return 0
 
 

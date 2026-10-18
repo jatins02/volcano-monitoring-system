@@ -46,3 +46,6 @@ Thumbs.db
 /tools/node/
 /tools/java/
 /tools/cache/
+
+# Local coding-session handoff (never committed)
+/.stage-worklog.md

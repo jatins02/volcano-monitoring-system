@@ -1,10 +1,15 @@
 {
   "schema_version": 1,
   "project": "circuit/volcano.circ",
-  "scope": "Stage 1 constants bank only; no monitoring DUT",
+  "scope": "Submitted monitoring circuits; constants and interface locations are explicit",
   "circuits": [
     "ToolchainSmoke",
-    "RuleConstants"
+    "RuleConstants",
+    "SensorCheck",
+    "Validity",
+    "WarningLogic",
+    "MonitorCore",
+    "MonitorGUI"
   ],
   "constants": [
     {
@@ -47,5 +52,353 @@
         "threshold"
       ]
     }
-  ]
+  ],
+  "interfaces": {
+    "SensorCheck": [
+      {
+        "label": "value",
+        "location": "(100,100)",
+        "width": 8,
+        "output": false
+      },
+      {
+        "label": "threshold",
+        "location": "(100,140)",
+        "width": 8,
+        "output": false
+      },
+      {
+        "label": "connected",
+        "location": "(100,180)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "raw",
+        "location": "(1150,100)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "range_fault",
+        "location": "(1150,140)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "sensor_fault",
+        "location": "(1150,180)",
+        "width": 1,
+        "output": true
+      }
+    ],
+    "Validity": [
+      {
+        "label": "range_mask",
+        "location": "(100,100)",
+        "width": 4,
+        "output": false
+      },
+      {
+        "label": "mask",
+        "location": "(100,140)",
+        "width": 4,
+        "output": false
+      },
+      {
+        "label": "valid",
+        "location": "(1150,100)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "fault",
+        "location": "(1150,140)",
+        "width": 1,
+        "output": true
+      }
+    ],
+    "WarningLogic": [
+      {
+        "label": "raw_mask",
+        "location": "(100,100)",
+        "width": 4,
+        "output": false
+      },
+      {
+        "label": "valid",
+        "location": "(100,140)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "effective_mask",
+        "location": "(2200,100)",
+        "width": 4,
+        "output": true
+      },
+      {
+        "label": "k",
+        "location": "(2200,140)",
+        "width": 3,
+        "output": true
+      },
+      {
+        "label": "warning",
+        "location": "(2200,180)",
+        "width": 2,
+        "output": true
+      },
+      {
+        "label": "emergency",
+        "location": "(2200,220)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "normal",
+        "location": "(2200,260)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "watch",
+        "location": "(2200,300)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "danger",
+        "location": "(2200,340)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "fault",
+        "location": "(2200,380)",
+        "width": 1,
+        "output": true
+      }
+    ],
+    "MonitorCore": [
+      {
+        "label": "V",
+        "location": "(100,100)",
+        "width": 8,
+        "output": false
+      },
+      {
+        "label": "T",
+        "location": "(100,140)",
+        "width": 8,
+        "output": false
+      },
+      {
+        "label": "G",
+        "location": "(100,180)",
+        "width": 8,
+        "output": false
+      },
+      {
+        "label": "A",
+        "location": "(100,220)",
+        "width": 8,
+        "output": false
+      },
+      {
+        "label": "mask",
+        "location": "(100,260)",
+        "width": 4,
+        "output": false
+      },
+      {
+        "label": "status",
+        "location": "(1500,100)",
+        "width": 32,
+        "output": true
+      },
+      {
+        "label": "raw_mask",
+        "location": "(1500,140)",
+        "width": 4,
+        "output": true
+      },
+      {
+        "label": "range_mask",
+        "location": "(1500,180)",
+        "width": 4,
+        "output": true
+      },
+      {
+        "label": "sensor_fault_mask",
+        "location": "(1500,220)",
+        "width": 4,
+        "output": true
+      },
+      {
+        "label": "valid",
+        "location": "(1500,260)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "effective_mask",
+        "location": "(1500,300)",
+        "width": 4,
+        "output": true
+      },
+      {
+        "label": "k",
+        "location": "(1500,340)",
+        "width": 3,
+        "output": true
+      },
+      {
+        "label": "warning",
+        "location": "(1500,380)",
+        "width": 2,
+        "output": true
+      },
+      {
+        "label": "emergency",
+        "location": "(1500,420)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "normal",
+        "location": "(1500,460)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "watch",
+        "location": "(1500,500)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "danger",
+        "location": "(1500,540)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "fault",
+        "location": "(1500,580)",
+        "width": 1,
+        "output": true
+      }
+    ],
+    "MonitorGUI": [
+      {
+        "label": "V",
+        "location": "(100,100)",
+        "width": 8,
+        "output": false
+      },
+      {
+        "label": "T",
+        "location": "(100,140)",
+        "width": 8,
+        "output": false
+      },
+      {
+        "label": "G",
+        "location": "(100,180)",
+        "width": 8,
+        "output": false
+      },
+      {
+        "label": "A",
+        "location": "(100,220)",
+        "width": 8,
+        "output": false
+      },
+      {
+        "label": "mask",
+        "location": "(100,260)",
+        "width": 4,
+        "output": false
+      },
+      {
+        "label": "status",
+        "location": "(1850,100)",
+        "width": 32,
+        "output": true
+      },
+      {
+        "label": "raw_mask",
+        "location": "(1850,140)",
+        "width": 4,
+        "output": true
+      },
+      {
+        "label": "range_mask",
+        "location": "(1850,180)",
+        "width": 4,
+        "output": true
+      },
+      {
+        "label": "sensor_fault_mask",
+        "location": "(1850,220)",
+        "width": 4,
+        "output": true
+      },
+      {
+        "label": "valid",
+        "location": "(1850,260)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "effective_mask",
+        "location": "(1850,300)",
+        "width": 4,
+        "output": true
+      },
+      {
+        "label": "k",
+        "location": "(1850,340)",
+        "width": 3,
+        "output": true
+      },
+      {
+        "label": "warning",
+        "location": "(1850,380)",
+        "width": 2,
+        "output": true
+      },
+      {
+        "label": "emergency",
+        "location": "(1850,420)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "normal",
+        "location": "(1850,460)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "watch",
+        "location": "(1850,500)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "danger",
+        "location": "(1850,540)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "fault",
+        "location": "(1850,580)",
+        "width": 1,
+        "output": true
+      }
+    ]
+  }
 }
