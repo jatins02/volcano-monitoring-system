@@ -17,7 +17,7 @@ Other coding tools should be directed to read the same files if they do not disc
 
 ## Current status
 
-Stages 0 and 1 are complete: frozen specifications/acceptance fixtures, a pinned local toolchain, reproducible dependency locks, generated rule constants and tested build/startup checks are present. The current web page and circuits are explicitly toolchain scaffolds; the monitoring DUT, replay harness, native sensor analyser and API are not implemented. Stage 2 is next.
+Stages 0, 1 and 2 are complete: frozen specifications/acceptance fixtures, a pinned local toolchain, reproducible dependency locks, generated rule constants and tested build/startup checks are present. A standalone RAM-driven Logisim transport proof now passes actual replay checks. The current web page remains a toolchain scaffold; the full monitoring DUT, Stage 5 replay harness, native sensor analyser and API are not implemented. Stage 3 is next.
 
 ## Stage 0 specification and checks
 
@@ -56,10 +56,18 @@ Open http://127.0.0.1:5173 after `make dev`. This is a setup page, not the compl
 | make build-web | TypeScript checks and Vite production assets |
 | make smoke-logisim | Actual pinned Logisim constant/output/halt check |
 | make smoke-web | Start local Vite on port5174, verify HTTP module delivery, then stop it |
-| make test | 49 unit tests for Stage 0 and Stage 1 |
+| make test | 64 offline unit tests for Stages 0-2 |
+| make smoke-bridge | Encode four sensor rows and verify two fresh actual Logisim replays |
+| make test-bridge | Four actual RAM/clock/comparator/reset integration tests |
 | make check | All checks above, including real tool and frontend startup checks |
 
 [Toolchain instructions](tools/README.md), [reference versions](tools/versions.json) and [Stage 1 verification](reports/stage1-verification.md) document exact pins, sources and evidence. No monitoring output is fabricated by these setup checks. The full API/application run target comes in later stages.
+
+## Stage 2 bridge proof
+
+Run `make smoke-bridge` to encode inputs, load actual RAM and recover four indexed outputs, including repeated readings. Run `make test-bridge` for real simulator regressions. Both are included in `make check`; missing tools fail. The temporary proof has a fixed four-row format; Stage 5's full protocol is unchanged.
+
+[Bridge commands and timing](docs/stage2-bridge.md), [verification report](reports/stage2-verification.md) and [captured output](reports/stage2/run-1/logisim.stdout) document the measured result.
 
 ## Planned architecture
 

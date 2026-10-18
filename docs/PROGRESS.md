@@ -18,7 +18,7 @@ Verification: checked local Markdown link targets, scanned for stale old-filenam
 |---|---|---|---|
 | 0 | Model, rules and expected behaviour | Complete | `spec/`, versioned fixtures, 27 passing tests; `reports/stage0-verification.md` |
 | 1 | Toolchain and directory structure | Complete | Pinned setup/build commands, 49 passing tests, real smoke checks, clean-clone validation; `reports/stage1-verification.md` |
-| 2 | Small Logisim CLI bridge | Not started | None |
+| 2 | Small Logisim CLI bridge | Complete | Four ordered hardware publications, deterministic boot, real RAM/reset regressions; `reports/stage2-verification.md` |
 | 3 | Combinational monitor | Not started | None |
 | 4 | Sequential counters | Not started | None |
 | 5 | Replay harness and wire protocol | Not started | None |
@@ -45,11 +45,17 @@ Pinned project-local Node 22.22.0/npm 10.9.4, Temurin JRE 21.0.12.1 and Logisim-
 
 Validation: `make bootstrap` succeeded in the project directory using exact cached archives/wheels/npm packages; `make check` passed unit tests, doctor, native smoke build/run, TypeScript checks, production web build and actual Logisim execution. A fresh local Git clone of e7bfc5a independently completed `make bootstrap` and `make check`, including the automated Vite startup/HTTP check, with a clean worktree afterward. The browser rendered the setup page correctly. All 49 unit tests passed. An occupied-port startup test failed with the expected nonzero status and cleaned up its child process. See reports/stage1-verification.md for commands and scope.
 
-Stage 1 scaffold code was committed as e7bfc5a. Stage 2 and subsequent monitoring stages remain unstarted; no sensor analysis, replay handshake or warning output is claimed working. No global runtime installs or Git configuration changes were made.
+Stage 1 scaffold code was committed as e7bfc5a. At the Stage 1 handoff, Stage 2 and subsequent monitoring stages remained unstarted; no sensor analysis, replay handshake or warning output is claimed working. No global runtime installs or Git configuration changes were made.
+
+## Stage 2 completion - 19 October 2026
+
+Delivered a standalone four-row transport proof with one asynchronous 32-bit RAM, falling-edge boot reset release, rising-edge phase/address sequencing, snapshots, explicit byte splitting, an unsigned comparator and indexed publication/halt probes. Added the v2.0 raw encoder, verified output schema, strict decoder, per-process isolated preferences and preserved raw/decoded evidence. The two-row golden image and four-row fixture are separate from Stage 5's unchanged full memory protocol.
+
+Checks: all 64 offline unit tests and four actual Logisim integration tests passed. The integration suite proves fresh-process repeatability, four identical readings, unsigned byte/threshold boundaries and detection of deliberate RAM erasure on reset. `make check` also passed doctor, existing native/web builds, circuit/rule checks, Logisim smoke and HTTP startup/shutdown. `make smoke-bridge` recovered exactly four expected records from each of two processes, with initial process times around 0.47 seconds. Implementation commit: f18d0b5. Details and captured traces: `reports/stage2-verification.md`; commands/timing: `docs/stage2-bridge.md`. No full monitor, native analyser or website integration is claimed.
 
 ## Next action
 
-Begin Stage 2 when requested. Build the smallest RAM-driven replay proof using pinned Logisim 4.1.0/Java 21, establish deterministic startup/reset, decode indexed change-driven output and prove repeated identical samples are distinct. Do not treat ToolchainSmoke or the unconnected threshold constants bank as the monitoring DUT. Preserve rule/protocol version 1.
+Begin Stage 3 when requested: implement the actual SensorCheck, Validity, WarningLogic and MonitorGUI circuits in volcano.circ, maintain core-map.json and verify all warning patterns, thresholds and faults. Use Stage 2's measured transport facts; do not confuse the separate bridge proof with the monitoring DUT. Preserve rule/protocol version 1.
 
 ## Handoff rules
 
