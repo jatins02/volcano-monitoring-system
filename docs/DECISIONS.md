@@ -15,6 +15,17 @@ Read `project_context.md` for project background and the root staged implementat
 
 React/TypeScript/Vite, FastAPI/Python, SQLite, a shared ordered sample log, actual Logisim replay and standalone assembly. Numerical thresholds, warning rules, protocols and window behaviour are specified in the plan. Their presence in the plan is not scientific validation or evidence that integration experiments have succeeded.
 
+## Stage 0 contract details - 19 October 2026
+
+Rule/protocol version 1 freezes the existing thresholds, warnings, validity policy, ten-sample windows and 600-sample cap. The implementation-facing details below complete internal encodings within that baseline; they do not change user-facing monitoring behaviour:
+
+- The draft sample object uses `values` in V,T,G,A order, `connectivity_mask` and explicit boolean `fault_injection`. Canonical records add server index/time. API request identity/revision remain envelope fields for Stage 7.
+- Range diagnostics above 100 require the injection flag. Connectivity switches may independently clear mask bits. A true injection switch alone does not change a valid reading into a fault.
+- Normalized absent report values use null. Native SUMMARY uses -1 for absent last/worst valid warning; packed warning bits remain 0..3. Empty sensor rows use S_EMPTY.
+- Fixtures are fixed expected data. The Python oracle is test-only and computes window totals by slicing rather than copying the hardware register update algorithm.
+
+See `spec/requirements.md` and `spec/protocol.md`. These choices do not establish actual CLI compatibility or measured runtime behaviour.
+
 ## Facts to establish during implementation
 
 - Stage 1: select and pin compatible tool versions; verify installed dependencies and architecture.
@@ -25,6 +36,6 @@ These are planned technical investigations. Resolve them from documentation and 
 
 ## Open requirement questions
 
-None recorded during repository preparation. Future agents must add concrete questions when encountered rather than treating this heading as permission to guess.
+None remaining for Stage 0; tool-specific facts listed above remain scheduled investigations. Future agents must add concrete questions when encountered rather than treating this heading as permission to guess.
 
 For each new entry record the question, relevant plan section, impact, evidence, status and resolution. Mark user decisions as such only after an explicit response. Update affected specifications and the plan when requirements are changed by the user.

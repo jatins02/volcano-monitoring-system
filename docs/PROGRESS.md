@@ -4,7 +4,7 @@
 
 Status: complete. Root agent instructions, editor defaults, Git text/binary rules, ignore rules and session handoff documentation are present. The implementation plan is no longer ignored by Git.
 
-This is repository preparation, not completion of Stage 0 or Stage 1. No application dependencies, code, Logisim experiments or assembly tests have been implemented or run.
+This is repository preparation, not completion of Stage 0 or Stage 1. No application dependencies, production code, Logisim experiments or assembly tests were added during repository preparation.
 
 ## Documentation maintenance - 19 October 2026
 
@@ -16,7 +16,7 @@ Verification: checked local Markdown link targets, scanned for stale old-filenam
 
 | Stage | Work | Status | Evidence |
 |---|---|---|---|
-| 0 | Model, rules and expected behaviour | Not started | None |
+| 0 | Model, rules and expected behaviour | Complete | `spec/`, versioned fixtures, 27 passing tests; `reports/stage0-verification.md` |
 | 1 | Toolchain and directory structure | Not started | Repo defaults only; toolchain gates not run |
 | 2 | Small Logisim CLI bridge | Not started | None |
 | 3 | Combinational monitor | Not started | None |
@@ -31,9 +31,17 @@ Verification: checked local Markdown link targets, scanned for stale old-filenam
 | 12 | Submission and packaging | Not started | None |
 | Optional 13 | Persistent live bridge | Deferred | Baseline and measured need required |
 
+## Stage 0 completion - 19 October 2026
+
+Delivered rule version 1, protocol version 1, a complete warning truth table, requirement-to-deliverable/test mapping, strict field/validity rules, window/report semantics and binary/packed data layouts. Added 16 truth rows, 27 sensor cases, 10 fixed session scenarios and 19 rejection cases. Authored fixed expectations independently of the test-only reference model.
+
+Checks: `python3 -B -m unittest discover -s tests -v` passed all 27 test methods, including exhaustive single-sensor values 0..255, all connectivity masks, 600-sample bounds, preserved tenth readings, repeat/recovery/fault behaviour, null statistics and fractional averages. Local Markdown links and JSON syntax were checked; `git diff --check` and staged whitespace checks passed. See `reports/stage0-verification.md` for scope.
+
+No production application, circuit, native executable, dependency installation or hardware/assembly validation is included. Stages 1-12 remain open; optional Stage 13 remains deferred.
+
 ## Next action
 
-Begin Stage 0 when implementation is requested. Read the full plan, create its rule/protocol/requirements specifications and independent expected fixtures, and resolve material uncertainties before coding dependent behaviour.
+Begin Stage 1 when requested: pin compatible tools and dependencies, implement the doctor/build setup and establish the reproducible skeleton. Preserve Stage 0 rule/protocol version 1 and its acceptance fixtures. Stage 2 must prove actual Logisim input/output before claiming hardware integration.
 
 ## Handoff rules
 

@@ -17,7 +17,23 @@ Other coding tools should be directed to read the same files if they do not disc
 
 ## Current status
 
-Repository preparation only. Application code, the Logisim circuit, native analysis and the build/run/test commands have not been implemented. See the stage tracker for the next work. Do not infer working features from the plan.
+Stage 0 is complete: versioned rules, requirements, protocol contracts and independent expected fixtures are present with a tested acceptance reference model. The application, Logisim circuit, native analyser and runtime/build commands are not implemented. Stage 1 is next; do not infer working integration from the specification.
+
+## Stage 0 specification and checks
+
+- [Rules](spec/rules.json): version 1 constants and input/sampling policies.
+- [Requirements](spec/requirements.md): traceability, warning truth table and acceptance invariants.
+- [Protocol](spec/protocol.md): sample shape, Logisim memory/output layout and native binary/text contracts.
+- [Fixture guide](tests/fixtures/README.md): independently authored expected cases.
+- [Stage 0 verification](reports/stage0-verification.md): evidence and remaining integration limits.
+
+Run from the repository root using Python 3.10 or newer (tested with Python 3.14.4):
+
+```bash
+python3 -B -m unittest discover -s tests -v
+```
+
+No third-party packages are required for these checks. The oracle in `tests/reference_model.py` is test-only; it neither launches Logisim nor replaces assembly calculations. Future production code must not import it.
 
 ## Planned architecture
 
