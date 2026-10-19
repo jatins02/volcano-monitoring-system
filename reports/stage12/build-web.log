@@ -1,0 +1,18 @@
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B scripts/generate_rules.py --check
+Generated rules are current.
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B scripts/verify_circuit_rules.py
+Mapped circuit constants and interfaces match the submitted hardware.
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && sh scripts/npm.sh run build --prefix frontend
+
+> volcano-monitoring-system@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 44 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.41 kB │ gzip:  0.28 kB
+dist/assets/index-Cu4-zue_.css    7.55 kB │ gzip:  2.56 kB
+dist/assets/index-6IC9yEn6.js   233.68 kB │ gzip: 73.28 kB
+✓ built in 1.66s

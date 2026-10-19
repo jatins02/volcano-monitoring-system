@@ -9,7 +9,7 @@ ROOT := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
         doctor build-asm build-web test check smoke-logisim smoke-web smoke-bridge test-bridge dev
 
 help:
-	@echo "Project: bootstrap, doctor, generate-rules, check-rules, build-asm, build-web, test, smoke-bridge, test-bridge, check, dev"
+	@echo "Project: bootstrap, doctor, generate-rules, check-rules, build-asm, build-web, test, smoke-bridge, test-bridge, test-web, test-acceptance, check, run, dev, submission, clean-generated"
 
 bootstrap: setup-python setup-web generate-rules
 
@@ -51,7 +51,7 @@ test:
 smoke-web:
 	cd "$(ROOT)" && $(PYTHON) -B scripts/smoke_web.py
 
-check: check-circuit test-combinational test-counters test-replay test-native test-api doctor test build-asm build-web smoke-logisim smoke-web smoke-bridge test-bridge
+check: test-web check-circuit test-combinational test-counters test-replay test-native test-api doctor test build-asm build-web smoke-logisim smoke-web smoke-bridge test-bridge
 
 dev:
 	cd "$(ROOT)" && sh scripts/npm.sh run dev --prefix frontend
@@ -89,3 +89,21 @@ dev-api: build-asm
 test-api: build-asm
 	cd "$(ROOT)" && .venv/bin/python -B -m scripts.check_api
 	cd "$(ROOT)" && .venv/bin/python -B -m scripts.check_api_failures
+
+.PHONY: test-web test-acceptance
+test-web:
+	cd "$(ROOT)" && tools/node/bin/node scripts/test_web.mjs
+	cd "$(ROOT)" && sh scripts/npm.sh run format:check --prefix frontend
+
+test-acceptance: build-asm
+	cd "$(ROOT)" && .venv/bin/python -B -m scripts.check_acceptance
+
+.PHONY: run clean-generated submission
+run: build-asm build-web
+	cd "$(ROOT)" && .venv/bin/python -B -m uvicorn backend.app.main:create_app --factory --host 127.0.0.1 --port 8000 --workers 1
+
+clean-generated:
+	cd "$(ROOT)" && $(PYTHON) -B -m scripts.clean_generated
+
+submission:
+	cd "$(ROOT)" && $(PYTHON) -B -m scripts.package_submission

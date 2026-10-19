@@ -1,6 +1,6 @@
 # Volcano Monitoring System
 
-An educational simulation of a digital volcano-monitoring and warning system. The planned implementation combines a local website, real Logisim circuit evaluation and native x86-64 AT&T assembly analysis of synthetic sensor readings.
+An educational simulation of a digital volcano-monitoring and warning system. The implementation combines a local website, real Logisim circuit evaluation and native x86-64 AT&T assembly analysis of synthetic sensor readings.
 
 ## Before a coding session
 
@@ -17,7 +17,7 @@ Other coding tools should be directed to read the same files if they do not disc
 
 ## Current status
 
-Stages 0–7 are complete: frozen specifications, pinned toolchain, actual combinational/counter circuits, full RAM replay, standalone x86-64 AT&T analysis and the durable asynchronous session API. The frontend remains the Stage1 setup page; Stage8's website shell is next. Hardware and native outputs are computed by their actual tools, with no Python/JavaScript replacement. See [Stages3–7 verification](reports/stages3-7-verification.md).
+Stages0–12 implement the real monitoring stack, responsive retro website, provenance-checked source/output/history, scenarios, exports, evidence and reproducible local submission. See [academic report](docs/academic-report.md), [website behavior](docs/website.md), [acceptance/performance](reports/stage11/verification.md), [final warning report](reports/final-warning-report.md), and [progress](docs/PROGRESS.md) for evidence and limits. Optional Stage13 is deferred.
 
 ## Stage 0 specification and checks
 
@@ -42,10 +42,10 @@ Prerequisites: Linux x86_64, GNU GCC/binutils/Make and Python 3.12-3.14 with ven
 ```bash
 make bootstrap
 make check
-make dev
+make run
 ```
 
-Open http://127.0.0.1:5173 after `make dev`. This is a setup page, not the completed simulation interface. Stop it with Ctrl+C.
+Open http://127.0.0.1:8000 after `make run`. Stop with Ctrl+C. For development use `make dev-api` and `make dev` in separate terminals, then open http://127.0.0.1:5173. Vite proxies /api to8000; no CORS wildcard is needed. All UI assets remain local. After bootstrap, builds/startup/evaluation work offline.
 
 | Command | What it verifies or produces |
 |---|---|
@@ -56,7 +56,12 @@ Open http://127.0.0.1:5173 after `make dev`. This is a setup page, not the compl
 | make build-web | TypeScript checks and Vite production assets |
 | make smoke-logisim | Actual pinned Logisim constant/output/halt check |
 | make smoke-web | Start local Vite on port5174, verify HTTP module delivery, then stop it |
-| make test | 89 offline unit tests for Stages0–7 |
+| make test | Offline Python unit tests |
+| make test-web | Frontend controller/transport/export regressions and formatting |
+| make test-acceptance | Eight real assignment cases and repeated latency benchmarks |
+| make run | Build and serve full local website/API on8000 |
+| make clean-generated | Remove only reproducible build/assets; preserve histories/tools |
+| make submission | Deterministic source/evidence tar.gz with SHA256 manifest |
 | make smoke-bridge | Encode four sensor rows and verify two fresh actual Logisim replays |
 | make test-bridge | Four actual RAM/clock/comparator/reset integration tests |
 | make test-combinational |43 fixed cases on actual core and GUI |
@@ -67,7 +72,7 @@ Open http://127.0.0.1:5173 after `make dev`. This is a setup page, not the compl
 | make dev-api |Start the local API on127.0.0.1:8000 |
 | make check |All checks above, builds and frontend startup/shutdown |
 
-[Toolchain instructions](tools/README.md), [reference versions](tools/versions.json) and [Stage 1 verification](reports/stage1-verification.md) document exact pins, sources and evidence. No monitoring output is fabricated by these setup checks. The API is available now via `make dev-api`; the complete website/application launch remains later work.
+[Toolchain instructions](tools/README.md), [reference versions](tools/versions.json) and [Stage 1 verification](reports/stage1-verification.md) document exact pins, sources and evidence. No monitoring output is fabricated by these setup checks. `make run` builds and serves the complete website/API on one loopback origin.
 
 ## Stage 2 bridge proof
 
@@ -79,7 +84,7 @@ Run `make smoke-bridge` to encode inputs, load actual RAM and recover four index
 
 Run `make dev-api` and open http://127.0.0.1:8000/docs. [API contracts and lifecycle](docs/backend-api.md), [native analyser](docs/native-analyser.md), [monitor core](docs/monitor-core.md), [counter timing](docs/window-counters.md) and [full replay](docs/replay-harness.md) explain the completed stages. `build/monitor` accepts the documented binary stream on stdin. Java/node/dependency installation remains project-local.
 
-## Planned architecture
+## Implemented architecture
 
 - Website: React, TypeScript, Vite and CSS.
 - Coordinator: FastAPI/Python, SQLite sessions and managed subprocesses.
@@ -98,3 +103,9 @@ Sensor sliders edit draft parameters. Run simulation / Step records one sample a
 - `docs/DECISIONS.md`: established decisions and explicitly unresolved questions.
 
 Keep the dependency locks and toolchain manifest under version control. Downloads, caches and environments remain ignored; global agent/Git settings are unchanged. The API uses ignored runtime storage; reset archives older generations and clears only active state.
+
+## Demonstration and submission
+
+Follow the [demo script](docs/demo-script.md), [browser checks](tests/e2e/README.md) and [submission workflow](docs/submission.md). Build the native analyser independently with `gcc -g -pie -Wl,-z,noexecstack assembly/monitor.s -o build/monitor` from the repository root after `make generate-rules`. Preserve assembly/rules.inc. `make submission` writes build/submission/volcano-monitoring-system.tar.gz; generated outputs and installed dependencies are not committed.
+
+The native Logisim circuit is downloadable from the website: open it in4.1.0 and choose MonitorGUI. The web circuit is a labelled visualization of actual returned probes. Statistics come from native assembly; motion/history/drafts never create samples. Results include immutable source/circuit/executable provenance. Reset archives older generations, Retry adds no readings, and a mismatch remains visible with the previous confirmed result.

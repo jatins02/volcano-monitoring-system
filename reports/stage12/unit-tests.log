@@ -1,0 +1,110 @@
+test_actual_required_statistics (unit.test_native_parser.NativeParserTests.test_actual_required_statistics) ... ok
+test_bad_statistics_and_inconsistent_summary (unit.test_native_parser.NativeParserTests.test_bad_statistics_and_inconsistent_summary) ... ok
+test_empty_native_report_has_null_extrema_and_no_division (unit.test_native_parser.NativeParserTests.test_empty_native_report_has_null_extrema_and_no_division) ... ok
+test_header_footer_truncation_and_extra_output (unit.test_native_parser.NativeParserTests.test_header_footer_truncation_and_extra_output) ... ok
+test_missing_duplicate_or_reordered_records (unit.test_native_parser.NativeParserTests.test_missing_duplicate_or_reordered_records) ... ok
+test_duplicate_missing_reordered_and_unfinished (unit.test_protocol.ProtocolTests.test_duplicate_missing_reordered_and_unfinished) ... ok
+test_known_encodings (unit.test_protocol.ProtocolTests.test_known_encodings) ... ok
+test_reserved_and_impossible_snapshot_fields (unit.test_protocol.ProtocolTests.test_reserved_and_impossible_snapshot_fields) ... ok
+test_strict_fields_and_bounds (unit.test_protocol.ProtocolTests.test_strict_fields_and_bounds) ... ok
+test_trace_and_repeated_inputs (unit.test_protocol.ProtocolTests.test_trace_and_repeated_inputs) ... ok
+test_unknown_bits_and_unexpected_columns (unit.test_protocol.ProtocolTests.test_unknown_bits_and_unexpected_columns) ... ok
+test_clean_preserves_histories_and_dependencies (unit.test_release.ReleaseTests.test_clean_preserves_histories_and_dependencies) ... ok
+test_clean_refuses_symlink (unit.test_release.ReleaseTests.test_clean_refuses_symlink) ... ok
+test_package_is_byte_reproducible_and_rejects_symlinks (unit.test_release.ReleaseTests.test_package_is_byte_reproducible_and_rejects_symlinks) ... ok
+test_cancellation_kills_and_reaps_child (unit.test_runner.RunnerTests.test_cancellation_kills_and_reaps_child) ... ok
+test_output_flood_is_bounded (unit.test_runner.RunnerTests.test_output_flood_is_bounded) ... ok
+test_stdin_stdout_stderr_are_drained_without_shell (unit.test_runner.RunnerTests.test_stdin_stdout_stderr_are_drained_without_shell) ... ok
+test_timeout_kills_and_reaps_child (unit.test_runner.RunnerTests.test_timeout_kills_and_reaps_child) ... ok
+test_timeout_kills_descendants_that_ignore_termination (unit.test_runner.RunnerTests.test_timeout_kills_descendants_that_ignore_termination) ... ok
+test_batch_capacity_is_atomic_and_indices_are_server_assigned (unit.test_sessions.SessionStoreTests.test_batch_capacity_is_atomic_and_indices_are_server_assigned) ... ok
+test_busy_and_stale_append_do_not_change_history (unit.test_sessions.SessionStoreTests.test_busy_and_stale_append_do_not_change_history) ... ok
+test_identical_request_returns_original_job_without_append (unit.test_sessions.SessionStoreTests.test_identical_request_returns_original_job_without_append) ... ok
+test_mismatch_keeps_previous_success (unit.test_sessions.SessionStoreTests.test_mismatch_keeps_previous_success) ... ok
+test_reopen_and_restart_preserve_history_and_mark_interrupted_jobs (unit.test_sessions.SessionStoreTests.test_reopen_and_restart_preserve_history_and_mark_interrupted_jobs) ... ok
+test_reset_prevents_old_job_from_republishing (unit.test_sessions.SessionStoreTests.test_reset_prevents_old_job_from_republishing) ... ok
+test_retry_replays_same_immutable_history (unit.test_sessions.SessionStoreTests.test_retry_replays_same_immutable_history) ... ok
+test_rule_change_requires_a_new_session (unit.test_sessions.SessionStoreTests.test_rule_change_requires_a_new_session) ... ok
+test_same_id_different_payload_fails (unit.test_sessions.SessionStoreTests.test_same_id_different_payload_fails) ... ok
+test_all_connectivity_masks_override_danger (unit.test_stage0.ClassificationTests.test_all_connectivity_masks_override_danger) ... ok
+test_all_representable_values_for_each_sensor (unit.test_stage0.ClassificationTests.test_all_representable_values_for_each_sensor) ... ok
+test_combined_range_and_connectivity_faults (unit.test_stage0.ClassificationTests.test_combined_range_and_connectivity_faults) ... ok
+test_enumerated_truth_table (unit.test_stage0.ClassificationTests.test_enumerated_truth_table) ... ok
+test_sensor_boundary_fixtures (unit.test_stage0.ClassificationTests.test_sensor_boundary_fixtures) ... ok
+test_connectivity_fault_does_not_require_range_injection (unit.test_stage0.InputValidationTests.test_connectivity_fault_does_not_require_range_injection) ... ok
+test_domain_rejects_invalid_shapes_and_numeric_types (unit.test_stage0.InputValidationTests.test_domain_rejects_invalid_shapes_and_numeric_types) ... ok
+test_injected_range_fault_is_accepted_not_clamped (unit.test_stage0.InputValidationTests.test_injected_range_fault_is_accepted_not_clamped) ... ok
+test_injection_switch_alone_is_not_a_fault (unit.test_stage0.InputValidationTests.test_injection_switch_alone_is_not_a_fault) ... ok
+test_non_finite_values_are_rejected (unit.test_stage0.InputValidationTests.test_non_finite_values_are_rejected) ... ok
+test_rejected_draft_fixtures (unit.test_stage0.InputValidationTests.test_rejected_draft_fixtures) ... ok
+test_byte_order_golden_vector (unit.test_stage0.RulesContractTests.test_byte_order_golden_vector) ... ok
+test_counter_widths_cover_exact_bounds (unit.test_stage0.RulesContractTests.test_counter_widths_cover_exact_bounds) ... ok
+test_fixture_inventory_has_unique_cases (unit.test_stage0.RulesContractTests.test_fixture_inventory_has_unique_cases) ... ok
+test_input_and_warning_contract (unit.test_stage0.RulesContractTests.test_input_and_warning_contract) ... ok
+test_sampling_and_statistics_contract (unit.test_stage0.RulesContractTests.test_sampling_and_statistics_contract) ... ok
+test_version_sensor_order_and_thresholds (unit.test_stage0.RulesContractTests.test_version_sensor_order_and_thresholds) ... ok
+test_wire_contract_and_storage_bounds (unit.test_stage0.RulesContractTests.test_wire_contract_and_storage_bounds) ... ok
+test_all_session_snapshots_have_valid_bounds_and_provenance (unit.test_stage0.SessionTests.test_all_session_snapshots_have_valid_bounds_and_provenance) ... ok
+test_bad_fixture_repeat_is_not_silently_expanded (unit.test_stage0.SessionTests.test_bad_fixture_repeat_is_not_silently_expanded) ... ok
+test_every_tenth_sample_contribution_is_preserved (unit.test_stage0.SessionTests.test_every_tenth_sample_contribution_is_preserved) ... ok
+test_fixed_session_expectations (unit.test_stage0.SessionTests.test_fixed_session_expectations) ... ok
+test_fresh_session_resets_state (unit.test_stage0.SessionTests.test_fresh_session_resets_state) ... ok
+test_input_and_prior_results_are_not_mutated (unit.test_stage0.SessionTests.test_input_and_prior_results_are_not_mutated) ... ok
+test_maximum_session_and_atomic_overflow (unit.test_stage0.SessionTests.test_maximum_session_and_atomic_overflow) ... ok
+test_prefix_evaluation_matches_full_session (unit.test_stage0.SessionTests.test_prefix_evaluation_matches_full_session) ... ok
+test_small_sequences_conserve_all_counts (unit.test_stage0.SessionTests.test_small_sequences_conserve_all_counts) ... ok
+test_changed_constant_is_rejected (unit.test_stage1.CircuitMappingTests.test_changed_constant_is_rejected) ... /usr/lib/python3.14/asyncio/base_subprocess.py:135: ResourceWarning: unclosed transport <_UnixSubprocessTransport pid=400049 returncode=-15 stdout=<_UnixReadPipeTransport fd=7 open> stderr=<_UnixReadPipeTransport closed fd=9 closed>>
+  _warn(f"unclosed transport {self!r}", ResourceWarning, source=self)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/xml/etree/ElementTree.py:577: ResourceWarning: unclosed file <_io.FileIO name=7 mode='rb' closefd=True>
+  self._root = parser._parse_whole(source)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/asyncio/unix_events.py:596: ResourceWarning: unclosed transport <_UnixReadPipeTransport fd=7 open>
+  _warn(f"unclosed transport {self!r}", ResourceWarning, source=self)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_changed_width_is_rejected (unit.test_stage1.CircuitMappingTests.test_changed_width_is_rejected) ... ok
+test_current_constants_bank_passes (unit.test_stage1.CircuitMappingTests.test_current_constants_bank_passes) ... ok
+test_duplicate_attributes_are_rejected (unit.test_stage1.CircuitMappingTests.test_duplicate_attributes_are_rejected) ... ok
+test_duplicate_identity_is_rejected (unit.test_stage1.CircuitMappingTests.test_duplicate_identity_is_rejected) ... ok
+test_equal_valued_sensor_alias_is_rejected (unit.test_stage1.CircuitMappingTests.test_equal_valued_sensor_alias_is_rejected) ... ok
+test_extra_unmapped_constant_is_rejected (unit.test_stage1.CircuitMappingTests.test_extra_unmapped_constant_is_rejected) ... ok
+test_moved_component_is_rejected (unit.test_stage1.CircuitMappingTests.test_moved_component_is_rejected) ... ok
+test_unexpected_circuit_or_schema_is_rejected (unit.test_stage1.CircuitMappingTests.test_unexpected_circuit_or_schema_is_rejected) ... ok
+test_incomplete_setup_reports_all_missing_dependencies (unit.test_stage1.DoctorAndSmokeTests.test_incomplete_setup_reports_all_missing_dependencies) ... ok
+test_missing_executable_is_actionable (unit.test_stage1.DoctorAndSmokeTests.test_missing_executable_is_actionable) ... ok
+test_smoke_rejects_incorrect_or_additional_errors (unit.test_stage1.DoctorAndSmokeTests.test_smoke_rejects_incorrect_or_additional_errors) ... ok
+test_timeout_is_reported_as_failure (unit.test_stage1.DoctorAndSmokeTests.test_timeout_is_reported_as_failure) ... ok
+test_unwritable_runtime_is_reported (unit.test_stage1.DoctorAndSmokeTests.test_unwritable_runtime_is_reported) ... ok
+test_wrong_version_and_nonzero_exit_fail (unit.test_stage1.DoctorAndSmokeTests.test_wrong_version_and_nonzero_exit_fail) ... ok
+test_changed_rules_invalidate_both_generated_files (unit.test_stage1.GeneratedRulesTests.test_changed_rules_invalidate_both_generated_files) ... ok
+test_generation_is_deterministic_and_check_is_read_only (unit.test_stage1.GeneratedRulesTests.test_generation_is_deterministic_and_check_is_read_only) ... ok
+test_rule_hash_is_semantic_not_whitespace_dependent (unit.test_stage1.GeneratedRulesTests.test_rule_hash_is_semantic_not_whitespace_dependent) ... ok
+test_corrupt_download_is_rejected_before_execution (unit.test_stage1.RuntimeIntegrityTests.test_corrupt_download_is_rejected_before_execution) ... ok
+test_missing_jar_does_not_launch_java (unit.test_stage1.RuntimeIntegrityTests.test_missing_jar_does_not_launch_java) ... ok
+test_unsafe_tar_path_is_rejected (unit.test_stage1.RuntimeIntegrityTests.test_unsafe_tar_path_is_rejected) ... ok
+test_valid_runtime_archive_extracts_one_root (unit.test_stage1.RuntimeIntegrityTests.test_valid_runtime_archive_extracts_one_root) ... ok
+test_circuit_has_one_read_only_asynchronous_ram_and_explicit_bit_map (unit.test_stage2.BridgeProofTests.test_circuit_has_one_read_only_asynchronous_ram_and_explicit_bit_map) ... ok
+test_duplicate_publication_is_rejected (unit.test_stage2.BridgeProofTests.test_duplicate_publication_is_rejected) ... ok
+test_encoder_rejects_malformed_bytes_and_row_counts (unit.test_stage2.BridgeProofTests.test_encoder_rejects_malformed_bytes_and_row_counts) ... ok
+test_failed_boot_and_early_halt_are_rejected (unit.test_stage2.BridgeProofTests.test_failed_boot_and_early_halt_are_rejected) ... ok
+test_headers_blank_lines_extra_or_missing_columns_are_rejected (unit.test_stage2.BridgeProofTests.test_headers_blank_lines_extra_or_missing_columns_are_rejected) ... ok
+test_missing_publication_fails_even_with_normal_terminal_row (unit.test_stage2.BridgeProofTests.test_missing_publication_fails_even_with_normal_terminal_row) ... ok
+test_normal_exit_requires_exact_intentional_halt_diagnostic (unit.test_stage2.BridgeProofTests.test_normal_exit_requires_exact_intentional_halt_diagnostic) ... ok
+test_publication_in_wrong_phase_is_rejected (unit.test_stage2.BridgeProofTests.test_publication_in_wrong_phase_is_rejected) ... ok
+test_real_trace_recovers_four_ordered_rows_including_identical_values (unit.test_stage2.BridgeProofTests.test_real_trace_recovers_four_ordered_rows_including_identical_values) ... ok
+test_reordered_publications_are_rejected (unit.test_stage2.BridgeProofTests.test_reordered_publications_are_rejected) ... ok
+test_schema_rejects_swapped_or_moved_pins (unit.test_stage2.BridgeProofTests.test_schema_rejects_swapped_or_moved_pins) ... ok
+test_swapped_sensor_columns_and_bad_echo_are_rejected (unit.test_stage2.BridgeProofTests.test_swapped_sensor_columns_and_bad_echo_are_rejected) ... ok
+test_timeout_preserves_partial_evidence_and_rejects_old_decoded_output (unit.test_stage2.BridgeProofTests.test_timeout_preserves_partial_evidence_and_rejects_old_decoded_output) ... ok
+test_two_row_encoder_matches_inspectable_golden_image (unit.test_stage2.BridgeProofTests.test_two_row_encoder_matches_inspectable_golden_image) ... ok
+test_unknown_error_wrong_width_and_nonbinary_cells_are_rejected (unit.test_stage2.BridgeProofTests.test_unknown_error_wrong_width_and_nonbinary_cells_are_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 92 tests in 3.431s
+
+OK
+Cleaned build
+Cleaned frontend/dist
+/tmp/tmpiq1o0139/build/submission/volcano-monitoring-system.tar.gz (1 tracked files; SHA256 c39273c689ef87fcd0efefd8e872ba460151b9cdd2195dd4cb7b50073b8b1d5f)
+/tmp/tmpiq1o0139/build/submission/volcano-monitoring-system.tar.gz (1 tracked files; SHA256 c39273c689ef87fcd0efefd8e872ba460151b9cdd2195dd4cb7b50073b8b1d5f)

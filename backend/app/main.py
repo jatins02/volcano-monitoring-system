@@ -1,4 +1,4 @@
-"""Locally hosted session API. The website is a later stage."""
+"""Local session API and production website, sharing one loopback origin."""
 
 import asyncio
 from contextlib import asynccontextmanager
@@ -249,5 +249,27 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             media_type="application/xml",
             filename="volcano.circ",
         )
+
+    @app.api_route("/{path:path}", methods=["GET", "HEAD"], include_in_schema=False)
+    async def website(path: str):
+        # Keep unknown API/asset requests out of the SPA fallback. Resolve paths
+        # before serving so encoded traversal cannot expose sources or runtime data.
+        if path == "api" or path.startswith("api/"):
+            raise HTTPException(404, detail={"code": "NOT_FOUND"})
+        assets = (config.root / "frontend/dist").resolve()
+        candidate = (assets / path).resolve()
+        if not candidate.is_relative_to(assets):
+            raise HTTPException(404)
+        if candidate.is_file():
+            return FileResponse(candidate, headers={"Cache-Control": "no-cache"})
+        if path.startswith("assets/") or Path(path).suffix:
+            raise HTTPException(404)
+        index = assets / "index.html"
+        if not index.is_file():
+            raise HTTPException(
+                503,
+                detail={"code": "WEB_BUILD_MISSING", "message": "Run make build-web"},
+            )
+        return FileResponse(index, headers={"Cache-Control": "no-cache"})
 
     return app
