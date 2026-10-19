@@ -25,7 +25,7 @@ Verification: checked local Markdown link targets, scanned for stale old-filenam
 | 6 | Assembly analyser | Complete | Twelve actual hardware comparisons, statistics and malformed/I/O checks; reports/stage6/ |
 | 7 | Backend and sessions | Complete | Real HTTP/tool workflows and failure/lifecycle tests; reports/stage7/ |
 | 8 | Website shell and theme | Complete | reports/stage8/; real browser, typecheck/build and HTTP startup |
-| 9 | Website-to-hardware integration | Not started | None |
+| 9 | Website-to-hardware integration | Complete | reports/stage9/; seven controller tests; ten actual browser commits and pending reset |
 | 10 | Visualization and replay views | Not started | None |
 | 11 | Integrated validation and performance | Not started | None |
 | 12 | Submission and packaging | Not started | None |
