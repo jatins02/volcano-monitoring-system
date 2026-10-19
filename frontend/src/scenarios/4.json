@@ -1,0 +1,25 @@
+{
+  "name": "Sensor fault",
+  "samples": [
+    {
+      "values": [20, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    },
+    {
+      "values": [20, 20, 20, 20],
+      "connectivity_mask": 14,
+      "fault_injection": false
+    },
+    {
+      "values": [101, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": true
+    },
+    {
+      "values": [20, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    }
+  ]
+}

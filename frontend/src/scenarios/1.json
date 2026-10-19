@@ -1,0 +1,55 @@
+{
+  "name": "One-sensor anomaly",
+  "samples": [
+    {
+      "values": [71, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    },
+    {
+      "values": [71, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    },
+    {
+      "values": [71, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    },
+    {
+      "values": [71, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    },
+    {
+      "values": [71, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    },
+    {
+      "values": [71, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    },
+    {
+      "values": [71, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    },
+    {
+      "values": [71, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    },
+    {
+      "values": [71, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    },
+    {
+      "values": [71, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    }
+  ]
+}

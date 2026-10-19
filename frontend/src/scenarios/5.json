@@ -1,0 +1,60 @@
+{
+  "name": "Window boundary",
+  "samples": [
+    {
+      "values": [20, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    },
+    {
+      "values": [20, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    },
+    {
+      "values": [20, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    },
+    {
+      "values": [20, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    },
+    {
+      "values": [20, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    },
+    {
+      "values": [20, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    },
+    {
+      "values": [20, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    },
+    {
+      "values": [20, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    },
+    {
+      "values": [20, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    },
+    {
+      "values": [100, 100, 100, 100],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    },
+    {
+      "values": [20, 20, 20, 20],
+      "connectivity_mask": 15,
+      "fault_injection": false
+    }
+  ]
+}

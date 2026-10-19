@@ -10,7 +10,10 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 5173 --strictPort",
     "typecheck": "tsc --noEmit",
-    "build": "tsc --noEmit && vite build"
+    "build": "tsc --noEmit && vite build",
+    "format": "prettier --write src --ignore-path .prettierignore",
+    "format:check": "prettier --check src --ignore-path .prettierignore",
+    "test": "node ../scripts/test_web.mjs"
   },
   "dependencies": {
     "react": "19.2.0",
@@ -20,6 +23,7 @@
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "@vitejs/plugin-react": "5.1.2",
+    "prettier": "3.6.2",
     "typescript": "5.9.3",
     "vite": "7.3.7"
   }

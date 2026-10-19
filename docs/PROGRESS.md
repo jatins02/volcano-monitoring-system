@@ -26,7 +26,7 @@ Verification: checked local Markdown link targets, scanned for stale old-filenam
 | 7 | Backend and sessions | Complete | Real HTTP/tool workflows and failure/lifecycle tests; reports/stage7/ |
 | 8 | Website shell and theme | Complete | reports/stage8/; real browser, typecheck/build and HTTP startup |
 | 9 | Website-to-hardware integration | Complete | reports/stage9/; seven controller tests; ten actual browser commits and pending reset |
-| 10 | Visualization and replay views | Not started | None |
+| 10 | Visualization and replay views | Complete | reports/stage10/review.md; ten frontend regressions and actual window/history/source browser checks |
 | 11 | Integrated validation and performance | Not started | None |
 | 12 | Submission and packaging | Not started | None |
 | Optional 13 | Persistent live bridge | Deferred | Baseline and measured need required |
