@@ -1,0 +1,453 @@
+{
+  "snapshots": [
+    {
+      "index": 0,
+      "time_seconds": 1,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "NORMAL",
+      "warning_code": 0,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 1,
+      "completed_windows": 0,
+      "has_completed": false
+    },
+    {
+      "index": 1,
+      "time_seconds": 2,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "NORMAL",
+      "warning_code": 0,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 2,
+      "completed_windows": 0,
+      "has_completed": false
+    },
+    {
+      "index": 2,
+      "time_seconds": 3,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "NORMAL",
+      "warning_code": 0,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 3,
+      "completed_windows": 0,
+      "has_completed": false
+    },
+    {
+      "index": 3,
+      "time_seconds": 4,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "NORMAL",
+      "warning_code": 0,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 4,
+      "completed_windows": 0,
+      "has_completed": false
+    },
+    {
+      "index": 4,
+      "time_seconds": 5,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "NORMAL",
+      "warning_code": 0,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 5,
+      "completed_windows": 0,
+      "has_completed": false
+    },
+    {
+      "index": 5,
+      "time_seconds": 6,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "NORMAL",
+      "warning_code": 0,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 6,
+      "completed_windows": 0,
+      "has_completed": false
+    },
+    {
+      "index": 6,
+      "time_seconds": 7,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "NORMAL",
+      "warning_code": 0,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 7,
+      "completed_windows": 0,
+      "has_completed": false
+    },
+    {
+      "index": 7,
+      "time_seconds": 8,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "NORMAL",
+      "warning_code": 0,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 8,
+      "completed_windows": 0,
+      "has_completed": false
+    },
+    {
+      "index": 8,
+      "time_seconds": 9,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "NORMAL",
+      "warning_code": 0,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 9,
+      "completed_windows": 0,
+      "has_completed": false
+    },
+    {
+      "index": 9,
+      "time_seconds": 10,
+      "values": [
+        255,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": false,
+      "raw_mask": 1,
+      "range_mask": 1,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "FAULT",
+      "warning_code": 3,
+      "emergency": false,
+      "fault": true,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 1
+      },
+      "position": 0,
+      "completed_windows": 1,
+      "has_completed": true
+    }
+  ],
+  "summary": {
+    "total_samples": 10,
+    "valid_samples": 9,
+    "fault_samples": 1,
+    "current_warning": "FAULT",
+    "last_valid_warning": "NORMAL",
+    "worst_valid_warning": "NORMAL",
+    "report_status": "NORMAL",
+    "statistics": {
+      "V": {
+        "count": 9,
+        "minimum": 20,
+        "maximum": 20,
+        "sum": 180,
+        "average_x100": 2000
+      },
+      "T": {
+        "count": 9,
+        "minimum": 20,
+        "maximum": 20,
+        "sum": 180,
+        "average_x100": 2000
+      },
+      "G": {
+        "count": 9,
+        "minimum": 20,
+        "maximum": 20,
+        "sum": 180,
+        "average_x100": 2000
+      },
+      "A": {
+        "count": 9,
+        "minimum": 20,
+        "maximum": 20,
+        "sum": 180,
+        "average_x100": 2000
+      }
+    }
+  }
+}

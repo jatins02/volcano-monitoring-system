@@ -1,0 +1,84 @@
+{
+  "snapshots": [
+    {
+      "index": 0,
+      "time_seconds": 1,
+      "values": [
+        71,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 1,
+      "range_mask": 0,
+      "effective_mask": 1,
+      "k": 1,
+      "warning": "WATCH",
+      "warning_code": 1,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 1,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 1,
+        "abnormal_samples": 1,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 1,
+      "completed_windows": 0,
+      "has_completed": false
+    }
+  ],
+  "summary": {
+    "total_samples": 1,
+    "valid_samples": 1,
+    "fault_samples": 0,
+    "current_warning": "WATCH",
+    "last_valid_warning": "WATCH",
+    "worst_valid_warning": "WATCH",
+    "report_status": "WATCH",
+    "statistics": {
+      "V": {
+        "count": 1,
+        "minimum": 71,
+        "maximum": 71,
+        "sum": 71,
+        "average_x100": 7100
+      },
+      "T": {
+        "count": 1,
+        "minimum": 20,
+        "maximum": 20,
+        "sum": 20,
+        "average_x100": 2000
+      },
+      "G": {
+        "count": 1,
+        "minimum": 20,
+        "maximum": 20,
+        "sum": 20,
+        "average_x100": 2000
+      },
+      "A": {
+        "count": 1,
+        "minimum": 20,
+        "maximum": 20,
+        "sum": 20,
+        "average_x100": 2000
+      }
+    }
+  }
+}

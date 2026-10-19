@@ -1,0 +1,1203 @@
+{
+  "provenance": {
+    "id": "69765480-156f-46e4-b456-40b6c110a99a",
+    "session": "e30c2792-94a6-40a9-99dc-8ef5715aff6a",
+    "generation": 0,
+    "revision": 11,
+    "input_hash": "b8896f21c09daa3cc0d7df063b22dfd27f3c42c57d135ae70a56f1a183f683c0",
+    "started_at": "2026-10-19T03:27:15.810642+00:00",
+    "status": "succeeded",
+    "sample_count": 11,
+    "rule_hash": "51e30574de5f11febc057f0c5c70fcd3990365b024ee459e07a8d3e6ec31be84",
+    "native": {
+      "source_sha256": "c5c821b07314796fc628f3bf4f6c52f098148b7e11bc85132e4be72246d7f8fb",
+      "rules_sha256": "4e07c7995732202fc256ac01446668f9c8920d2238eb68fb3f291582ed6554b9",
+      "executable_sha256": "70daa98da5b796993912736534871d0012fb8d84152c6564b95a29f7737b8384",
+      "rule_hash": "51e30574de5f11febc057f0c5c70fcd3990365b024ee459e07a8d3e6ec31be84"
+    },
+    "tools": {
+      "node": {
+        "version": "22.22.0",
+        "url": "https://nodejs.org/dist/v22.22.0/node-v22.22.0-linux-x64.tar.xz",
+        "sha256": "9aa8e9d2298ab68c600bd6fb86a6c13bce11a4eca1ba9b39d79fa021755d7c37",
+        "archive": "tar.xz",
+        "install_directory": "tools/node",
+        "npm_version": "10.9.4"
+      },
+      "java": {
+        "version": "21.0.12.1",
+        "url": "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.12.1%2B1/OpenJDK21U-jre_x64_linux_hotspot_21.0.12.1_1.tar.gz",
+        "sha256": "2413149700df0f7d440500a84a8f764c535f21e5a5e87d38328b64eec2c5b500",
+        "archive": "tar.gz",
+        "install_directory": "tools/java"
+      },
+      "logisim": {
+        "version": "4.1.0",
+        "url": "https://github.com/logisim-evolution/logisim-evolution/releases/download/v4.1.0/logisim-evolution-4.1.0-all.jar",
+        "sha256": "fe6386a3217a591bcc311a4eda49e1f43a389b499dd3d0f6f40f344fc85f2577",
+        "archive": "jar",
+        "install_path": "tools/logisim-evolution-4.1.0-all.jar",
+        "minimum_java": 21
+      }
+    },
+    "circuit_sha256": "93d7580ef3ad4f8067f378285f3048a5f49e0392361dd8f52dc8b6adff279faf",
+    "source_sha256": "c5c821b07314796fc628f3bf4f6c52f098148b7e11bc85132e4be72246d7f8fb",
+    "executable_sha256": "70daa98da5b796993912736534871d0012fb8d84152c6564b95a29f7737b8384",
+    "timings_ms": {
+      "setup_ms": 125.8751779969316,
+      "logisim_process_ms": 954.72986799723,
+      "assembly_process_ms": 1.0987439891323447,
+      "parse_compare_ms": 0.859625986777246,
+      "evaluation_ms": 1082.9425530100707
+    },
+    "logisim_exit": 0,
+    "assembly_exit": 0,
+    "finished_at": "2026-10-19T03:27:16.893312+00:00"
+  },
+  "hardware": [
+    {
+      "index": 0,
+      "time_seconds": 1,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "NORMAL",
+      "warning_code": 0,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 1,
+      "completed_windows": 0,
+      "has_completed": false,
+      "buses": [
+        0,
+        336860180,
+        31,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "index": 1,
+      "time_seconds": 2,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "NORMAL",
+      "warning_code": 0,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 2,
+      "completed_windows": 0,
+      "has_completed": false,
+      "buses": [
+        1,
+        336860180,
+        31,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "index": 2,
+      "time_seconds": 3,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "NORMAL",
+      "warning_code": 0,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 3,
+      "completed_windows": 0,
+      "has_completed": false,
+      "buses": [
+        2,
+        336860180,
+        31,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "index": 3,
+      "time_seconds": 4,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "NORMAL",
+      "warning_code": 0,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 4,
+      "completed_windows": 0,
+      "has_completed": false,
+      "buses": [
+        3,
+        336860180,
+        31,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "index": 4,
+      "time_seconds": 5,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "NORMAL",
+      "warning_code": 0,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 5,
+      "completed_windows": 0,
+      "has_completed": false,
+      "buses": [
+        4,
+        336860180,
+        31,
+        0,
+        0,
+        5
+      ]
+    },
+    {
+      "index": 5,
+      "time_seconds": 6,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "NORMAL",
+      "warning_code": 0,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 6,
+      "completed_windows": 0,
+      "has_completed": false,
+      "buses": [
+        5,
+        336860180,
+        31,
+        0,
+        0,
+        6
+      ]
+    },
+    {
+      "index": 6,
+      "time_seconds": 7,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "NORMAL",
+      "warning_code": 0,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 7,
+      "completed_windows": 0,
+      "has_completed": false,
+      "buses": [
+        6,
+        336860180,
+        31,
+        0,
+        0,
+        7
+      ]
+    },
+    {
+      "index": 7,
+      "time_seconds": 8,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "NORMAL",
+      "warning_code": 0,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 8,
+      "completed_windows": 0,
+      "has_completed": false,
+      "buses": [
+        7,
+        336860180,
+        31,
+        0,
+        0,
+        8
+      ]
+    },
+    {
+      "index": 8,
+      "time_seconds": 9,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "NORMAL",
+      "warning_code": 0,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 9,
+      "completed_windows": 0,
+      "has_completed": false,
+      "buses": [
+        8,
+        336860180,
+        31,
+        0,
+        0,
+        9
+      ]
+    },
+    {
+      "index": 9,
+      "time_seconds": 10,
+      "values": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 15,
+      "range_mask": 0,
+      "effective_mask": 15,
+      "k": 4,
+      "warning": "DANGER",
+      "warning_code": 2,
+      "emergency": true,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 1,
+        "T": 1,
+        "G": 1,
+        "A": 1,
+        "readings": 4,
+        "abnormal_samples": 1,
+        "faults": 0
+      },
+      "position": 0,
+      "completed_windows": 1,
+      "has_completed": true,
+      "buses": [
+        9,
+        1684300900,
+        1010175,
+        0,
+        4460817,
+        1040
+      ]
+    },
+    {
+      "index": 10,
+      "time_seconds": 11,
+      "values": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 0,
+      "range_mask": 0,
+      "effective_mask": 0,
+      "k": 0,
+      "warning": "NORMAL",
+      "warning_code": 0,
+      "emergency": false,
+      "fault": false,
+      "current_counts": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 1,
+        "T": 1,
+        "G": 1,
+        "A": 1,
+        "readings": 4,
+        "abnormal_samples": 1,
+        "faults": 0
+      },
+      "position": 1,
+      "completed_windows": 1,
+      "has_completed": true,
+      "buses": [
+        10,
+        336860180,
+        31,
+        0,
+        4460817,
+        1041
+      ]
+    }
+  ],
+  "assembly": {
+    "records": [
+      {
+        "index": 0,
+        "time_seconds": 1,
+        "values": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false,
+        "current_counts": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "last_completed": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "position": 1,
+        "completed_windows": 0,
+        "has_completed": false,
+        "buses": [
+          0,
+          336860180,
+          31,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "index": 1,
+        "time_seconds": 2,
+        "values": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false,
+        "current_counts": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "last_completed": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "position": 2,
+        "completed_windows": 0,
+        "has_completed": false,
+        "buses": [
+          1,
+          336860180,
+          31,
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "index": 2,
+        "time_seconds": 3,
+        "values": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false,
+        "current_counts": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "last_completed": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "position": 3,
+        "completed_windows": 0,
+        "has_completed": false,
+        "buses": [
+          2,
+          336860180,
+          31,
+          0,
+          0,
+          3
+        ]
+      },
+      {
+        "index": 3,
+        "time_seconds": 4,
+        "values": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false,
+        "current_counts": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "last_completed": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "position": 4,
+        "completed_windows": 0,
+        "has_completed": false,
+        "buses": [
+          3,
+          336860180,
+          31,
+          0,
+          0,
+          4
+        ]
+      },
+      {
+        "index": 4,
+        "time_seconds": 5,
+        "values": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false,
+        "current_counts": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "last_completed": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "position": 5,
+        "completed_windows": 0,
+        "has_completed": false,
+        "buses": [
+          4,
+          336860180,
+          31,
+          0,
+          0,
+          5
+        ]
+      },
+      {
+        "index": 5,
+        "time_seconds": 6,
+        "values": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false,
+        "current_counts": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "last_completed": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "position": 6,
+        "completed_windows": 0,
+        "has_completed": false,
+        "buses": [
+          5,
+          336860180,
+          31,
+          0,
+          0,
+          6
+        ]
+      },
+      {
+        "index": 6,
+        "time_seconds": 7,
+        "values": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false,
+        "current_counts": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "last_completed": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "position": 7,
+        "completed_windows": 0,
+        "has_completed": false,
+        "buses": [
+          6,
+          336860180,
+          31,
+          0,
+          0,
+          7
+        ]
+      },
+      {
+        "index": 7,
+        "time_seconds": 8,
+        "values": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false,
+        "current_counts": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "last_completed": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "position": 8,
+        "completed_windows": 0,
+        "has_completed": false,
+        "buses": [
+          7,
+          336860180,
+          31,
+          0,
+          0,
+          8
+        ]
+      },
+      {
+        "index": 8,
+        "time_seconds": 9,
+        "values": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false,
+        "current_counts": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "last_completed": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "position": 9,
+        "completed_windows": 0,
+        "has_completed": false,
+        "buses": [
+          8,
+          336860180,
+          31,
+          0,
+          0,
+          9
+        ]
+      },
+      {
+        "index": 9,
+        "time_seconds": 10,
+        "values": [
+          100,
+          100,
+          100,
+          100
+        ],
+        "connectivity_mask": 15,
+        "valid": true,
+        "raw_mask": 15,
+        "range_mask": 0,
+        "effective_mask": 15,
+        "k": 4,
+        "warning": "DANGER",
+        "warning_code": 2,
+        "emergency": true,
+        "fault": false,
+        "current_counts": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "last_completed": {
+          "V": 1,
+          "T": 1,
+          "G": 1,
+          "A": 1,
+          "readings": 4,
+          "abnormal_samples": 1,
+          "faults": 0
+        },
+        "position": 0,
+        "completed_windows": 1,
+        "has_completed": true,
+        "buses": [
+          9,
+          1684300900,
+          1010175,
+          0,
+          4460817,
+          1040
+        ]
+      },
+      {
+        "index": 10,
+        "time_seconds": 11,
+        "values": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "connectivity_mask": 15,
+        "valid": true,
+        "raw_mask": 0,
+        "range_mask": 0,
+        "effective_mask": 0,
+        "k": 0,
+        "warning": "NORMAL",
+        "warning_code": 0,
+        "emergency": false,
+        "fault": false,
+        "current_counts": {
+          "V": 0,
+          "T": 0,
+          "G": 0,
+          "A": 0,
+          "readings": 0,
+          "abnormal_samples": 0,
+          "faults": 0
+        },
+        "last_completed": {
+          "V": 1,
+          "T": 1,
+          "G": 1,
+          "A": 1,
+          "readings": 4,
+          "abnormal_samples": 1,
+          "faults": 0
+        },
+        "position": 1,
+        "completed_windows": 1,
+        "has_completed": true,
+        "buses": [
+          10,
+          336860180,
+          31,
+          0,
+          4460817,
+          1041
+        ]
+      }
+    ],
+    "summary": {
+      "total_samples": 11,
+      "valid_samples": 11,
+      "fault_samples": 0,
+      "current_warning": "NORMAL",
+      "last_valid_warning": "NORMAL",
+      "worst_valid_warning": "DANGER",
+      "report_status": "DANGER",
+      "statistics": {
+        "V": {
+          "count": 11,
+          "minimum": 20,
+          "maximum": 100,
+          "sum": 300,
+          "average_x100": 2727
+        },
+        "T": {
+          "count": 11,
+          "minimum": 20,
+          "maximum": 100,
+          "sum": 300,
+          "average_x100": 2727
+        },
+        "G": {
+          "count": 11,
+          "minimum": 20,
+          "maximum": 100,
+          "sum": 300,
+          "average_x100": 2727
+        },
+        "A": {
+          "count": 11,
+          "minimum": 20,
+          "maximum": 100,
+          "sum": 300,
+          "average_x100": 2727
+        }
+      }
+    },
+    "reports": [
+      "REPORT AVERAGE V 27.27",
+      "REPORT AVERAGE T 27.27",
+      "REPORT AVERAGE G 27.27",
+      "REPORT AVERAGE A 27.27",
+      "REPORT STATUS DANGER"
+    ]
+  },
+  "comparison": {
+    "equal": true,
+    "first_difference": null
+  },
+  "tool_outputs": {
+    "logisim": {
+      "stdout": "0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0\t0000\n0000 0000 0000 0000 0000 0000 0000 0000\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0001\t1\t0000\n0000 0000 0000 0000 0000 0000 0000 0000\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0001\t0\t0000\n0000 0000 0000 0000 0000 0000 0000 0001\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0010\t1\t0000\n0000 0000 0000 0000 0000 0000 0000 0001\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0010\t0\t0000\n0000 0000 0000 0000 0000 0000 0000 0010\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0011\t1\t0000\n0000 0000 0000 0000 0000 0000 0000 0010\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0011\t0\t0000\n0000 0000 0000 0000 0000 0000 0000 0011\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0100\t1\t0000\n0000 0000 0000 0000 0000 0000 0000 0011\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0100\t0\t0000\n0000 0000 0000 0000 0000 0000 0000 0100\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0101\t1\t0000\n0000 0000 0000 0000 0000 0000 0000 0100\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0101\t0\t0000\n0000 0000 0000 0000 0000 0000 0000 0101\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0110\t1\t0000\n0000 0000 0000 0000 0000 0000 0000 0101\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0110\t0\t0000\n0000 0000 0000 0000 0000 0000 0000 0110\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0111\t1\t0000\n0000 0000 0000 0000 0000 0000 0000 0110\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0111\t0\t0000\n0000 0000 0000 0000 0000 0000 0000 0111\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 1000\t1\t0000\n0000 0000 0000 0000 0000 0000 0000 0111\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 1000\t0\t0000\n0000 0000 0000 0000 0000 0000 0000 1000\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 1001\t1\t0000\n0000 0000 0000 0000 0000 0000 0000 1000\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0000 0000 0000 0000 0000 1001\t0\t0000\n0000 0000 0000 0000 0000 0000 0000 1001\t0110 0100 0110 0100 0110 0100 0110 0100\t0000 0000 0000 1111 0110 1001 1111 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0100 0100 0001 0001 0001 0001\t0000 0000 0000 0000 0000 0100 0001 0000\t1\t0000\n0000 0000 0000 0000 0000 0000 0000 1001\t0110 0100 0110 0100 0110 0100 0110 0100\t0000 0000 0000 1111 0110 1001 1111 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0100 0100 0001 0001 0001 0001\t0000 0000 0000 0000 0000 0100 0001 0000\t0\t0000\n0000 0000 0000 0000 0000 0000 0000 1010\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0100 0100 0001 0001 0001 0001\t0000 0000 0000 0000 0000 0100 0001 0001\t1\t0000\n0000 0000 0000 0000 0000 0000 0000 1010\t0001 0100 0001 0100 0001 0100 0001 0100\t0000 0000 0000 0000 0000 0000 0001 1111\t0000 0000 0000 0000 0000 0000 0000 0000\t0000 0000 0100 0100 0001 0001 0001 0001\t0000 0000 0000 0000 0000 0100 0001 0001\t0\t0000\n",
+      "stderr": "[main] ERROR com.cburch.logisim.gui.start.TtyInterface - halted due to halt pin\n",
+      "exit_code": 0
+    },
+    "assembly": {
+      "stdout": "VMASM 1\nR 0 336860180 31 0 0 1\nR 1 336860180 31 0 0 2\nR 2 336860180 31 0 0 3\nR 3 336860180 31 0 0 4\nR 4 336860180 31 0 0 5\nR 5 336860180 31 0 0 6\nR 6 336860180 31 0 0 7\nR 7 336860180 31 0 0 8\nR 8 336860180 31 0 0 9\nR 9 1684300900 1010175 0 4460817 1040\nR 10 336860180 31 0 4460817 1041\nS V 11 20 100 300 2727\nREPORT AVERAGE V 27.27\nS T 11 20 100 300 2727\nREPORT AVERAGE T 27.27\nS G 11 20 100 300 2727\nREPORT AVERAGE G 27.27\nS A 11 20 100 300 2727\nREPORT AVERAGE A 27.27\nSUMMARY 11 11 0 0 2\nREPORT STATUS DANGER\nEND 11\n",
+      "stderr": "",
+      "exit_code": 0
+    }
+  }
+}

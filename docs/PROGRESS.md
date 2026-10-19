@@ -27,8 +27,8 @@ Verification: checked local Markdown link targets, scanned for stale old-filenam
 | 8 | Website shell and theme | Complete | reports/stage8/; real browser, typecheck/build and HTTP startup |
 | 9 | Website-to-hardware integration | Complete | reports/stage9/; seven controller tests; ten actual browser commits and pending reset |
 | 10 | Visualization and replay views | Complete | reports/stage10/review.md; ten frontend regressions and actual window/history/source browser checks |
-| 11 | Integrated validation and performance | Not started | None |
-| 12 | Submission and packaging | Not started | None |
+| 11 | Integrated validation and performance | Complete | Eight real independent cases, ten browser groups,20 timing runs, full make check; reports/stage11/ |
+| 12 | Submission and packaging | In progress | Local serving/report/package implemented; release reproduction pending |
 | Optional 13 | Persistent live bridge | Deferred | Baseline and measured need required |
 
 ## Stage 0 completion - 19 October 2026

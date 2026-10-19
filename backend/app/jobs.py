@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import shutil
 import tempfile
+from time import perf_counter
 from .asm_parser import parse_assembly
 from .codec import encode_memory, encode_native
 from .compare import compare
@@ -46,6 +47,8 @@ def dependencies(root: Path) -> dict:
 
 
 async def evaluate(root: Path, runtime: Path, job: dict) -> tuple[str, Path]:
+    evaluation_started = perf_counter()
+    timings = {}
     output = (
         runtime
         / job["session"]
@@ -113,12 +116,18 @@ async def evaluate(root: Path, runtime: Path, job: dict) -> tuple[str, Path]:
                 ],
                 preferences=prefs,
             )
+            timings["setup_ms"] = (perf_counter() - evaluation_started) * 1000
+            tool_started = perf_counter()
             hardware_output = await run_process(
                 args, output, "logisim", timeout=60, cwd=root
             )
+        timings["logisim_process_ms"] = (perf_counter() - tool_started) * 1000
+        parsing_started = perf_counter()
         validate_exit(hardware_output.returncode, hardware_output.stderr)
         hardware = parse_logisim_trace(hardware_output.stdout, schema, samples)
+        parsing_seconds = perf_counter() - parsing_started
         write_json(output / "decoded-hardware.json", hardware)
+        tool_started = perf_counter()
         native_output = await run_process(
             [str(output / "monitor")],
             output,
@@ -127,6 +136,8 @@ async def evaluate(root: Path, runtime: Path, job: dict) -> tuple[str, Path]:
             timeout=5,
             cwd=root,
         )
+        timings["assembly_process_ms"] = (perf_counter() - tool_started) * 1000
+        parsing_started = perf_counter()
         if native_output.returncode or native_output.stderr:
             raise ValueError(
                 f"native process failed: exit={native_output.returncode}; {native_output.stderr}"
@@ -134,6 +145,11 @@ async def evaluate(root: Path, runtime: Path, job: dict) -> tuple[str, Path]:
         native = parse_assembly(native_output.stdout, samples)
         write_json(output / "decoded-assembly.json", native)
         comparison = compare(hardware, native["records"])
+        timings["parse_compare_ms"] = (
+            parsing_seconds + perf_counter() - parsing_started
+        ) * 1000
+        timings["evaluation_ms"] = (perf_counter() - evaluation_started) * 1000
+        manifest["timings_ms"] = timings
         write_json(output / "comparison.json", comparison)
         manifest.update(
             status="succeeded" if comparison["equal"] else "mismatch",

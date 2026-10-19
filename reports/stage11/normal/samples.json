@@ -1,0 +1,13 @@
+[
+  {
+    "connectivity_mask": 15,
+    "index": 0,
+    "time_seconds": 1,
+    "values": [
+      20,
+      20,
+      20,
+      20
+    ]
+  }
+]

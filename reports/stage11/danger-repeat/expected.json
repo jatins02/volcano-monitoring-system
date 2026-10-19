@@ -1,0 +1,125 @@
+{
+  "snapshots": [
+    {
+      "index": 0,
+      "time_seconds": 1,
+      "values": [
+        71,
+        61,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 3,
+      "range_mask": 0,
+      "effective_mask": 3,
+      "k": 2,
+      "warning": "DANGER",
+      "warning_code": 2,
+      "emergency": true,
+      "fault": false,
+      "current_counts": {
+        "V": 1,
+        "T": 1,
+        "G": 0,
+        "A": 0,
+        "readings": 2,
+        "abnormal_samples": 1,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 1,
+      "completed_windows": 0,
+      "has_completed": false
+    },
+    {
+      "index": 1,
+      "time_seconds": 2,
+      "values": [
+        71,
+        61,
+        20,
+        20
+      ],
+      "connectivity_mask": 15,
+      "valid": true,
+      "raw_mask": 3,
+      "range_mask": 0,
+      "effective_mask": 3,
+      "k": 2,
+      "warning": "DANGER",
+      "warning_code": 2,
+      "emergency": true,
+      "fault": false,
+      "current_counts": {
+        "V": 2,
+        "T": 2,
+        "G": 0,
+        "A": 0,
+        "readings": 4,
+        "abnormal_samples": 2,
+        "faults": 0
+      },
+      "last_completed": {
+        "V": 0,
+        "T": 0,
+        "G": 0,
+        "A": 0,
+        "readings": 0,
+        "abnormal_samples": 0,
+        "faults": 0
+      },
+      "position": 2,
+      "completed_windows": 0,
+      "has_completed": false
+    }
+  ],
+  "summary": {
+    "total_samples": 2,
+    "valid_samples": 2,
+    "fault_samples": 0,
+    "current_warning": "DANGER",
+    "last_valid_warning": "DANGER",
+    "worst_valid_warning": "DANGER",
+    "report_status": "DANGER",
+    "statistics": {
+      "V": {
+        "count": 2,
+        "minimum": 71,
+        "maximum": 71,
+        "sum": 142,
+        "average_x100": 7100
+      },
+      "T": {
+        "count": 2,
+        "minimum": 61,
+        "maximum": 61,
+        "sum": 122,
+        "average_x100": 6100
+      },
+      "G": {
+        "count": 2,
+        "minimum": 20,
+        "maximum": 20,
+        "sum": 40,
+        "average_x100": 2000
+      },
+      "A": {
+        "count": 2,
+        "minimum": 20,
+        "maximum": 20,
+        "sum": 40,
+        "average_x100": 2000
+      }
+    }
+  }
+}

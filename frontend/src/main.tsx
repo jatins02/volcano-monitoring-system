@@ -10,9 +10,12 @@ import { SCENARIOS } from "./scenarios";
 import { download, reportHtml } from "./exports";
 import type { Input } from "./types";
 import "./style.css";
+const storageKey = new URLSearchParams(location.search).has("qa")
+  ? "volcano.qa.session"
+  : "volcano.session";
 const controller = new LabController(api, {
-  getItem: (key) => localStorage.getItem(key),
-  setItem: (key, value) => localStorage.setItem(key, value),
+  getItem: () => localStorage.getItem(storageKey),
+  setItem: (_key, value) => localStorage.setItem(storageKey, value),
 });
 function App() {
   const [draft, setDraft] = useState(defaults),

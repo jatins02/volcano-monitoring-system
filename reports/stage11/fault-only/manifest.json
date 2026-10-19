@@ -1,0 +1,55 @@
+{
+  "id": "204c9920-2f62-4ba4-b325-846dde15abb7",
+  "session": "1155ac73-e04b-4e38-8aa3-b24cdc74be67",
+  "generation": 0,
+  "revision": 1,
+  "input_hash": "4c970a9c74ebe242be69918041a72726cf8c463e2170aca4c79903594c06489d",
+  "started_at": "2026-10-19T03:27:14.624352+00:00",
+  "status": "succeeded",
+  "sample_count": 1,
+  "rule_hash": "51e30574de5f11febc057f0c5c70fcd3990365b024ee459e07a8d3e6ec31be84",
+  "native": {
+    "source_sha256": "c5c821b07314796fc628f3bf4f6c52f098148b7e11bc85132e4be72246d7f8fb",
+    "rules_sha256": "4e07c7995732202fc256ac01446668f9c8920d2238eb68fb3f291582ed6554b9",
+    "executable_sha256": "70daa98da5b796993912736534871d0012fb8d84152c6564b95a29f7737b8384",
+    "rule_hash": "51e30574de5f11febc057f0c5c70fcd3990365b024ee459e07a8d3e6ec31be84"
+  },
+  "tools": {
+    "node": {
+      "version": "22.22.0",
+      "url": "https://nodejs.org/dist/v22.22.0/node-v22.22.0-linux-x64.tar.xz",
+      "sha256": "9aa8e9d2298ab68c600bd6fb86a6c13bce11a4eca1ba9b39d79fa021755d7c37",
+      "archive": "tar.xz",
+      "install_directory": "tools/node",
+      "npm_version": "10.9.4"
+    },
+    "java": {
+      "version": "21.0.12.1",
+      "url": "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.12.1%2B1/OpenJDK21U-jre_x64_linux_hotspot_21.0.12.1_1.tar.gz",
+      "sha256": "2413149700df0f7d440500a84a8f764c535f21e5a5e87d38328b64eec2c5b500",
+      "archive": "tar.gz",
+      "install_directory": "tools/java"
+    },
+    "logisim": {
+      "version": "4.1.0",
+      "url": "https://github.com/logisim-evolution/logisim-evolution/releases/download/v4.1.0/logisim-evolution-4.1.0-all.jar",
+      "sha256": "fe6386a3217a591bcc311a4eda49e1f43a389b499dd3d0f6f40f344fc85f2577",
+      "archive": "jar",
+      "install_path": "tools/logisim-evolution-4.1.0-all.jar",
+      "minimum_java": 21
+    }
+  },
+  "circuit_sha256": "93d7580ef3ad4f8067f378285f3048a5f49e0392361dd8f52dc8b6adff279faf",
+  "source_sha256": "c5c821b07314796fc628f3bf4f6c52f098148b7e11bc85132e4be72246d7f8fb",
+  "executable_sha256": "70daa98da5b796993912736534871d0012fb8d84152c6564b95a29f7737b8384",
+  "timings_ms": {
+    "setup_ms": 116.07484800333623,
+    "logisim_process_ms": 986.5965950011741,
+    "assembly_process_ms": 1.242578000528738,
+    "parse_compare_ms": 0.4980809899279848,
+    "evaluation_ms": 1104.8210870067123
+  },
+  "logisim_exit": 0,
+  "assembly_exit": 0,
+  "finished_at": "2026-10-19T03:27:15.728995+00:00"
+}

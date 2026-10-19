@@ -1,0 +1,58 @@
+[
+  {
+    "case": "normal",
+    "samples": 1,
+    "independent_expected_match": true,
+    "hardware_native_match": true,
+    "round_trip_ms": 1188.994725001976
+  },
+  {
+    "case": "watch",
+    "samples": 1,
+    "independent_expected_match": true,
+    "hardware_native_match": true,
+    "round_trip_ms": 1175.4720399912912
+  },
+  {
+    "case": "danger-repeat",
+    "samples": 2,
+    "independent_expected_match": true,
+    "hardware_native_match": true,
+    "round_trip_ms": 1143.5703500028467
+  },
+  {
+    "case": "recovery",
+    "samples": 2,
+    "independent_expected_match": true,
+    "hardware_native_match": true,
+    "round_trip_ms": 1151.388993996079
+  },
+  {
+    "case": "fault-only",
+    "samples": 1,
+    "independent_expected_match": true,
+    "hardware_native_match": true,
+    "round_trip_ms": 1178.1962590030162
+  },
+  {
+    "case": "window-boundary",
+    "samples": 11,
+    "independent_expected_match": true,
+    "hardware_native_match": true,
+    "round_trip_ms": 1174.3679250066634
+  },
+  {
+    "case": "fault-tenth",
+    "samples": 10,
+    "independent_expected_match": true,
+    "hardware_native_match": true,
+    "round_trip_ms": 1162.148443996557
+  },
+  {
+    "case": "required-statistics",
+    "samples": 2,
+    "independent_expected_match": true,
+    "hardware_native_match": true,
+    "round_trip_ms": 1173.0252069974085
+  }
+]
