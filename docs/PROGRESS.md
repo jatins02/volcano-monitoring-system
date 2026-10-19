@@ -24,7 +24,7 @@ Verification: checked local Markdown link targets, scanned for stale old-filenam
 | 5 | Replay harness and wire protocol | Complete | 17 actual scenarios, malformed-image failures and post-review full check; reports/stage5/ |
 | 6 | Assembly analyser | Complete | Twelve actual hardware comparisons, statistics and malformed/I/O checks; reports/stage6/ |
 | 7 | Backend and sessions | Complete | Real HTTP/tool workflows and failure/lifecycle tests; reports/stage7/ |
-| 8 | Website shell and theme | Not started | None |
+| 8 | Website shell and theme | Complete | reports/stage8/; real browser, typecheck/build and HTTP startup |
 | 9 | Website-to-hardware integration | Not started | None |
 | 10 | Visualization and replay views | Not started | None |
 | 11 | Integrated validation and performance | Not started | None |

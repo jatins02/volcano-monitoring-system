@@ -40,9 +40,9 @@ def check_server(root: Path, port: int) -> None:
                             f"http://127.0.0.1:{port}/src/main.tsx", timeout=2,
                         ) as response:
                             module = response.read().decode("utf-8")
-                        if "Volcano Monitor - toolchain setup" not in html:
+                        if "Volcano Monitor Laboratory" not in html:
                             raise ValueError("unexpected page served by Vite")
-                        if "No simulation has been run" not in module:
+                        if "createRoot" not in module:
                             raise ValueError("setup module was not transformed/served")
                         return
                     except (urllib.error.URLError, TimeoutError):
