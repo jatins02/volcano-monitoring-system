@@ -58,11 +58,24 @@ def check() -> None:
     # fresh build outputs, SQLite and jobs; no app build/session files are copied.
     with tempfile.TemporaryDirectory(prefix="volcano-release-") as directory:
         checkout = Path(directory) / "source"
-        subprocess.run(
-            ["git", "clone", "--local", "--no-hardlinks", str(ROOT), str(checkout)],
-            check=True,
+        cloned = subprocess.run(
+            [
+                "git",
+                "-c",
+                f"safe.directory={ROOT}",
+                "-c",
+                f"safe.directory={ROOT}/.git",
+                "clone",
+                "--local",
+                "--no-hardlinks",
+                str(ROOT),
+                str(checkout),
+            ],
             capture_output=True,
+            text=True,
         )
+        if cloned.returncode:
+            raise ValueError(f"Clean source clone failed: {cloned.stderr}")
         for name in ["tools/node", "tools/java", "frontend/node_modules", ".venv"]:
             target = checkout / name
             target.parent.mkdir(parents=True, exist_ok=True)
