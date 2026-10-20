@@ -10,6 +10,7 @@
     "Validity",
     "WarningLogic",
     "MonitorCore",
+    "MonitorAux",
     "MonitorGUI",
     "ReplayHarness"
   ],
@@ -384,7 +385,7 @@
         "output": true
       }
     ],
-    "MonitorGUI": [
+    "MonitorAux": [
       {
         "label": "V",
         "location": "(100,100)",
@@ -416,116 +417,214 @@
         "output": false
       },
       {
-        "label": "clk",
+        "label": "bV",
         "location": "(100,300)",
         "width": 1,
         "output": false
       },
       {
-        "label": "reset",
+        "label": "bT",
         "location": "(100,340)",
         "width": 1,
         "output": false
       },
       {
-        "label": "sample_enable",
+        "label": "bG",
         "location": "(100,380)",
         "width": 1,
         "output": false
       },
       {
+        "label": "bA",
+        "location": "(100,420)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "eV",
+        "location": "(100,460)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "eT",
+        "location": "(100,500)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "eG",
+        "location": "(100,540)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "eA",
+        "location": "(100,580)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "k",
+        "location": "(100,620)",
+        "width": 3,
+        "output": false
+      },
+      {
+        "label": "watch",
+        "location": "(100,660)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "danger",
+        "location": "(100,700)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "clk",
+        "location": "(100,740)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "reset",
+        "location": "(100,780)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "sample_enable",
+        "location": "(100,820)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "valid",
+        "location": "(2200,100)",
+        "width": 1,
+        "output": true
+      },
+      {
         "label": "status",
-        "location": "(1850,100)",
+        "location": "(2200,140)",
         "width": 32,
         "output": true
       },
       {
-        "label": "raw_mask",
-        "location": "(1850,140)",
-        "width": 4,
-        "output": true
-      },
-      {
-        "label": "range_mask",
-        "location": "(1850,180)",
-        "width": 4,
-        "output": true
-      },
-      {
-        "label": "sensor_fault_mask",
-        "location": "(1850,220)",
-        "width": 4,
-        "output": true
-      },
-      {
-        "label": "valid",
-        "location": "(1850,260)",
-        "width": 1,
-        "output": true
-      },
-      {
-        "label": "effective_mask",
-        "location": "(1850,300)",
-        "width": 4,
-        "output": true
-      },
-      {
-        "label": "k",
-        "location": "(1850,340)",
-        "width": 3,
-        "output": true
-      },
-      {
-        "label": "warning",
-        "location": "(1850,380)",
-        "width": 2,
-        "output": true
-      },
-      {
-        "label": "emergency",
-        "location": "(1850,420)",
-        "width": 1,
-        "output": true
-      },
-      {
-        "label": "normal",
-        "location": "(1850,460)",
-        "width": 1,
-        "output": true
-      },
-      {
-        "label": "watch",
-        "location": "(1850,500)",
-        "width": 1,
-        "output": true
-      },
-      {
-        "label": "danger",
-        "location": "(1850,540)",
-        "width": 1,
-        "output": true
-      },
-      {
-        "label": "fault",
-        "location": "(1850,580)",
-        "width": 1,
-        "output": true
-      },
-      {
         "label": "current_counts",
-        "location": "(1850,620)",
+        "location": "(2200,180)",
         "width": 32,
         "output": true
       },
       {
         "label": "last_completed",
-        "location": "(1850,660)",
+        "location": "(2200,220)",
         "width": 32,
         "output": true
       },
       {
         "label": "window_meta",
-        "location": "(1850,700)",
+        "location": "(2200,260)",
+        "width": 32,
+        "output": true
+      },
+      {
+        "label": "V_fault",
+        "location": "(2200,300)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "T_fault",
+        "location": "(2200,340)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "G_fault",
+        "location": "(2200,380)",
+        "width": 1,
+        "output": true
+      },
+      {
+        "label": "A_fault",
+        "location": "(2200,420)",
+        "width": 1,
+        "output": true
+      }
+    ],
+    "MonitorGUI": [
+      {
+        "label": "V",
+        "location": "(100,140)",
+        "width": 8,
+        "output": false
+      },
+      {
+        "label": "T",
+        "location": "(100,260)",
+        "width": 8,
+        "output": false
+      },
+      {
+        "label": "G",
+        "location": "(100,380)",
+        "width": 8,
+        "output": false
+      },
+      {
+        "label": "A",
+        "location": "(100,500)",
+        "width": 8,
+        "output": false
+      },
+      {
+        "label": "mask",
+        "location": "(100,650)",
+        "width": 4,
+        "output": false
+      },
+      {
+        "label": "clk",
+        "location": "(100,720)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "reset",
+        "location": "(100,790)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "sample_enable",
+        "location": "(100,860)",
+        "width": 1,
+        "output": false
+      },
+      {
+        "label": "status",
+        "location": "(340,1120)",
+        "width": 32,
+        "output": true
+      },
+      {
+        "label": "current_counts",
+        "location": "(690,1120)",
+        "width": 32,
+        "output": true
+      },
+      {
+        "label": "last_completed",
+        "location": "(1040,1120)",
+        "width": 32,
+        "output": true
+      },
+      {
+        "label": "window_meta",
+        "location": "(1390,1120)",
         "width": 32,
         "output": true
       }

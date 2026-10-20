@@ -1,6 +1,7 @@
 """Actual CLI checks of both submitted core and GUI using independent fixtures."""
 
 import json
+import tempfile
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
@@ -27,6 +28,77 @@ def status_word(expected: dict, mask: int) -> int:
         | int(expected["fault"]) << 15
         | expected["raw_mask"] << 16
         | expected["range_mask"] << 20
+    )
+
+
+def check_expanded_gui(root: Path) -> None:
+    """Replay the expanded GUI through the real harness, including its counters."""
+    from backend.app.hardware import replay
+    from tests.reference_model import Sample, evaluate_session
+
+    output = root / "runtime/circuit-schematic"
+    output.mkdir(parents=True, exist_ok=True)
+    project = ET.parse(root / "circuit/volcano.circ")
+    from scripts.replay_hardware import build_replay
+
+    harness = project.find("./circuit[@name='ReplayHarness']")
+    project.getroot().remove(harness)
+    gui = project.find("./circuit[@name='MonitorGUI']")
+    inputs, outputs = [], []
+    for pin in gui.findall("comp[@name='Pin']"):
+        attrs = {a.get("name"): a.get("val") for a in pin.findall("a")}
+        (outputs if attrs["output"] == "true" else inputs).append(
+            (attrs["label"], int(attrs["width"]))
+        )
+    build_replay(project.getroot(), CircuitInterface("MonitorGUI", inputs, outputs))
+    normal = Sample((20, 20, 20, 20))
+    scenarios = {
+        "window-boundary": [normal] * 9 + [Sample((71, 61, 66, 71)), normal],
+        "full-fault-and-warning-session": [
+            normal,
+            Sample((71, 61, 20, 20)),
+            Sample((101, 20, 20, 20)),
+            Sample((70, 60, 65, 70), 7),
+        ]
+        * 150,
+    }
+    with tempfile.TemporaryDirectory(dir=output, prefix="gui-") as directory:
+        test_root = Path(directory).resolve()
+        (test_root / "circuit").mkdir()
+        (test_root / "tools").symlink_to(root / "tools", target_is_directory=True)
+        project.write(test_root / "circuit/volcano.circ", encoding="utf-8")
+        pins = []
+        for pin in project.find("./circuit[@name='ReplayHarness']").findall(
+            "comp[@name='Pin']"
+        ):
+            attrs = {a.get("name"): a.get("val") for a in pin.findall("a")}
+            pins.append(
+                {
+                    "name": attrs["label"],
+                    "width": int(attrs["width"]),
+                    "location": pin.get("loc"),
+                }
+            )
+        schema = {
+            "version": 1,
+            "top_level": "ReplayHarness",
+            "columns": pins[:-1],
+            "halt": pins[-1],
+        }
+        (test_root / "circuit/output-schema.json").write_text(json.dumps(schema))
+        for name, samples in scenarios.items():
+            inputs = [
+                {"values": list(row.values), "connectivity_mask": row.connectivity_mask}
+                for row in samples
+            ]
+            actual = replay(test_root, inputs, output / name)
+            expected = evaluate_session(samples)["snapshots"]
+            if [
+                {k: v for k, v in row.items() if k != "buses"} for row in actual
+            ] != expected:
+                raise ValueError(f"expanded GUI replay mismatch: {name}")
+    print(
+        "Expanded MonitorGUI: 11-sample window and 600-sample fault/warning replay passed"
     )
 
 
@@ -125,6 +197,7 @@ def check(root: Path = ROOT) -> int:
         )
         + "\n"
     )
+    check_expanded_gui(root)
     print(
         f"Combinational hardware: {len(cases)} independent fixture cases passed for core and GUI"
     )

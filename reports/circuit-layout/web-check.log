@@ -1,0 +1,124 @@
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B scripts/generate_rules.py --check
+Generated rules are current.
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B scripts/verify_circuit_rules.py
+Mapped circuit constants and interfaces match the submitted hardware.
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && sh scripts/npm.sh run build --prefix frontend
+
+> volcano-monitoring-system@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 44 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.41 kB │ gzip:  0.28 kB
+dist/assets/index-CMcTPXzQ.css    8.25 kB │ gzip:  2.74 kB
+dist/assets/index-DLLauaSN.js   235.74 kB │ gzip: 74.34 kB
+✓ built in 770ms
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && tools/node/bin/node scripts/test_web.mjs
+TAP version 13
+# Subtest: runtime/web-tests/controller.test.mjs
+ok 1 - runtime/web-tests/controller.test.mjs
+  ---
+  duration_ms: 224.578479
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 231.074019
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && sh scripts/npm.sh run format:check --prefix frontend
+
+> volcano-monitoring-system@0.1.0 format:check
+> prettier --check src --ignore-path .prettierignore
+
+Checking formatting...
+All matched files use Prettier code style!
+TAP version 13
+# Subtest: double Apply is locked synchronously and failed accepted history is retained
+ok 1 - double Apply is locked synchronously and failed accepted history is retained
+  ---
+  duration_ms: 1.896094
+  type: 'test'
+  ...
+# Subtest: Retry re-evaluates without another reading
+ok 2 - Retry re-evaluates without another reading
+  ---
+  duration_ms: 0.376757
+  type: 'test'
+  ...
+# Subtest: reset invalidates an in-flight result even when transport ignores abort
+ok 3 - reset invalidates an in-flight result even when transport ignores abort
+  ---
+  duration_ms: 5.590372
+  type: 'test'
+  ...
+# Subtest: historical view cannot submit and Pause prevents following commits
+ok 4 - historical view cannot submit and Pause prevents following commits
+  ---
+  duration_ms: 6.077645
+  type: 'test'
+  ...
+# Subtest: 409 refreshes shared session without silently applying stale draft
+ok 5 - 409 refreshes shared session without silently applying stale draft
+  ---
+  duration_ms: 0.374424
+  type: 'test'
+  ...
+# Subtest: result guards reject wrong session, generation, revision, input hash and rule hash
+ok 6 - result guards reject wrong session, generation, revision, input hash and rule hash
+  ---
+  duration_ms: 0.171358
+  type: 'test'
+  ...
+# Subtest: malformed accepted history is rejected at network boundary
+ok 7 - malformed accepted history is rejected at network boundary
+  ---
+  duration_ms: 0.494418
+  type: 'test'
+  ...
+# Subtest: actual saved result is accepted; missing native rows and unknown bits fail closed
+ok 8 - actual saved result is accepted; missing native rows and unknown bits fail closed
+  ---
+  duration_ms: 1.154368
+  type: 'test'
+  ...
+# Subtest: HTML exports escape raw output and keep full revision provenance
+ok 9 - HTML exports escape raw output and keep full revision provenance
+  ---
+  duration_ms: 0.88669
+  type: 'test'
+  ...
+# Subtest: all deterministic scenarios stay within explicit input contracts
+ok 10 - all deterministic scenarios stay within explicit input contracts
+  ---
+  duration_ms: 0.445171
+  type: 'test'
+  ...
+# Subtest: digital schematic covers all 16 combinations and all threshold/fault fixtures independently of assembly
+ok 11 - digital schematic covers all 16 combinations and all threshold/fault fixtures independently of assembly
+  ---
+  duration_ms: 142.765364
+  type: 'test'
+  ...
+# Subtest: empty schematic keeps all digital inputs and outputs unknown
+ok 12 - empty schematic keeps all digital inputs and outputs unknown
+  ---
+  duration_ms: 0.850398
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 167.984945

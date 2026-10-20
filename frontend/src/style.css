@@ -628,3 +628,47 @@ datalist {
 .sensor-leds .off {
   background: #fff;
 }
+
+/* Read-only digital schematic: signal color is always paired with a number. */
+.circuit-svg {
+  background: #fff;
+  aspect-ratio: 1040 / 510;
+  max-height: none;
+}
+.circuit-svg .logic-component path,
+.circuit-svg .logic-component rect {
+  fill: white;
+  stroke: #222;
+  stroke-width: 2;
+}
+.circuit-svg .logic-wire path {
+  fill: none;
+  stroke: #164523;
+  stroke-width: 2;
+}
+.circuit-svg .logic-wire.high path {
+  stroke: #15913a;
+  stroke-width: 3;
+}
+.circuit-svg .logic-wire.unknown path {
+  stroke: #8a8a8a;
+  stroke-dasharray: 4 3;
+}
+.circuit-svg .logic-pin,
+.circuit-svg .logic-lamp {
+  stroke: #222;
+  stroke-width: 1.5;
+  fill: #e1e8e2;
+}
+.circuit-svg .logic-pin.high,
+.circuit-svg .logic-lamp.high,
+.circuit-svg .logic-junction.high {
+  fill: #63dc7d;
+}
+.circuit-svg .logic-pin.unknown,
+.circuit-svg .logic-lamp.unknown {
+  fill: #ddd;
+}
+.circuit-svg .logic-junction.low {
+  fill: #164523;
+}

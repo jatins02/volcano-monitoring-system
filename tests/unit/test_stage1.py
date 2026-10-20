@@ -79,6 +79,31 @@ class CircuitMappingTests(WorkspaceTest):
         with self.assertRaisesRegex(ValueError, "differs"):
             verify(self.root)
 
+    def test_unsupported_native_presentation_libraries_are_rejected(self) -> None:
+        path = self.root / "circuit/volcano.circ"
+        original = path.read_text()
+        for identity, descriptor in [("5", "#Input/Output"), ("6", "#Wiring")]:
+            with self.subTest(library=identity):
+                tree = ET.ElementTree(ET.fromstring(original))
+                tree.find(f"./lib[@name='{identity}']").set("desc", descriptor)
+                tree.write(path)
+                with self.assertRaisesRegex(ValueError, "library must be"):
+                    verify(self.root)
+
+    def test_changed_gui_threshold_is_rejected(self) -> None:
+        path = self.root / "circuit/volcano.circ"
+        tree = ET.parse(path)
+        for node in tree.findall("./circuit[@name='MonitorGUI']/comp[@name='Constant']"):
+            label = node.find("a[@name='label']")
+            if label is not None and label.get("val") == "V threshold":
+                node.find("a[@name='value']").set("val", "0x45")
+                break
+        else:
+            self.fail("missing visible V threshold")
+        tree.write(path)
+        with self.assertRaisesRegex(ValueError, "MonitorGUI V: threshold differs"):
+            verify(self.root)
+
     def test_changed_width_is_rejected(self) -> None:
         self.edit_component("width", "7")
         with self.assertRaisesRegex(ValueError, "bus width"):

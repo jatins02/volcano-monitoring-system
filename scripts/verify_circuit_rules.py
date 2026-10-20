@@ -23,6 +23,13 @@ def verify(root: Path) -> None:
             "unexpected or duplicate circuit names; update the explicit core map"
         )
     libraries = {item.get("name"): item.get("desc") for item in project.findall("lib")}
+    for circuit in circuits:
+        for component in circuit.findall("comp"):
+            required = {"LED": "#I/O", "Text": "#Base"}.get(component.get("name"))
+            if required is not None and libraries.get(component.get("lib")) != required:
+                raise ValueError(
+                    f"{component.get('name')} library must be {required}; Logisim may silently discard it"
+                )
     rules = read_json(root / "spec/rules.json")
     seen_ids, seen_locations = set(), set()
     for item in mapping["constants"]:
@@ -70,6 +77,22 @@ def verify(root: Path) -> None:
     ]
     if len(constants) != len(mapping["constants"]):
         raise ValueError("unmapped or duplicate rule-bank constants")
+    gui = next(node for node in circuits if node.get("name") == "MonitorGUI")
+    for sensor in rules["sensor_order"]:
+        matches = [
+            node
+            for node in gui.findall("comp[@name='Constant']")
+            if node.find("a[@name='label']") is not None
+            and node.find("a[@name='label']").get("val") == sensor + " threshold"
+        ]
+        if len(matches) != 1:
+            raise ValueError(f"MonitorGUI {sensor}: missing or duplicate threshold")
+        attrs = {a.get("name"): a.get("val") for a in matches[0].findall("a")}
+        if (
+            int(attrs["value"], 0) != rules["sensors"][sensor]["threshold"]
+            or int(attrs["width"]) != 8
+        ):
+            raise ValueError(f"MonitorGUI {sensor}: threshold differs from rules")
     # Interfaces are physical circuit pins, not illustrative website labels.
     for circuit_name, expected_pins in mapping.get("interfaces", {}).items():
         circuit = next(node for node in circuits if node.get("name") == circuit_name)

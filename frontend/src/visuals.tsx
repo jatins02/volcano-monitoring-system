@@ -1,11 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import type { Counts, Snapshot } from "./types";
 import { RULES } from "./generated-rules";
-import coreMap from "../../circuit/core-map.json";
+import { LogicDiagram } from "./logic-diagram";
 import { RetroButton, StatusLamp } from "./ui";
 const sensors = RULES.sensor_order;
-const bit = (mask: number | undefined, index: number) =>
-  mask === undefined ? "?" : String((mask >> index) & 1);
 const hex = (value: number | undefined) =>
   value === undefined ? "?" : `0x${value.toString(16).padStart(2, "0")}`;
 function CountTable({ label, counts }: { label: string; counts?: Counts }) {
@@ -42,23 +40,16 @@ function CountTable({ label, counts }: { label: string; counts?: Counts }) {
   );
 }
 export function CircuitView({ sample }: { sample?: Snapshot }) {
-  const [view, setView] = useState({ x: 0, y: 0, width: 720 }),
+  const [view, setView] = useState({ x: 0, y: 0, width: 1040 }),
     drag = useRef<{ x: number; y: number } | null>(null);
-  const names = new Set(coreMap.circuits);
-  if (
-    !["SensorCheck", "Validity", "WarningLogic", "WindowCounters"].every((n) =>
-      names.has(n),
-    )
-  )
-    return <p role="alert">Circuit map does not match the visualization.</p>;
   return (
     <>
       <div className="diagram-tools">
-        <span>Circuit visualization · evaluated by Logisim</span>
+        <span>Digital logic · Logisim hardware results</span>
         <RetroButton
           aria-label="Zoom in circuit"
           onClick={() =>
-            setView((v) => ({ ...v, width: Math.max(360, v.width / 1.2) }))
+            setView((v) => ({ ...v, width: Math.max(520, v.width / 1.2) }))
           }
         >
           +
@@ -66,12 +57,12 @@ export function CircuitView({ sample }: { sample?: Snapshot }) {
         <RetroButton
           aria-label="Zoom out circuit"
           onClick={() =>
-            setView((v) => ({ ...v, width: Math.min(1440, v.width * 1.2) }))
+            setView((v) => ({ ...v, width: Math.min(2080, v.width * 1.2) }))
           }
         >
           −
         </RetroButton>
-        <RetroButton onClick={() => setView({ x: 0, y: 0, width: 720 })}>
+        <RetroButton onClick={() => setView({ x: 0, y: 0, width: 1040 })}>
           Reset view
         </RetroButton>
         <a href="/api/circuit/project" download>
@@ -82,8 +73,8 @@ export function CircuitView({ sample }: { sample?: Snapshot }) {
         className="circuit-svg"
         role="img"
         tabIndex={0}
-        aria-label="MonitorCore data flow. Drag or use arrow keys to pan; zoom buttons change scale. Numerical text equivalent follows."
-        viewBox={`${view.x} ${view.y} ${view.width} ${view.width * 0.45}`}
+        aria-label="Four digital inputs feed validity AND gates, three adders and warning comparators. Drag or use arrow keys to pan; zoom buttons change scale. Numerical text equivalent follows."
+        viewBox={`${view.x} ${view.y} ${view.width} ${view.width * 0.49}`}
         onKeyDown={(e) => {
           if (
             !["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)
@@ -136,92 +127,23 @@ export function CircuitView({ sample }: { sample?: Snapshot }) {
           height="5000"
           fill="url(#grid)"
         />
-        <g stroke="#65729b" fill="none" strokeWidth="2">
-          <path d="M142 120H175M325 120H365M490 120H535M610 155V210H375V240M175 240H220M375 265H475" />
-          <path d="M330 120V185H395V210" />
-        </g>
-        <g id="sensor-buses">
-          <rect x="15" y="32" width="126" height="195" />
-          <text x="27" y="54" className="svg-title">
-            Sensor buses / B1
-          </text>
-          {sensors.map((n, i) => (
-            <text key={n} x="27" y={85 + i * 31}>
-              {n}: {sample?.values[i] ?? "?"} / {hex(sample?.values[i])}
-            </text>
-          ))}
-        </g>
-        <g id="SensorCheck">
-          <rect x="175" y="32" width="150" height="142" />
-          <text x="187" y="54" className="svg-title">
-            SensorCheck ×4
-          </text>
-          <text x="187" y="78">
-            unsigned &gt; thresholds
-          </text>
-          <text data-field="raw_mask" x="187" y="102">
-            raw: {sensors.map((_, i) => bit(sample?.raw_mask, i)).join(" ")}
-          </text>
-          <text data-field="range_mask" x="187" y="126">
-            range: {sensors.map((_, i) => bit(sample?.range_mask, i)).join(" ")}
-          </text>
-          <text x="187" y="150">
-            mask: {hex(sample?.connectivity_mask)}
-          </text>
-        </g>
-        <g id="Validity">
-          <rect x="365" y="32" width="125" height="142" />
-          <text x="377" y="54" className="svg-title">
-            Validity / gating
-          </text>
-          <text data-field="valid" x="377" y="83">
-            valid: {sample ? String(+sample.valid) : "?"}
-          </text>
-          <text data-field="effective_mask" x="377" y="108">
-            effective: {hex(sample?.effective_mask)}
-          </text>
-          <text data-field="k" x="377" y="139">
-            K adder: {sample?.k ?? "?"}
-          </text>
-        </g>
-        <g id="WarningLogic">
-          <rect x="535" y="32" width="165" height="142" />
-          <text x="547" y="54" className="svg-title">
-            WarningLogic / B2
-          </text>
-          <text data-field="warning" x="547" y="84">
-            {sample?.warning ?? "UNKNOWN"}
-          </text>
-          <text data-field="emergency" x="547" y="113">
-            alarm: {sample ? String(+sample.emergency) : "?"}
-          </text>
-          <text data-field="fault" x="547" y="142">
-            fault: {sample ? String(+sample.fault) : "?"}
-          </text>
-        </g>
-        <g id="WindowCounters">
-          <rect x="220" y="225" width="200" height="65" />
-          <text x="232" y="248" className="svg-title">
-            WindowCounters / B3
-          </text>
-          <text data-field="position" x="232" y="274">
-            p={sample?.position ?? "?"} · q={sample?.completed_windows ?? "?"}
-          </text>
-        </g>
-        <g id="completed-window-registers">
-          <rect x="475" y="225" width="225" height="65" />
-          <text x="487" y="248" className="svg-title">
-            Completed registers / B4
-          </text>
-          <text x="487" y="274">
-            has_completed: {sample ? String(+sample.has_completed) : "?"}
-          </text>
-        </g>
-        <text x="15" y="315">
-          Architectural view · exposed probes only · clk/reset/commit supplied
-          by ReplayHarness
-        </text>
+        <LogicDiagram sample={sample} />
       </svg>
+      <details className="circuit-explanation">
+        <summary>What do the rectangular components do?</summary>
+        <p>
+          These are digital components, not flowchart decision boxes. “0 ext
+          1→3” adds two leading zero bits to a 0 or 1 so it fits the three-bit
+          adders. “+ (3 bit)” adds its two inputs; the final total K is between
+          0 and 4.
+        </p>
+        <p>
+          “K = 0”, “K = 1” and “K &gt; 1” are comparators. Each outputs 1 when
+          its comparison is true and 0 otherwise. The AND gates also require
+          VALID=1, producing NORMAL, WATCH or DANGER. If VALID=0, the separate
+          NOT gate turns FAULT on.
+        </p>
+      </details>
       <div className="sensor-leds" aria-label="Effective sensor flags">
         {sensors.map((name, i) => {
           const flag =
@@ -247,18 +169,21 @@ export function CircuitView({ sample }: { sample?: Snapshot }) {
           effective {hex(sample?.effective_mask)} · K {sample?.k ?? "unknown"} ·{" "}
           <StatusLamp status={sample?.warning} />
         </p>
-        <CountTable
-          label={`Current partial window · p=${sample?.position ?? "—"}/10`}
-          counts={sample?.current_counts}
-        />
-        <CountTable
-          label={`Last completed window · q=${sample?.completed_windows ?? "—"}${sample?.has_completed ? "" : " · none yet"}`}
-          counts={sample?.has_completed ? sample.last_completed : undefined}
-        />
-        <small>
-          *Samples with at least one abnormal sensor. Fault rows advance the
-          window and do not add abnormal readings.
-        </small>
+        <details id="WindowCounters">
+          <summary>Window counters and completed registers</summary>
+          <CountTable
+            label={`Current partial window · p=${sample?.position ?? "—"}/10`}
+            counts={sample?.current_counts}
+          />
+          <CountTable
+            label={`Last completed window · q=${sample?.completed_windows ?? "—"}${sample?.has_completed ? "" : " · none yet"}`}
+            counts={sample?.has_completed ? sample.last_completed : undefined}
+          />
+          <small>
+            *Samples with at least one abnormal sensor. Fault rows advance the
+            window and do not add abnormal readings.
+          </small>
+        </details>
         <details>
           <summary>Probe values and native editor</summary>
           <pre>
@@ -273,8 +198,9 @@ export function CircuitView({ sample }: { sample?: Snapshot }) {
           </pre>
           <p>
             Open the downloaded project in Logisim-evolution 4.1.0 and select
-            MonitorGUI. This SVG shows the submitted architecture, not an
-            embedded native editor.
+            MonitorGUI. The fixed digital schematic displays hardware results
+            independently of the assembly panel. It is a read-only drawing; the
+            native editor opens separately.
           </p>
         </details>
       </div>

@@ -77,3 +77,18 @@ Jobs snapshot the actual circuit, executable and matching source/rules; stdout/s
 ## Website stages8–10
 
 The baseline circuit display is an architectural SVG mapped to submitted subcircuit names and actual exposed probes, with a native .circ download. No native editor embedding, scientific forecast, register stepping or audio alarm is claimed. Fault drawing intensity is capped while actual transport values remain visible. Historical per-sample outputs are stored snapshots; statistics are explicitly full-revision scope. Dev-only iframe fixtures verify exact CSS viewports in the available narrow browser. Prettier3.6.2 is a locked local development dependency. Stage10 review findings and fixes are in reports/stage10/review.md.
+
+## Approved circuit presentation revision - 19 October 2026
+
+The user explicitly requested numeric V,T,G,A inputs and visible threshold comparators in the native `.circ`, followed by binary ON/OFF signals and digital warning logic. They confirmed that the top-right website panel should show four digital inputs passing through a fixed logic diagram, independently of the assembly panel. The permitted fallback is a read-only Logisim-style drawing; native Logisim embedding is not required. The strict thresholds and existing warning/fault rules are unchanged.
+
+`MonitorGUI` now expands the numeric comparators, validity gates, three-bit adder tree and warning comparators instead of hiding them inside a `MonitorCore` symbol. It is the default circuit on opening the file. `MonitorCore` remains the replay DUT. The expanded GUI is separately verified against the same fixed fixtures and, through a temporary harness substitution, independent 11- and 600-sample expectations. Both use the same `WindowCounters` subcircuit. Threshold integrity checks cover both the shared core bank and the GUI's visible constants.
+
+The browser diagram accepts only the selected hardware snapshot, with no assembly input or diagram-to-assembly connection. Four digital threshold outputs and final warning probes come from that snapshot; pair-sum and comparator wire indications are derived presentation values for the fixed equation. Drafts never update the circuit, and empty results remain unknown. The backend's existing independent Logisim/assembly execution and comparison remain in place.
+
+
+## Native import repair and label clarification - 19 October 2026
+
+The user requested single-line rectangle labels and a native file that imports cleanly and reproduces the website logic. Inspection of the actual downloaded bytes and Logisim's own loader/painters established two unsupported library mappings and overlapping tunnel/component placement. Use native #I/O for LEDs, #Base for Text, real Bit Extender primitives and deliberately spaced/oriented stubs. Numerical fixtures alone do not establish complete visual import; the optional native renderer checks every saved component against the loaded circuit before drawing.
+
+MonitorGUI's visible numeric comparators feed the same validity gates, adder tree and warning comparators as the website. MonitorAux now contains validity/counters/packing. GUI exports are the four status/counter buses; its test harness is built from that declared interface. The production core/harness/protocol is unchanged. Native input pins use unsigned decimal display and defaults20/20/20/20, mask15 and sample_enable1; no reading is counted until a commit edge. Per-sensor abnormal and fault LEDs are preserved. The existing desktop window was not exposed by the computer tool; native file import/rendering was verified instead. Evidence: reports/circuit-layout/verification.md.

@@ -1,0 +1,3 @@
+java.lang.IllegalStateException: MonitorGUI: Logisim loaded 294 of 318 components
+	at RenderCircuit.render(RenderCircuit.java:43)
+	at RenderCircuit.main(RenderCircuit.java:18)

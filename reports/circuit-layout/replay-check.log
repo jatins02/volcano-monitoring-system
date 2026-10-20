@@ -1,0 +1,8 @@
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B -m scripts.check_replay
+Replay: 17 scenarios, 0..600 samples, fresh repeat and 3 malformed images passed
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B scripts/generate_rules.py --check
+Generated rules are current.
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B scripts/verify_circuit_rules.py
+Mapped circuit constants and interfaces match the submitted hardware.
+cd "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system" && python3 -B scripts/logisim.py --smoke
+Logisim toolchain smoke: OK (constant=1, intentional halt)

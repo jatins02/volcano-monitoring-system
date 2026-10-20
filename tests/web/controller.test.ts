@@ -22,3 +22,31 @@ import {validDraft} from '../../frontend/src/controls';
 test('actual saved result is accepted; missing native rows and unknown bits fail closed',()=>{assert.equal(decodeResult(recorded).hardware.length,11);let bad=structuredClone(recorded);bad.assembly.records.pop();assert.throws(()=>decodeResult(bad),/Incomplete native/);bad=structuredClone(recorded);bad.hardware[0]!.buses[1]=-1;assert.throws(()=>decodeResult(bad),/Malformed buses/);});
 test('HTML exports escape raw output and keep full revision provenance',()=>{assert.equal(escapeHtml('<script>"&'), '&lt;script&gt;&quot;&amp;');const r=structuredClone(recorded);r.tool_outputs.assembly.stdout='<script>alert(1)</script>';const html=reportHtml({...empty(),revision:11} as any,r as any);assert(!html.includes('<script>'));assert(html.includes('&lt;script&gt;'));assert(html.includes('confirmed revision 11'));});
 test('all deterministic scenarios stay within explicit input contracts',()=>{assert.equal(SCENARIOS.length,6);for(const scenario of SCENARIOS)for(const row of scenario.samples)assert(validDraft({values:row.values.map(String),mask:row.connectivity_mask,fault:row.fault_injection}));assert.equal(validDraft({values:['','20','20','20'],mask:15,fault:false}),false);assert.equal(validDraft({values:['101','20','20','20'],mask:15,fault:false}),false);});
+
+import {createElement} from '../../frontend/node_modules/react/index.js';
+import {renderToStaticMarkup} from '../../frontend/node_modules/react-dom/server.node.js';
+import {LogicDiagram,logicSignals} from '../../frontend/src/logic-diagram';
+import type {Snapshot} from '../../frontend/src/types';
+import truthTable from '../fixtures/truth_table.json';
+import sensorCases from '../fixtures/sensor_cases.json';
+test('digital schematic covers all 16 combinations and all threshold/fault fixtures independently of assembly',()=>{
+  for(const fixture of [...truthTable.cases,...sensorCases.cases]){
+    const sample={...fixture.input,...fixture.expected} as Snapshot;
+    const signals=logicSignals(sample);
+    assert.equal(signals.sums[0]!+signals.sums[1]!,fixture.expected.k,fixture.id);
+    const html=renderToStaticMarkup(createElement(LogicDiagram,{sample}));
+    for(const [i,name] of ['V','T','G','A'].entries()){
+      assert(html.includes(`data-input="${name}" data-level="${(fixture.expected.raw_mask>>i)&1}"`),fixture.id);
+    }
+    for(const warning of ['NORMAL','WATCH','DANGER']){
+      assert(html.includes(`data-output="${warning}" data-level="${+(fixture.expected.warning===warning)}"`),fixture.id);
+    }
+    if(!sample.valid)assert.deepEqual(signals.effective,[0,0,0,0]);
+  }
+});
+test('empty schematic keeps all digital inputs and outputs unknown',()=>{
+  assert.deepEqual(logicSignals().raw,[undefined,undefined,undefined,undefined]);
+  const html=renderToStaticMarkup(createElement(LogicDiagram,{}));
+  assert.equal((html.match(/data-level="\?"/g)??[]).length,8);
+  assert(html.includes('NO DATA'));
+});

@@ -101,10 +101,24 @@ class Circuit:
         self.net(x, y, signal)
         self.pin_locations.append((label, x, y, output))
 
-    def finish(self, outputs: dict[str, Signal]) -> None:
+    def finish(
+        self,
+        outputs: dict[str, Signal],
+        *,
+        pin_y: int = 100,
+        output_positions: list[tuple[int, int]] | None = None,
+    ) -> None:
+        """Expose ports and bind their symbol contacts to their physical locations."""
+        if output_positions is not None and len(output_positions) != len(outputs):
+            raise ValueError("each output needs one physical pin position")
         x = 450 + (self.index // 10 + 2) * 350
         for i, (label, signal) in enumerate(outputs.items()):
-            self.pin(x, 100 + i * 40, signal, label, True)
+            px, py = (
+                output_positions[i]
+                if output_positions is not None
+                else (x, pin_y + i * 40)
+            )
+            self.pin(px, py, signal, label, True)
             self.outputs.append((label, signal.width))
         appear = ET.SubElement(self.node, "appear")
         height = max(len(self.inputs), len(self.outputs)) * 20 + 30

@@ -67,7 +67,7 @@ check-circuit:
 	cd "$(ROOT)" && $(PYTHON) -B scripts/build_monitor.py --check
 
 test-combinational:
-	cd "$(ROOT)" && $(PYTHON) -B scripts/check_combinational.py
+	cd "$(ROOT)" && $(PYTHON) -B -m scripts.check_combinational
 
 .PHONY: test-counters
 test-counters:

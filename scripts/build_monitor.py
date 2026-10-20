@@ -13,11 +13,13 @@ try:
     from .common import ROOT, read_json
     from .window_counters import build_window_counters
     from .replay_hardware import build_replay
+    from .monitor_schematic import build_monitor_gui
 except ImportError:
     from circuit_dsl import Circuit, CircuitInterface, Signal
     from common import ROOT, read_json
     from window_counters import build_window_counters
     from replay_hardware import build_replay
+    from monitor_schematic import build_monitor_gui
 
 
 def combinational(
@@ -149,18 +151,9 @@ def combinational(
         )
     core.finish(outputs)
 
-    gui = Circuit(project, "MonitorGUI", core.inputs)
-    displayed = gui.instance(core, gui.signals, "MONITOR")
-    for field in ["effective_mask", "sensor_fault_mask"]:
-        for i, bit in enumerate(gui.split(displayed[field], [1] * 4)):
-            x, y = gui.cell()
-            gui.component("5", "LED", x, y, label=field + "_" + "VTGA"[i])
-            gui.net(x, y, bit)
-    for field in ["normal", "watch", "danger", "fault", "emergency"]:
-        x, y = gui.cell()
-        gui.component("5", "LED", x, y, label=field.upper())
-        gui.net(x, y, displayed[field])
-    gui.finish(displayed)
+    gui = build_monitor_gui(
+        project, core.inputs, counters, read_json(ROOT / "spec/rules.json")
+    )
     return core, gui, outputs
 
 
@@ -176,10 +169,14 @@ def build() -> tuple[str, str, str]:
         ("2", "#Plexers"),
         ("3", "#Arithmetic"),
         ("4", "#Memory"),
-        ("5", "#Input/Output"),
+        ("5", "#I/O"),
+        ("6", "#Base"),
     ]:
-        if project.find(f"lib[@name='{name}']") is None:
+        library = project.find(f"lib[@name='{name}']")
+        if library is None:
             ET.SubElement(project, "lib", name=name, desc=desc)
+        else:
+            library.set("desc", desc)
     bank = project.find("circuit[@name='RuleConstants']")
     for child in list(bank):
         if (
@@ -199,6 +196,7 @@ def build() -> tuple[str, str, str]:
     counters = build_window_counters(project)
     core, gui, _ = combinational(project, counters)
     build_replay(project, core)
+    project.find("main").set("name", "MonitorGUI")
     mapping = read_json(ROOT / "circuit/core-map.json")
     mapping["scope"] = (
         "Submitted monitoring circuits; constants and interface locations are explicit"
