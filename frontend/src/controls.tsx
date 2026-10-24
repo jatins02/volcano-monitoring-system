@@ -85,7 +85,7 @@ export function SensorControl({
         Connected
       </label>
       <small className="range-note">
-        0 — 100 · abnormal &gt; {threshold}
+        ON when &gt; {threshold}
         {rangeUnavailable ? " · fault value; restore ≤100 to use slider" : ""}
       </small>
     </div>
@@ -100,9 +100,7 @@ export function Parameters({
 }) {
   return (
     <>
-      <p className="caption">
-        Draft parameters · synthetic indices · changes are unsampled
-      </p>
+      <p className="caption">Set the four values, then run the simulation.</p>
       {SENSORS.map((sensor, i) => (
         <SensorControl
           key={sensor}
@@ -118,7 +116,7 @@ export function Parameters({
           checked={draft.fault}
           onChange={(e) => onChange({ ...draft, fault: e.target.checked })}
         />
-        Enable fault injection (numeric values 101–255)
+        Allow fault values (101–255)
       </label>
       {!validDraft(draft) && (
         <p role="alert">Enter four whole numbers in the enabled range.</p>

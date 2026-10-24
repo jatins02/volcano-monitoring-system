@@ -519,7 +519,7 @@ The supplied Canva design `DAHWgSesxTY`, titled `NeuroRoute_Presentation.pptx`, 
 +-----------------------------------+---------------------------------+
 | [parameters window]              | [assembly window]               |
 | V,T,G,A sliders + numeric inputs | Code | Output | Statistics      |
-| connectivity, scenario selector | actual source + captured output |
+| connectivity, scenario selector | teaching code + native results |
 | Run / Step  Play Pause Reset      | agreement/error details         |
 +-----------------------------------+---------------------------------+
 | sample/revision | simulation time | hardware status | agreement       |
@@ -626,7 +626,7 @@ Use requestAnimationFrame for animation, with cleanup on unmount, deterministic 
 
 ### Assembly panel
 
-Tabs: Code, Output, Statistics and Comparison. Fetch the exact built source with its hash; render read-only escaped text with line numbers, basic syntax coloring and copy/download. Show actual stdout/stderr and exit status for the selected revision. Statistics display min/max/average as received from assembly, not browser recomputation. Explain NO VALID DATA visibly.
+Tabs: Code, Output, Statistics and Comparison. User-approved presentation amendment (24 October 2026): Code shows a labelled, display-only, syntactically correct teaching example of warning selection. The existing full assembly analyser remains the executed program. Render the example read-only with line numbers, syntax coloring and copy/download. Output presents the actual parsed native result; Statistics displays min/max/average received from assembly. Explain NO VALID DATA visibly. Keep exact production source, stdout/stderr, hashes and protocol evidence accessible in APIs/downloads, while removing this metadata from the open webpage. Preserve controller provenance checks, distinct pending/history/failure states and visible mismatches.
 
 ### Scenario and history replay
 
@@ -642,7 +642,7 @@ Mapped SVG circuit, synchronized volcano animation, source/output/statistics/com
 
 ### Done when
 
-All panels agree on sample/generation/revision, the code shown matches the executable, historical viewing has no side effects, and animation never affects sampling. The evaluator can inspect actual Logisim evidence and the standalone assembly without relying on website graphics.
+All panels agree on sample/generation/revision, the teaching code is clearly distinguished from the executed analyser, historical viewing has no side effects, and animation never affects sampling. The evaluator can inspect actual Logisim evidence and the standalone assembly without relying on website graphics.
 
 ## Stage 11 - Validate correctness, failure behaviour and speed
 

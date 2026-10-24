@@ -522,13 +522,6 @@ h3 {
 .instruction {
   color: #253864;
 }
-.hash {
-  font:
-    10px/1.5 ui-monospace,
-    Consolas,
-    monospace;
-  overflow-wrap: anywhere;
-}
 .tabs button {
   padding: 3px 8px;
 }
@@ -605,30 +598,6 @@ datalist {
   display: none;
 }
 
-.sensor-leds {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  font:
-    11px ui-monospace,
-    monospace;
-  margin: 7px 0;
-}
-.sensor-leds i {
-  display: inline-block;
-  width: 9px;
-  height: 9px;
-  border: 1px solid #555;
-  margin-right: 4px;
-  background: #777;
-}
-.sensor-leds .on {
-  background: #e59920;
-}
-.sensor-leds .off {
-  background: #fff;
-}
-
 /* Read-only digital schematic: signal color is always paired with a number. */
 .circuit-svg {
   background: #fff;
@@ -671,4 +640,72 @@ datalist {
 }
 .circuit-svg .logic-junction.low {
   fill: #164523;
+}
+
+/* Keep the demo focused on the reading and its result. */
+.result-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 10px 0;
+}
+.result-heading h3 {
+  margin: 0;
+}
+.result-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 12px 0;
+}
+.result-cards > div {
+  background: #f5f6fa;
+  border: 1px solid #c5cbd6;
+  padding: 14px;
+}
+.result-cards span {
+  display: block;
+  color: #555;
+  font-size: 11px;
+  margin-bottom: 8px;
+}
+.result-cards strong {
+  font-size: 22px;
+  color: #4b568e;
+}
+.teaching-label {
+  margin-top: 10px;
+}
+.source-code {
+  font-size: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.source-code code {
+  font-size: inherit;
+}
+.empty-state {
+  padding: 18px 0;
+  color: #555;
+}
+.circuit-explanation {
+  font-size: 11px;
+}
+.circuit-explanation p {
+  margin: 6px 0;
+}
+
+.secondary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding-top: 8px;
+}
+.session-options {
+  font-size: 11px;
+}
+.parameters .actions > button:first-child {
+  background: #727eba;
+  font-weight: bold;
 }

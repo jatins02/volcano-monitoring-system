@@ -17,7 +17,7 @@ Other coding tools should be directed to read the same files if they do not disc
 
 ## Current status
 
-Stages0–12 implement the real monitoring stack, responsive retro website, provenance-checked source/output/history, scenarios, exports, evidence and reproducible local submission. See [academic report](docs/academic-report.md), [website behavior](docs/website.md), [acceptance/performance](reports/stage11/verification.md), [final warning report](reports/final-warning-report.md), and [progress](docs/PROGRESS.md) for evidence and limits. Optional Stage13 is deferred.
+Stages0–12 implement the real monitoring stack, responsive retro website, provenance-checked results/history, scenarios, exports, evidence and reproducible local submission. See [academic report](docs/academic-report.md), [website behavior](docs/website.md), [acceptance/performance](reports/stage11/verification.md), [final warning report](reports/final-warning-report.md), and [progress](docs/PROGRESS.md) for evidence and limits. Optional Stage13 is deferred.
 
 ## Stage 0 specification and checks
 
@@ -107,5 +107,7 @@ Keep the dependency locks and toolchain manifest under version control. Download
 ## Demonstration and submission
 
 Follow the [demo script](docs/demo-script.md), [browser checks](tests/e2e/README.md) and [submission workflow](docs/submission.md). Build the native analyser independently with `gcc -g -pie -Wl,-z,noexecstack assembly/monitor.s -o build/monitor` from the repository root after `make generate-rules`. Preserve assembly/rules.inc. `make submission` writes build/submission/volcano-monitoring-system.tar.gz; generated outputs and installed dependencies are not committed.
+
+The Code tab shows a labelled display-only teaching example in `assembly/teaching-example.s`; `assembly/monitor.s` still runs and produces all native results/statistics. The simplified page keeps technical metadata in APIs/evidence downloads. See [demo instructions](docs/demo-script.md) for explaining the example.
 
 The native Logisim circuit is downloadable from the website: open it in4.1.0 and choose MonitorGUI. The web circuit is a labelled visualization of actual returned probes. Statistics come from native assembly; motion/history/drafts never create samples. Results include immutable source/circuit/executable provenance. Reset archives older generations, Retry adds no readings, and a mismatch remains visible with the previous confirmed result.

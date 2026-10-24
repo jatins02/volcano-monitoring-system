@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { DesktopWindow, MenuBar, RetroButton, StatusBar } from "./ui";
 import { defaults, Parameters, validDraft } from "./controls";
 import { api } from "./api";
+import { presentationStatus } from "./presentation";
 import { LabController } from "./controller";
 import { CircuitView, VolcanoView } from "./visuals";
 import { AssemblyView } from "./assembly-view";
@@ -62,11 +63,11 @@ function App() {
     <main>
       <MenuBar />
       <div className="lab-grid">
-        <DesktopWindow id="simulation" title="01 / Volcano simulation">
+        <DesktopWindow id="simulation" title="Volcano simulation">
           <VolcanoView sample={last} historical={historical} />
           <div className="history">
             <label>
-              History · display only{" "}
+              History{" "}
               <input
                 type="range"
                 aria-label="History sample"
@@ -85,12 +86,17 @@ function App() {
             </RetroButton>
             <span>
               {historical
-                ? `Historical sample ${(state.historical ?? 0) + 1}`
-                : `Live · confirmed revision ${r?.provenance.revision ?? "—"}`}
+                ? `Viewing reading ${(state.historical ?? 0) + 1}`
+                : `Latest reading ${last ? last.index + 1 : "—"}`}
             </span>
           </div>
-          <p className="notice" data-testid="job-status">
-            {state.message}
+          <p
+            className="notice"
+            data-testid="job-status"
+            data-confirmed-count={r?.provenance.revision ?? 0}
+            data-pending={state.busy || state.pending !== null}
+          >
+            {presentationStatus(state)}
           </p>
           {state.error && (
             <p role="alert" className="error">
@@ -98,7 +104,7 @@ function App() {
             </p>
           )}
         </DesktopWindow>
-        <DesktopWindow id="parameters" title="02 / Parameters">
+        <DesktopWindow id="parameters" title="Parameters">
           <Parameters draft={draft} onChange={setDraft} />
           <div className="scenario-row">
             <label>
@@ -122,16 +128,7 @@ function App() {
               }
               onClick={() => void controller.commit(scenario.samples, "batch")}
             >
-              Append batch
-            </RetroButton>
-            <RetroButton
-              disabled={blocked}
-              onClick={() => {
-                setDraft(defaults());
-                void controller.newSession();
-              }}
-            >
-              New empty session
+              Append scenario
             </RetroButton>
           </div>
           <div className="actions">
@@ -139,7 +136,7 @@ function App() {
               disabled={disabled}
               onClick={() => void controller.commit([input()])}
             >
-              {s?.revision ? "Step / apply parameters" : "Run simulation"}
+              {s?.revision ? "Step" : "Run simulation"}
             </RetroButton>
             <RetroButton
               disabled={
@@ -163,40 +160,54 @@ function App() {
             >
               Reset
             </RetroButton>
-            <RetroButton
-              disabled={!s || state.busy || historical || !s.revision}
-              onClick={() => void controller.commit([], "retry")}
-            >
-              Retry
-            </RetroButton>
-            <RetroButton
-              disabled={state.busy}
-              onClick={() => void controller.initialize()}
-            >
-              Refresh session/tools
-            </RetroButton>
           </div>
-          <p className="caption" data-testid="accepted-state">
-            Shared session {s?.id.slice(0, 8) ?? "connecting"} · generation{" "}
-            {s?.generation ?? "—"} · accepted {s?.revision ?? 0}/600 ·{" "}
-            {unsampled ? "Unsampled changes" : "Draft matches accepted input"}.
-            Playback {state.cursor}/{scenario.samples.length}. New session
-            replaces the active view; batch always appends.
+          <p
+            className="caption"
+            data-testid="accepted-state"
+            data-reading-count={s?.revision ?? 0}
+          >
+            {s?.revision ?? 0}/600 readings ·{" "}
+            {unsampled ? "Unsampled changes" : "Values recorded"}
           </p>
+          <details className="session-options">
+            <summary>Session options</summary>
+            <div className="secondary-actions">
+              <RetroButton
+                disabled={blocked}
+                onClick={() => {
+                  setDraft(defaults());
+                  void controller.newSession();
+                }}
+              >
+                New session
+              </RetroButton>
+              <RetroButton
+                disabled={!s || state.busy || historical || !s.revision}
+                onClick={() => void controller.commit([], "retry")}
+              >
+                Retry
+              </RetroButton>
+              <RetroButton
+                disabled={state.busy}
+                onClick={() => void controller.initialize()}
+              >
+                Refresh
+              </RetroButton>
+            </div>
+          </details>
         </DesktopWindow>
-        <DesktopWindow id="circuit" title="03 / Circuit visualization">
+        <DesktopWindow id="circuit" title="Digital circuit">
           <p className="caption">
-            {historical ? "Historical" : "Confirmed"} sample{" "}
-            {last ? last.index + 1 : "—"} · generation{" "}
-            {r?.provenance.generation ?? "—"} · result revision{" "}
-            {r?.provenance.revision ?? "—"}
+            {last
+              ? `${historical ? "Saved reading" : "Reading"} ${last.index + 1} · evaluated by Logisim`
+              : "Run the simulation to light up the circuit."}
             {s && r && s.revision !== r.provenance.revision
-              ? " · older confirmed result"
+              ? " · Previous confirmed result"
               : ""}
           </p>
           <CircuitView sample={last} />
         </DesktopWindow>
-        <DesktopWindow id="assembly" title="04 / x86-64 assembly">
+        <DesktopWindow id="assembly" title="Assembly">
           <AssemblyView
             result={r}
             diagnostic={state.diagnostic}
@@ -204,7 +215,7 @@ function App() {
             historical={historical}
           />
           <details id="reports">
-            <summary>Reports and downloads</summary>
+            <summary>Downloads</summary>
             <div className="actions">
               <a
                 href={s ? `/api/sessions/${s.id}/export?format=json` : "#"}
@@ -240,35 +251,25 @@ function App() {
                   )
                 }
               >
-                Printable HTML report
+                Printable report
               </RetroButton>
             </div>
-            <p>
-              Open the downloaded HTML and print for a PDF. Report scope is the
-              confirmed full revision.
-            </p>
-            <details>
-              <summary>Tool versions and rule hash</summary>
-              <pre>{JSON.stringify(state.health, null, 2)}</pre>
-            </details>
           </details>
         </DesktopWindow>
       </div>
       <StatusBar>
         <span>
-          {state.pending
-            ? `Evaluating revision ${state.pending.revision}`
-            : historical
-              ? "Historical view · Apply disabled"
-              : `Accepted ${s?.revision ?? 0} · confirmed ${r?.provenance.revision ?? 0}`}
+          {historical
+            ? "History · return live to add readings"
+            : state.pending || state.busy
+              ? "Processing…"
+              : state.error || state.diagnostic
+                ? "Needs attention"
+                : "Ready"}
         </span>
+        <span>Simulated sensor readings · 1 reading = 1 second</span>
         <span>
-          {state.latency === null
-            ? "No measured job yet"
-            : `Last evaluation ${(state.latency / 1000).toFixed(2)}s · one sample = one simulated second`}
-        </span>
-        <span>
-          Local tools: {state.health?.available ? "available" : "unavailable"}
+          {state.health?.available ? "Tools ready" : "Tools unavailable"}
         </span>
       </StatusBar>
     </main>

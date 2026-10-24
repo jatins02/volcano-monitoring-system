@@ -1,6 +1,6 @@
 # Volcano Monitoring System: project context
 
-Updated: 19 October 2026
+Updated: 24 October 2026
 Project directory: `/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system`
 Course: Principles of Computer Systems-I (CSL2130), IIT Jodhpur
 
@@ -99,7 +99,7 @@ Reset starts a new session generation with cleared active state and default draf
 
 A shared ordered sample log is authoritative for inputs. Python generates separate Logisim and assembly input representations from the same immutable history. Both implementations evaluate identical readings. Production Python/JavaScript must not silently replace either the circuit or required assembly calculations. A reference model may exist in tests to validate both independently.
 
-Results carry session, generation, revision and sample provenance. Pending, confirmed, historical, failed and mismatched results are distinct states. The website updates confirmed panels consistently from one result snapshot and shows actual stdout/stderr and executable/source provenance.
+Results carry session, generation, revision and sample provenance. Pending, confirmed, historical, failed and mismatched results are distinct states. The website updates confirmed panels consistently from one result snapshot. Per the 24 October 2026 user presentation amendment, the Code tab shows a labelled display-only teaching example; the full native analyser still produces results and statistics. The webpage keeps concise readings and warnings, while actual stdout/stderr and executable/source provenance remain in APIs and evidence downloads.
 
 ## Logisim replay integration baseline
 

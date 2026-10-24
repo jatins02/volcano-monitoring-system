@@ -50,3 +50,60 @@ test('empty schematic keeps all digital inputs and outputs unknown',()=>{
   assert.equal((html.match(/data-level="\?"/g)??[]).length,8);
   assert(html.includes('NO DATA'));
 });
+
+import {AssemblyOutput,AssemblyStatistics,AssemblyComparison,AssemblyView} from '../../frontend/src/assembly-view';
+import {presentationStatus} from '../../frontend/src/presentation';
+import type {Result} from '../../frontend/src/types';
+test('Code defaults to a labelled teaching example without runtime metadata',()=>{
+  const html=renderToStaticMarkup(createElement(AssemblyView,{result:recorded as Result,diagnostic:null,sample:recorded.hardware[0] as Snapshot,historical:false}));
+  assert(html.includes('Teaching example'));
+  assert(html.includes('classify_reading:'));
+  assert(html.includes('Results use the full assembly program.'));
+  for(const value of [recorded.provenance.id,recorded.provenance.source_sha256,'stdout','B0–B5','Source SHA256'])assert(!html.includes(value));
+});
+test('Output selects the actual assembly record, including historical readings',()=>{
+  const result=structuredClone(recorded) as Result;
+  result.assembly.records[0]!.warning='FAULT';
+  result.assembly.records[0]!.fault=true;
+  const html=renderToStaticMarkup(createElement(AssemblyOutput,{result,sample:result.hardware[0]}));
+  assert(html.includes('Reading 1'));
+  assert(html.includes('FAULT'));
+  assert(html.includes('excluded from statistics'));
+  assert(!html.includes('NORMAL'));
+});
+test('statistics retain assembly averages and full-session scope, including all-fault sessions',()=>{
+  const result=structuredClone(recorded) as Result;
+  result.assembly.summary.statistics.V!.average_x100=1234;
+  let html=renderToStaticMarkup(createElement(AssemblyStatistics,{result}));
+  assert(html.includes('All 11 readings'));
+  assert(html.includes('12.34'));
+  result.assembly.summary.valid_samples=0;
+  for(const stats of Object.values(result.assembly.summary.statistics))Object.assign(stats,{count:0,minimum:null,maximum:null,sum:0,average_x100:null});
+  html=renderToStaticMarkup(createElement(AssemblyStatistics,{result}));
+  assert(html.includes('NO VALID DATA'));
+  assert(!html.includes('12.34'));
+});
+test('new mismatch remains visible alongside an older successful result',()=>{
+  const html=renderToStaticMarkup(createElement(AssemblyComparison,{result:recorded as Result,diagnostic:recorded as Result}));
+  assert(html.includes('results differ'));
+  assert(html.includes('Previous confirmed results'));
+  assert(!html.includes('agree on every reading'));
+  const firstMismatch=renderToStaticMarkup(createElement(AssemblyComparison,{result:null,diagnostic:recorded as Result}));
+  assert(firstMismatch.includes('No confirmed result is available.'));
+  assert(!firstMismatch.includes('Previous confirmed results'));
+});
+test('short status distinguishes pending, history, stale output and missing tools',()=>{
+  const state=fixture().controller.state;
+  assert.match(presentationStatus(state),/tools unavailable/);
+  state.health={available:true,issues:[],rule_hash:RULES_SHA256,versions:{}};
+  assert.equal(presentationStatus(state),'No readings yet');
+  state.session={...empty(),revision:12};
+  state.displayed=recorded as Result;
+  assert.match(presentationStatus(state),/Retry/);
+  state.pending={revision:12} as any;
+  assert.match(presentationStatus(state),/Evaluating reading 12/);
+  state.pending=null;state.historical=0;
+  assert.match(presentationStatus(state),/Viewing saved reading 1/);
+  state.error='failed';
+  assert.match(presentationStatus(state),/previous confirmed/);
+});

@@ -4,8 +4,6 @@ import { RULES } from "./generated-rules";
 import { LogicDiagram } from "./logic-diagram";
 import { RetroButton, StatusLamp } from "./ui";
 const sensors = RULES.sensor_order;
-const hex = (value: number | undefined) =>
-  value === undefined ? "?" : `0x${value.toString(16).padStart(2, "0")}`;
 function CountTable({ label, counts }: { label: string; counts?: Counts }) {
   return (
     <div>
@@ -13,9 +11,11 @@ function CountTable({ label, counts }: { label: string; counts?: Counts }) {
       <table>
         <thead>
           <tr>
-            {["V", "T", "G", "A", "Readings", "Samples*", "Faults"].map((x) => (
-              <th key={x}>{x}</th>
-            ))}
+            {["V", "T", "G", "A", "Readings", "Affected samples", "Faults"].map(
+              (x) => (
+                <th key={x}>{x}</th>
+              ),
+            )}
           </tr>
         </thead>
         <tbody>
@@ -45,7 +45,7 @@ export function CircuitView({ sample }: { sample?: Snapshot }) {
   return (
     <>
       <div className="diagram-tools">
-        <span>Digital logic · Logisim hardware results</span>
+        <span>Digital logic</span>
         <RetroButton
           aria-label="Zoom in circuit"
           onClick={() =>
@@ -73,7 +73,7 @@ export function CircuitView({ sample }: { sample?: Snapshot }) {
         className="circuit-svg"
         role="img"
         tabIndex={0}
-        aria-label="Four digital inputs feed validity AND gates, three adders and warning comparators. Drag or use arrow keys to pan; zoom buttons change scale. Numerical text equivalent follows."
+        aria-label={`Digital circuit. ${sample ? sensors.map((name, i) => `${name} input ${(sample.raw_mask >> i) & 1}`).join(", ") + `. K ${sample.k}. ${sample.warning}.` : "No confirmed reading. All signals unknown."} Drag or use arrow keys to pan; use buttons to zoom.`}
         viewBox={`${view.x} ${view.y} ${view.width} ${view.width * 0.49}`}
         onKeyDown={(e) => {
           if (
@@ -144,64 +144,28 @@ export function CircuitView({ sample }: { sample?: Snapshot }) {
           NOT gate turns FAULT on.
         </p>
       </details>
-      <div className="sensor-leds" aria-label="Effective sensor flags">
-        {sensors.map((name, i) => {
-          const flag =
-            sample === undefined
-              ? undefined
-              : Boolean(sample.effective_mask & (1 << i));
-          return (
-            <span key={name}>
-              <i
-                className={flag === undefined ? "unknown" : flag ? "on" : "off"}
-                aria-hidden="true"
-              />
-              {name} flag: {flag === undefined ? "unknown" : flag ? "1" : "0"}
-            </span>
-          );
-        })}
-      </div>
       <div className="circuit-text">
-        <p>
-          Input echo [{sample?.values.join(", ") ?? "unknown"}] · valid{" "}
-          {sample ? String(sample.valid) : "unknown"} · raw{" "}
-          {hex(sample?.raw_mask)} · range faults {hex(sample?.range_mask)} ·
-          effective {hex(sample?.effective_mask)} · K {sample?.k ?? "unknown"} ·{" "}
+        <div className="result-heading">
+          <span>
+            V {sample?.values[0] ?? "—"} · T {sample?.values[1] ?? "—"} · G{" "}
+            {sample?.values[2] ?? "—"} · A {sample?.values[3] ?? "—"}
+          </span>
           <StatusLamp status={sample?.warning} />
-        </p>
+        </div>
         <details id="WindowCounters">
-          <summary>Window counters and completed registers</summary>
+          <summary>10-reading counts</summary>
           <CountTable
-            label={`Current partial window · p=${sample?.position ?? "—"}/10`}
+            label={`Current window · ${sample?.position ?? "—"}/10`}
             counts={sample?.current_counts}
           />
           <CountTable
-            label={`Last completed window · q=${sample?.completed_windows ?? "—"}${sample?.has_completed ? "" : " · none yet"}`}
+            label={`Last completed window · ${sample?.completed_windows ?? "—"} completed${sample?.has_completed ? "" : " · none yet"}`}
             counts={sample?.has_completed ? sample.last_completed : undefined}
           />
           <small>
-            *Samples with at least one abnormal sensor. Fault rows advance the
-            window and do not add abnormal readings.
+            Affected samples have at least one abnormal sensor. Fault readings
+            count toward the window, but not abnormal totals.
           </small>
-        </details>
-        <details>
-          <summary>Probe values and native editor</summary>
-          <pre>
-            {sample
-              ? sample.buses
-                  .map(
-                    (v, i) =>
-                      `B${i} = ${v} / 0x${v.toString(16).padStart(8, "0")}`,
-                  )
-                  .join("\n")
-              : "All probes unknown before confirmation."}
-          </pre>
-          <p>
-            Open the downloaded project in Logisim-evolution 4.1.0 and select
-            MonitorGUI. The fixed digital schematic displays hardware results
-            independently of the assembly panel. It is a read-only drawing; the
-            native editor opens separately.
-          </p>
         </details>
       </div>
     </>
@@ -351,15 +315,15 @@ export function VolcanoView({
         {sensors.map((n, i) => (
           <span key={n}>
             <b>{n}</b> {sample?.values[i] ?? "—"}
-            <small>confirmed index</small>
+            <small>{RULES.sensors[n].label}</small>
           </span>
         ))}
       </div>
       <p className="caption">
         {sample
-          ? `${historical ? "Historical" : "Confirmed"} sample ${sample.index + 1} · ${sample.time_seconds}s · emergency ${sample.emergency ? "ON" : "OFF"}`
-          : "No confirmed readings · set parameters and Run simulation"}
-        . Illustrative motion; no eruption prediction.
+          ? `${historical ? "Saved" : "Reading"} ${sample.index + 1} · ${sample.time_seconds}s · Alarm ${sample.emergency ? "ON" : "OFF"} `
+          : "No readings yet · set parameters and run"}
+        · Simulated readings
       </p>
     </div>
   );

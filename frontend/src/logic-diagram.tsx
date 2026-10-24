@@ -74,7 +74,7 @@ export function LogicDiagram({ sample }: { sample?: Snapshot }) {
     <>
       <g id="SensorCheck">
         <text x="20" y="26" className="svg-title">
-          THRESHOLD OUTPUTS · FOUR DIGITAL INPUTS
+          FOUR DIGITAL INPUTS
         </text>
         {RULES.sensor_order.map((name, i) => {
           const y = 100 + i * 80;
@@ -156,7 +156,7 @@ export function LogicDiagram({ sample }: { sample?: Snapshot }) {
           VALID iff connected and values ≤ 100
         </text>
         <text x="20" y="453">
-          Invalid row: effective inputs OFF
+          Fault: sensor inputs OFF
         </text>
       </g>
       <g id="WarningLogic">
@@ -234,15 +234,14 @@ export function LogicDiagram({ sample }: { sample?: Snapshot }) {
         <text x="390" y="430">
           0: NORMAL · 1: WATCH · 2–4: DANGER
         </text>
-        <text x="390" y="453">
-          Warning code:{" "}
-          {sample ? sample.warning_code.toString(2).padStart(2, "0") : "??"} ·{" "}
-          {sample?.warning ?? "NO DATA"}
-        </text>
+        {!sample && (
+          <text x="390" y="453">
+            NO DATA
+          </text>
+        )}
       </g>
       <text x="20" y="490">
-        Green = ON / nonzero · dark green = OFF / zero · gray = unknown · wires
-        labelled 0/1
+        Green = ON · dark green = OFF · gray = no reading
       </text>
     </>
   );
