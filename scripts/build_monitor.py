@@ -14,12 +14,14 @@ try:
     from .window_counters import build_window_counters
     from .replay_hardware import build_replay
     from .monitor_schematic import build_monitor_gui
+    from .circuit_export import demo_project
 except ImportError:
     from circuit_dsl import Circuit, CircuitInterface, Signal
     from common import ROOT, read_json
     from window_counters import build_window_counters
     from replay_hardware import build_replay
     from monitor_schematic import build_monitor_gui
+    from circuit_export import demo_project
 
 
 def combinational(
@@ -177,6 +179,14 @@ def build() -> tuple[str, str, str]:
             ET.SubElement(project, "lib", name=name, desc=desc)
         else:
             library.set("desc", desc)
+    # Files generated without a toolbar leave classic Logisim without a visible
+    # poke tool. Supply native tools so the downloaded inputs can be operated.
+    toolbar = project.find("toolbar")
+    if toolbar is not None:
+        project.remove(toolbar)
+    toolbar = ET.SubElement(project, "toolbar")
+    for tool in ("Poke Tool", "Edit Tool"):
+        ET.SubElement(toolbar, "tool", lib="6", name=tool)
     bank = project.find("circuit[@name='RuleConstants']")
     for child in list(bank):
         if (
@@ -241,6 +251,7 @@ def main() -> int:
     xml, mapping, schema = build()
     for filename, content in [
         ("circuit/volcano.circ", xml),
+        ("circuit/volcano-demo.circ", demo_project(xml)),
         ("circuit/core-map.json", mapping),
         ("circuit/output-schema.json", schema),
     ]:

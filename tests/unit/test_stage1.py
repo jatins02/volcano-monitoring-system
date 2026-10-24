@@ -66,6 +66,32 @@ class CircuitMappingTests(WorkspaceTest):
     def test_current_constants_bank_passes(self) -> None:
         verify(self.root)
 
+    def test_classic_port_and_anchor_bounds_are_required(self) -> None:
+        path = self.root / "circuit/volcano.circ"
+        original = path.read_text()
+        for tag in ("circ-port", "circ-anchor"):
+            for attribute in ("width", "height"):
+                with self.subTest(tag=tag, attribute=attribute):
+                    tree = ET.ElementTree(ET.fromstring(original))
+                    del tree.find(f"./circuit/appear/{tag}").attrib[attribute]
+                    tree.write(path)
+                    with self.assertRaisesRegex(ValueError, "appearance bounds"):
+                        verify(self.root)
+
+    def test_appearance_centres_must_stay_on_the_pin_grid(self) -> None:
+        path = self.root / "circuit/volcano.circ"
+        tree = ET.parse(path)
+        tree.find("./circuit/appear/circ-port").set("x", "200")
+        tree.write(path)
+        with self.assertRaisesRegex(ValueError, "grid-aligned"):
+            verify(self.root)
+
+    def test_manual_gui_inputs_are_not_floating(self) -> None:
+        tree = ET.parse(self.root / "circuit/volcano.circ")
+        pins = tree.findall("./circuit[@name='MonitorGUI']/comp[@name='Pin']")
+        for pin in pins:
+            self.assertEqual(pin.find("a[@name='tristate']").get("val"), "false")
+
     def edit_component(self, attribute: str, value: str) -> None:
         path = self.root / "circuit/volcano.circ"
         tree = ET.parse(path)

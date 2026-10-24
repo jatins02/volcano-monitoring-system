@@ -118,3 +118,18 @@ Verification:
 - `git diff --check` passed. No dependencies were installed and no commit/push was made.
 
 No integration blocker remains for this maintenance task. Full `make check`, API failure suites and release reproduction were not rerun because production computation/protocols were unchanged; this does not advance the separate Stage 12 release gate or optional Stage 13. Next action: refresh the running website (or `make run`) and follow `docs/demo-script.md`; present the teaching function as an illustration and the Output/Statistics tabs as results of the full analyser.
+
+
+## Downloadable circuit compatibility repair - 24 October 2026
+
+Saved the accepted GUI/teaching-code version locally as commit `f0dab79` before repair. Reproduced the downloaded file's errors in actual classic Logisim2.7.1: missing SVG bounds on custom ports/anchors, incompatible contacts, floating input pins and no visible Poke tool. Fixed the generated port geometry, explicit two-state inputs and native toolbar. Adjusted spacing below the visible circuit. The accepted website GUI is unchanged.
+
+The download now contains the exact MonitorGUI, MonitorAux and WindowCounters definitions as a standalone project. Both native engines load all813 components and49 custom ports across these three circuits. The full backend retains its Evolution-specific RAM replay harness; measured classic RAM geometry is incompatible. Classic starts binary inputs at0: set mask1111 and sample_enable1 for normal manual operation. Updated documentation and added export/import regression checks.
+
+Verification: full `make check` passed, including102 Python unit tests, four real bridge integration tests, frontend checks/build, actual combinational/replay/counter/native suites and HTTP success/failure cases. The exact HTTP-downloaded bytes additionally passed43 independent combinational fixtures and two635-tick hold/reset/counter scenarios in each of classic2.7.1 and Evolution4.1.0. Strict native import checks verified all components and saved custom port bindings in both versions. `git diff --check` passed.
+
+The laptop desktop was unavailable through computer access. As requested, used actual classic Logisim through an isolated loopback browser display, inspected the original import failure, and manually verified NORMAL, WATCH, DANGER and a counter commit in the repaired download. Screenshots, download hash and logs are in `reports/circuit-compatibility/`. Restarted the existing local API to serve the repair after verifying no active jobs; persisted session/sample/job counts were unchanged. Repairs remain uncommitted; no push or unrelated stage advancement. Next action: re-download volcano.circ from the website and open the fresh file in Logisim.
+
+## Circuit explanation document - 24 October 2026
+
+The user reports the downloaded circuit still does not work and explicitly requested stopping repair work. Added `ciruit info.md` with a concise left-to-right explanation of every component type, its role, settings and Logisim library location, plus the lower controls and custom counter block. Checked the guide against the actual exported XML component inventory, schematic/counter generators, shared rules and official Logisim 2.7 documentation. Documentation-only work; no circuit changes, simulation reruns or commits. `git diff --check` passed. Previous automated results remain historical evidence, not confirmation that the user's current import issue is resolved. Next action: use the guide to explain or manually reconstruct the circuit; further import repair requires a new user request.

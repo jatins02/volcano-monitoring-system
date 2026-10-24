@@ -245,9 +245,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @app.get("/api/circuit/project")
     async def circuit_project():
         return FileResponse(
-            config.root / "circuit/volcano.circ",
+            config.root / "circuit/volcano-demo.circ",
             media_type="application/xml",
             filename="volcano.circ",
+            headers={"Cache-Control": "no-store"},
         )
 
     @app.api_route("/{path:path}", methods=["GET", "HEAD"], include_in_schema=False)

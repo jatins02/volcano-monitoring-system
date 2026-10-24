@@ -1,0 +1,5 @@
+Native import: 813 components and 49 custom ports preserved in 3 circuits; no loader errors
+Oct 24, 2026 1:46:27 PM java.util.prefs.FileSystemPreferences checkLockFile0ErrorCode
+WARNING: Could not lock User prefs.  Unix error code 30.
+Oct 24, 2026 1:46:27 PM java.util.prefs.FileSystemPreferences syncWorld
+WARNING: Couldn't flush user prefs: java.util.prefs.BackingStoreException: Couldn't get file lock.

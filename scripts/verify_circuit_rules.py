@@ -24,6 +24,23 @@ def verify(root: Path) -> None:
         )
     libraries = {item.get("name"): item.get("desc") for item in project.findall("lib")}
     for circuit in circuits:
+        # Classic Logisim reads these as SVG bounding boxes. Evolution accepts
+        # omitted dimensions, so checking only its importer misses broken ports.
+        appearance = circuit.find("appear")
+        if appearance is not None:
+            anchors = appearance.findall("circ-anchor")
+            if len(anchors) != 1:
+                raise ValueError(f"{circuit.get('name')}: expected one appearance anchor")
+            for shape in appearance.findall("circ-port") + anchors:
+                size = 8 if shape.tag == "circ-port" else 6
+                try:
+                    x, y, width, height = (
+                        int(shape.attrib[key]) for key in ("x", "y", "width", "height")
+                    )
+                except (KeyError, ValueError) as error:
+                    raise ValueError("appearance bounds must be explicit integers") from error
+                if width != size or height != size or (x + size // 2) % 10 or (y + size // 2) % 10:
+                    raise ValueError("appearance bounds must preserve grid-aligned port centres")
         for component in circuit.findall("comp"):
             required = {"LED": "#I/O", "Text": "#Base"}.get(component.get("name"))
             if required is not None and libraries.get(component.get("lib")) != required:

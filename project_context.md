@@ -103,7 +103,7 @@ Results carry session, generation, revision and sample provenance. Pending, conf
 
 ## Logisim replay integration baseline
 
-The project uses a deterministic replay harness around the actual monitoring core. `circuit/volcano.circ` contains `MonitorCore`, `MonitorGUI` and `ReplayHarness` where practical, so automated evaluation and manual demonstration use the same DUT.
+The project uses a deterministic replay harness around the actual monitoring core. `circuit/volcano.circ` contains `MonitorCore`, `MonitorGUI` and `ReplayHarness`. The standalone download `circuit/volcano-demo.circ`, served as volcano.circ, copies the exact MonitorGUI and supporting validity/counter definitions. This allows manual use in classic Logisim2.7.1 and Evolution4.1.0 while the backend keeps its version-specific Evolution RAM transport.
 
 The harness uses one 32-bit stimulus RAM with 11-bit addresses: 2048 words. Header words contain magic/protocol `0x564D0001` and sample count N. Each sample occupies two words: packed sensor bytes and connectivity metadata. At 600 samples, the image uses 1202 words. Sensor packing is:
 

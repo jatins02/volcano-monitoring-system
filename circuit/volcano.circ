@@ -103,11 +103,11 @@
     </comp>
     <appear>
       <rect x="100" y="80" width="100" height="110" fill="none" stroke="#000000" />
-      <circ-port x="200" y="100" dir="out" pin="1150,100" />
-      <circ-port x="200" y="120" dir="out" pin="1150,140" />
-      <circ-port x="200" y="140" dir="out" pin="1150,180" />
-      <circ-port x="200" y="160" dir="out" pin="1150,220" />
-      <circ-anchor x="200" y="100" facing="east" />
+      <circ-port x="196" y="96" width="8" height="8" dir="out" pin="1150,100" />
+      <circ-port x="196" y="116" width="8" height="8" dir="out" pin="1150,140" />
+      <circ-port x="196" y="136" width="8" height="8" dir="out" pin="1150,180" />
+      <circ-port x="196" y="156" width="8" height="8" dir="out" pin="1150,220" />
+      <circ-anchor x="197" y="97" width="6" height="6" facing="east" />
     </appear>
   </circuit>
   <lib name="1" desc="#Gates" />
@@ -116,6 +116,10 @@
   <lib name="4" desc="#Memory" />
   <lib name="5" desc="#I/O" />
   <lib name="6" desc="#Base" />
+  <toolbar>
+    <tool lib="6" name="Poke Tool" />
+    <tool lib="6" name="Edit Tool" />
+  </toolbar>
   <circuit name="WindowCounters">
     <a name="appearance" val="custom" />
     <comp name="Pin" loc="(100,100)" lib="0">
@@ -2373,16 +2377,16 @@
     </comp>
     <appear>
       <rect x="100" y="80" width="100" height="150" fill="none" stroke="#000000" />
-      <circ-port x="100" y="100" dir="in" pin="100,100" />
-      <circ-port x="100" y="120" dir="in" pin="100,140" />
-      <circ-port x="100" y="140" dir="in" pin="100,180" />
-      <circ-port x="100" y="160" dir="in" pin="100,220" />
-      <circ-port x="100" y="180" dir="in" pin="100,260" />
-      <circ-port x="100" y="200" dir="in" pin="100,300" />
-      <circ-port x="200" y="100" dir="out" pin="5000,100" />
-      <circ-port x="200" y="120" dir="out" pin="5000,140" />
-      <circ-port x="200" y="140" dir="out" pin="5000,180" />
-      <circ-anchor x="200" y="100" facing="east" />
+      <circ-port x="96" y="96" width="8" height="8" dir="in" pin="100,100" />
+      <circ-port x="96" y="116" width="8" height="8" dir="in" pin="100,140" />
+      <circ-port x="96" y="136" width="8" height="8" dir="in" pin="100,180" />
+      <circ-port x="96" y="156" width="8" height="8" dir="in" pin="100,220" />
+      <circ-port x="96" y="176" width="8" height="8" dir="in" pin="100,260" />
+      <circ-port x="96" y="196" width="8" height="8" dir="in" pin="100,300" />
+      <circ-port x="196" y="96" width="8" height="8" dir="out" pin="5000,100" />
+      <circ-port x="196" y="116" width="8" height="8" dir="out" pin="5000,140" />
+      <circ-port x="196" y="136" width="8" height="8" dir="out" pin="5000,180" />
+      <circ-anchor x="197" y="97" width="6" height="6" facing="east" />
     </appear>
   </circuit>
   <circuit name="SensorCheck">
@@ -2518,13 +2522,13 @@
     </comp>
     <appear>
       <rect x="100" y="80" width="100" height="90" fill="none" stroke="#000000" />
-      <circ-port x="100" y="100" dir="in" pin="100,100" />
-      <circ-port x="100" y="120" dir="in" pin="100,140" />
-      <circ-port x="100" y="140" dir="in" pin="100,180" />
-      <circ-port x="200" y="100" dir="out" pin="1150,100" />
-      <circ-port x="200" y="120" dir="out" pin="1150,140" />
-      <circ-port x="200" y="140" dir="out" pin="1150,180" />
-      <circ-anchor x="200" y="100" facing="east" />
+      <circ-port x="96" y="96" width="8" height="8" dir="in" pin="100,100" />
+      <circ-port x="96" y="116" width="8" height="8" dir="in" pin="100,140" />
+      <circ-port x="96" y="136" width="8" height="8" dir="in" pin="100,180" />
+      <circ-port x="196" y="96" width="8" height="8" dir="out" pin="1150,100" />
+      <circ-port x="196" y="116" width="8" height="8" dir="out" pin="1150,140" />
+      <circ-port x="196" y="136" width="8" height="8" dir="out" pin="1150,180" />
+      <circ-anchor x="197" y="97" width="6" height="6" facing="east" />
     </appear>
   </circuit>
   <circuit name="Validity">
@@ -2648,11 +2652,11 @@
     </comp>
     <appear>
       <rect x="100" y="80" width="100" height="70" fill="none" stroke="#000000" />
-      <circ-port x="100" y="100" dir="in" pin="100,100" />
-      <circ-port x="100" y="120" dir="in" pin="100,140" />
-      <circ-port x="200" y="100" dir="out" pin="1150,100" />
-      <circ-port x="200" y="120" dir="out" pin="1150,140" />
-      <circ-anchor x="200" y="100" facing="east" />
+      <circ-port x="96" y="96" width="8" height="8" dir="in" pin="100,100" />
+      <circ-port x="96" y="116" width="8" height="8" dir="in" pin="100,140" />
+      <circ-port x="196" y="96" width="8" height="8" dir="out" pin="1150,100" />
+      <circ-port x="196" y="116" width="8" height="8" dir="out" pin="1150,140" />
+      <circ-anchor x="197" y="97" width="6" height="6" facing="east" />
     </appear>
   </circuit>
   <circuit name="WarningLogic">
@@ -3255,17 +3259,17 @@
     </comp>
     <appear>
       <rect x="100" y="80" width="100" height="190" fill="none" stroke="#000000" />
-      <circ-port x="100" y="100" dir="in" pin="100,100" />
-      <circ-port x="100" y="120" dir="in" pin="100,140" />
-      <circ-port x="200" y="100" dir="out" pin="2200,100" />
-      <circ-port x="200" y="120" dir="out" pin="2200,140" />
-      <circ-port x="200" y="140" dir="out" pin="2200,180" />
-      <circ-port x="200" y="160" dir="out" pin="2200,220" />
-      <circ-port x="200" y="180" dir="out" pin="2200,260" />
-      <circ-port x="200" y="200" dir="out" pin="2200,300" />
-      <circ-port x="200" y="220" dir="out" pin="2200,340" />
-      <circ-port x="200" y="240" dir="out" pin="2200,380" />
-      <circ-anchor x="200" y="100" facing="east" />
+      <circ-port x="96" y="96" width="8" height="8" dir="in" pin="100,100" />
+      <circ-port x="96" y="116" width="8" height="8" dir="in" pin="100,140" />
+      <circ-port x="196" y="96" width="8" height="8" dir="out" pin="2200,100" />
+      <circ-port x="196" y="116" width="8" height="8" dir="out" pin="2200,140" />
+      <circ-port x="196" y="136" width="8" height="8" dir="out" pin="2200,180" />
+      <circ-port x="196" y="156" width="8" height="8" dir="out" pin="2200,220" />
+      <circ-port x="196" y="176" width="8" height="8" dir="out" pin="2200,260" />
+      <circ-port x="196" y="196" width="8" height="8" dir="out" pin="2200,300" />
+      <circ-port x="196" y="216" width="8" height="8" dir="out" pin="2200,340" />
+      <circ-port x="196" y="236" width="8" height="8" dir="out" pin="2200,380" />
+      <circ-anchor x="197" y="97" width="6" height="6" facing="east" />
     </appear>
   </circuit>
   <circuit name="MonitorCore">
@@ -3989,31 +3993,31 @@
     </comp>
     <appear>
       <rect x="100" y="80" width="100" height="350" fill="none" stroke="#000000" />
-      <circ-port x="100" y="100" dir="in" pin="100,100" />
-      <circ-port x="100" y="120" dir="in" pin="100,140" />
-      <circ-port x="100" y="140" dir="in" pin="100,180" />
-      <circ-port x="100" y="160" dir="in" pin="100,220" />
-      <circ-port x="100" y="180" dir="in" pin="100,260" />
-      <circ-port x="100" y="200" dir="in" pin="100,300" />
-      <circ-port x="100" y="220" dir="in" pin="100,340" />
-      <circ-port x="100" y="240" dir="in" pin="100,380" />
-      <circ-port x="200" y="100" dir="out" pin="1500,100" />
-      <circ-port x="200" y="120" dir="out" pin="1500,140" />
-      <circ-port x="200" y="140" dir="out" pin="1500,180" />
-      <circ-port x="200" y="160" dir="out" pin="1500,220" />
-      <circ-port x="200" y="180" dir="out" pin="1500,260" />
-      <circ-port x="200" y="200" dir="out" pin="1500,300" />
-      <circ-port x="200" y="220" dir="out" pin="1500,340" />
-      <circ-port x="200" y="240" dir="out" pin="1500,380" />
-      <circ-port x="200" y="260" dir="out" pin="1500,420" />
-      <circ-port x="200" y="280" dir="out" pin="1500,460" />
-      <circ-port x="200" y="300" dir="out" pin="1500,500" />
-      <circ-port x="200" y="320" dir="out" pin="1500,540" />
-      <circ-port x="200" y="340" dir="out" pin="1500,580" />
-      <circ-port x="200" y="360" dir="out" pin="1500,620" />
-      <circ-port x="200" y="380" dir="out" pin="1500,660" />
-      <circ-port x="200" y="400" dir="out" pin="1500,700" />
-      <circ-anchor x="200" y="100" facing="east" />
+      <circ-port x="96" y="96" width="8" height="8" dir="in" pin="100,100" />
+      <circ-port x="96" y="116" width="8" height="8" dir="in" pin="100,140" />
+      <circ-port x="96" y="136" width="8" height="8" dir="in" pin="100,180" />
+      <circ-port x="96" y="156" width="8" height="8" dir="in" pin="100,220" />
+      <circ-port x="96" y="176" width="8" height="8" dir="in" pin="100,260" />
+      <circ-port x="96" y="196" width="8" height="8" dir="in" pin="100,300" />
+      <circ-port x="96" y="216" width="8" height="8" dir="in" pin="100,340" />
+      <circ-port x="96" y="236" width="8" height="8" dir="in" pin="100,380" />
+      <circ-port x="196" y="96" width="8" height="8" dir="out" pin="1500,100" />
+      <circ-port x="196" y="116" width="8" height="8" dir="out" pin="1500,140" />
+      <circ-port x="196" y="136" width="8" height="8" dir="out" pin="1500,180" />
+      <circ-port x="196" y="156" width="8" height="8" dir="out" pin="1500,220" />
+      <circ-port x="196" y="176" width="8" height="8" dir="out" pin="1500,260" />
+      <circ-port x="196" y="196" width="8" height="8" dir="out" pin="1500,300" />
+      <circ-port x="196" y="216" width="8" height="8" dir="out" pin="1500,340" />
+      <circ-port x="196" y="236" width="8" height="8" dir="out" pin="1500,380" />
+      <circ-port x="196" y="256" width="8" height="8" dir="out" pin="1500,420" />
+      <circ-port x="196" y="276" width="8" height="8" dir="out" pin="1500,460" />
+      <circ-port x="196" y="296" width="8" height="8" dir="out" pin="1500,500" />
+      <circ-port x="196" y="316" width="8" height="8" dir="out" pin="1500,540" />
+      <circ-port x="196" y="336" width="8" height="8" dir="out" pin="1500,580" />
+      <circ-port x="196" y="356" width="8" height="8" dir="out" pin="1500,620" />
+      <circ-port x="196" y="376" width="8" height="8" dir="out" pin="1500,660" />
+      <circ-port x="196" y="396" width="8" height="8" dir="out" pin="1500,700" />
+      <circ-anchor x="197" y="97" width="6" height="6" facing="east" />
     </appear>
   </circuit>
   <circuit name="MonitorAux">
@@ -4934,35 +4938,35 @@
     </comp>
     <appear>
       <rect x="100" y="80" width="100" height="410" fill="none" stroke="#000000" />
-      <circ-port x="100" y="100" dir="in" pin="100,100" />
-      <circ-port x="100" y="120" dir="in" pin="100,140" />
-      <circ-port x="100" y="140" dir="in" pin="100,180" />
-      <circ-port x="100" y="160" dir="in" pin="100,220" />
-      <circ-port x="100" y="180" dir="in" pin="100,260" />
-      <circ-port x="100" y="200" dir="in" pin="100,300" />
-      <circ-port x="100" y="220" dir="in" pin="100,340" />
-      <circ-port x="100" y="240" dir="in" pin="100,380" />
-      <circ-port x="100" y="260" dir="in" pin="100,420" />
-      <circ-port x="100" y="280" dir="in" pin="100,460" />
-      <circ-port x="100" y="300" dir="in" pin="100,500" />
-      <circ-port x="100" y="320" dir="in" pin="100,540" />
-      <circ-port x="100" y="340" dir="in" pin="100,580" />
-      <circ-port x="100" y="360" dir="in" pin="100,620" />
-      <circ-port x="100" y="380" dir="in" pin="100,660" />
-      <circ-port x="100" y="400" dir="in" pin="100,700" />
-      <circ-port x="100" y="420" dir="in" pin="100,740" />
-      <circ-port x="100" y="440" dir="in" pin="100,780" />
-      <circ-port x="100" y="460" dir="in" pin="100,820" />
-      <circ-port x="200" y="100" dir="out" pin="2200,100" />
-      <circ-port x="200" y="120" dir="out" pin="2200,140" />
-      <circ-port x="200" y="140" dir="out" pin="2200,180" />
-      <circ-port x="200" y="160" dir="out" pin="2200,220" />
-      <circ-port x="200" y="180" dir="out" pin="2200,260" />
-      <circ-port x="200" y="200" dir="out" pin="2200,300" />
-      <circ-port x="200" y="220" dir="out" pin="2200,340" />
-      <circ-port x="200" y="240" dir="out" pin="2200,380" />
-      <circ-port x="200" y="260" dir="out" pin="2200,420" />
-      <circ-anchor x="200" y="100" facing="east" />
+      <circ-port x="96" y="96" width="8" height="8" dir="in" pin="100,100" />
+      <circ-port x="96" y="116" width="8" height="8" dir="in" pin="100,140" />
+      <circ-port x="96" y="136" width="8" height="8" dir="in" pin="100,180" />
+      <circ-port x="96" y="156" width="8" height="8" dir="in" pin="100,220" />
+      <circ-port x="96" y="176" width="8" height="8" dir="in" pin="100,260" />
+      <circ-port x="96" y="196" width="8" height="8" dir="in" pin="100,300" />
+      <circ-port x="96" y="216" width="8" height="8" dir="in" pin="100,340" />
+      <circ-port x="96" y="236" width="8" height="8" dir="in" pin="100,380" />
+      <circ-port x="96" y="256" width="8" height="8" dir="in" pin="100,420" />
+      <circ-port x="96" y="276" width="8" height="8" dir="in" pin="100,460" />
+      <circ-port x="96" y="296" width="8" height="8" dir="in" pin="100,500" />
+      <circ-port x="96" y="316" width="8" height="8" dir="in" pin="100,540" />
+      <circ-port x="96" y="336" width="8" height="8" dir="in" pin="100,580" />
+      <circ-port x="96" y="356" width="8" height="8" dir="in" pin="100,620" />
+      <circ-port x="96" y="376" width="8" height="8" dir="in" pin="100,660" />
+      <circ-port x="96" y="396" width="8" height="8" dir="in" pin="100,700" />
+      <circ-port x="96" y="416" width="8" height="8" dir="in" pin="100,740" />
+      <circ-port x="96" y="436" width="8" height="8" dir="in" pin="100,780" />
+      <circ-port x="96" y="456" width="8" height="8" dir="in" pin="100,820" />
+      <circ-port x="196" y="96" width="8" height="8" dir="out" pin="2200,100" />
+      <circ-port x="196" y="116" width="8" height="8" dir="out" pin="2200,140" />
+      <circ-port x="196" y="136" width="8" height="8" dir="out" pin="2200,180" />
+      <circ-port x="196" y="156" width="8" height="8" dir="out" pin="2200,220" />
+      <circ-port x="196" y="176" width="8" height="8" dir="out" pin="2200,260" />
+      <circ-port x="196" y="196" width="8" height="8" dir="out" pin="2200,300" />
+      <circ-port x="196" y="216" width="8" height="8" dir="out" pin="2200,340" />
+      <circ-port x="196" y="236" width="8" height="8" dir="out" pin="2200,380" />
+      <circ-port x="196" y="256" width="8" height="8" dir="out" pin="2200,420" />
+      <circ-anchor x="197" y="97" width="6" height="6" facing="east" />
     </appear>
   </circuit>
   <circuit name="MonitorGUI">
@@ -4971,6 +4975,7 @@
       <a name="width" val="8" />
       <a name="label" val="V" />
       <a name="output" val="false" />
+      <a name="tristate" val="false" />
       <a name="facing" val="east" />
       <a name="radix" val="10unsigned" />
       <a name="labelfont" val="SansSerif plain 12" />
@@ -4987,6 +4992,7 @@
       <a name="width" val="8" />
       <a name="label" val="T" />
       <a name="output" val="false" />
+      <a name="tristate" val="false" />
       <a name="facing" val="east" />
       <a name="radix" val="10unsigned" />
       <a name="labelfont" val="SansSerif plain 12" />
@@ -5003,6 +5009,7 @@
       <a name="width" val="8" />
       <a name="label" val="G" />
       <a name="output" val="false" />
+      <a name="tristate" val="false" />
       <a name="facing" val="east" />
       <a name="radix" val="10unsigned" />
       <a name="labelfont" val="SansSerif plain 12" />
@@ -5019,6 +5026,7 @@
       <a name="width" val="8" />
       <a name="label" val="A" />
       <a name="output" val="false" />
+      <a name="tristate" val="false" />
       <a name="facing" val="east" />
       <a name="radix" val="10unsigned" />
       <a name="labelfont" val="SansSerif plain 12" />
@@ -5035,6 +5043,7 @@
       <a name="width" val="4" />
       <a name="label" val="mask" />
       <a name="output" val="false" />
+      <a name="tristate" val="false" />
       <a name="facing" val="east" />
       <a name="radix" val="10unsigned" />
       <a name="labelfont" val="SansSerif plain 12" />
@@ -5051,6 +5060,7 @@
       <a name="width" val="1" />
       <a name="label" val="clk" />
       <a name="output" val="false" />
+      <a name="tristate" val="false" />
       <a name="facing" val="east" />
       <a name="radix" val="10unsigned" />
       <a name="labelfont" val="SansSerif plain 12" />
@@ -5067,6 +5077,7 @@
       <a name="width" val="1" />
       <a name="label" val="reset" />
       <a name="output" val="false" />
+      <a name="tristate" val="false" />
       <a name="facing" val="east" />
       <a name="radix" val="10unsigned" />
       <a name="labelfont" val="SansSerif plain 12" />
@@ -5083,6 +5094,7 @@
       <a name="width" val="1" />
       <a name="label" val="sample_enable" />
       <a name="output" val="false" />
+      <a name="tristate" val="false" />
       <a name="facing" val="east" />
       <a name="radix" val="10unsigned" />
       <a name="labelfont" val="SansSerif plain 12" />
@@ -5103,6 +5115,12 @@
     </comp>
     <comp name="Text" loc="(60,75)" lib="6">
       <a name="text" val="Unsigned sensor values 0..100. Strict &gt; comparison: equality leaves the digital input OFF." />
+      <a name="halign" val="left" />
+      <a name="valign" val="base" />
+      <a name="font" val="SansSerif plain 12" />
+    </comp>
+    <comp name="Text" loc="(60,95)" lib="6">
+      <a name="text" val="Manual setup: mask=15 connects all sensors; sample_enable=1 enables clocked sampling." />
       <a name="halign" val="left" />
       <a name="valign" val="base" />
       <a name="font" val="SansSerif plain 12" />
@@ -5854,71 +5872,75 @@
       <a name="valign" val="base" />
       <a name="font" val="SansSerif plain 12" />
     </comp>
-    <comp name="Text" loc="(60,1080)" lib="6">
+    <comp name="Text" loc="(60,1060)" lib="6">
       <a name="text" val="Instrument outputs for verification: B2 status, B3 current counters, B4 completed counters, B5 window metadata" />
       <a name="halign" val="left" />
       <a name="valign" val="base" />
       <a name="font" val="SansSerif plain 12" />
     </comp>
-    <comp name="Pin" loc="(340,1120)" lib="0">
+    <comp name="Pin" loc="(340,1160)" lib="0">
       <a name="width" val="32" />
       <a name="label" val="status" />
       <a name="output" val="true" />
+      <a name="tristate" val="false" />
       <a name="facing" val="west" />
       <a name="radix" val="16" />
       <a name="labelfont" val="SansSerif plain 12" />
       <a name="initial" val="0x0" />
     </comp>
-    <wire from="(230,1120)" to="(340,1120)" />
-    <comp name="Tunnel" loc="(230,1120)" lib="0">
+    <wire from="(230,1160)" to="(340,1160)" />
+    <comp name="Tunnel" loc="(230,1160)" lib="0">
       <a name="width" val="32" />
       <a name="label" val="STATUS" />
       <a name="labelfont" val="SansSerif plain 10" />
       <a name="facing" val="east" />
     </comp>
-    <comp name="Pin" loc="(690,1120)" lib="0">
+    <comp name="Pin" loc="(690,1160)" lib="0">
       <a name="width" val="32" />
       <a name="label" val="current_counts" />
       <a name="output" val="true" />
+      <a name="tristate" val="false" />
       <a name="facing" val="west" />
       <a name="radix" val="16" />
       <a name="labelfont" val="SansSerif plain 12" />
       <a name="initial" val="0x0" />
     </comp>
-    <wire from="(580,1120)" to="(690,1120)" />
-    <comp name="Tunnel" loc="(580,1120)" lib="0">
+    <wire from="(580,1160)" to="(690,1160)" />
+    <comp name="Tunnel" loc="(580,1160)" lib="0">
       <a name="width" val="32" />
       <a name="label" val="CUR" />
       <a name="labelfont" val="SansSerif plain 10" />
       <a name="facing" val="east" />
     </comp>
-    <comp name="Pin" loc="(1040,1120)" lib="0">
+    <comp name="Pin" loc="(1040,1160)" lib="0">
       <a name="width" val="32" />
       <a name="label" val="last_completed" />
       <a name="output" val="true" />
+      <a name="tristate" val="false" />
       <a name="facing" val="west" />
       <a name="radix" val="16" />
       <a name="labelfont" val="SansSerif plain 12" />
       <a name="initial" val="0x0" />
     </comp>
-    <wire from="(930,1120)" to="(1040,1120)" />
-    <comp name="Tunnel" loc="(930,1120)" lib="0">
+    <wire from="(930,1160)" to="(1040,1160)" />
+    <comp name="Tunnel" loc="(930,1160)" lib="0">
       <a name="width" val="32" />
       <a name="label" val="LAST" />
       <a name="labelfont" val="SansSerif plain 10" />
       <a name="facing" val="east" />
     </comp>
-    <comp name="Pin" loc="(1390,1120)" lib="0">
+    <comp name="Pin" loc="(1390,1160)" lib="0">
       <a name="width" val="32" />
       <a name="label" val="window_meta" />
       <a name="output" val="true" />
+      <a name="tristate" val="false" />
       <a name="facing" val="west" />
       <a name="radix" val="16" />
       <a name="labelfont" val="SansSerif plain 12" />
       <a name="initial" val="0x0" />
     </comp>
-    <wire from="(1280,1120)" to="(1390,1120)" />
-    <comp name="Tunnel" loc="(1280,1120)" lib="0">
+    <wire from="(1280,1160)" to="(1390,1160)" />
+    <comp name="Tunnel" loc="(1280,1160)" lib="0">
       <a name="width" val="32" />
       <a name="label" val="META" />
       <a name="labelfont" val="SansSerif plain 10" />
@@ -5926,19 +5948,19 @@
     </comp>
     <appear>
       <rect x="100" y="80" width="100" height="190" fill="none" stroke="#000000" />
-      <circ-port x="100" y="100" dir="in" pin="100,140" />
-      <circ-port x="100" y="120" dir="in" pin="100,260" />
-      <circ-port x="100" y="140" dir="in" pin="100,380" />
-      <circ-port x="100" y="160" dir="in" pin="100,500" />
-      <circ-port x="100" y="180" dir="in" pin="100,650" />
-      <circ-port x="100" y="200" dir="in" pin="100,720" />
-      <circ-port x="100" y="220" dir="in" pin="100,790" />
-      <circ-port x="100" y="240" dir="in" pin="100,860" />
-      <circ-port x="200" y="100" dir="out" pin="340,1120" />
-      <circ-port x="200" y="120" dir="out" pin="690,1120" />
-      <circ-port x="200" y="140" dir="out" pin="1040,1120" />
-      <circ-port x="200" y="160" dir="out" pin="1390,1120" />
-      <circ-anchor x="200" y="100" facing="east" />
+      <circ-port x="96" y="96" width="8" height="8" dir="in" pin="100,140" />
+      <circ-port x="96" y="116" width="8" height="8" dir="in" pin="100,260" />
+      <circ-port x="96" y="136" width="8" height="8" dir="in" pin="100,380" />
+      <circ-port x="96" y="156" width="8" height="8" dir="in" pin="100,500" />
+      <circ-port x="96" y="176" width="8" height="8" dir="in" pin="100,650" />
+      <circ-port x="96" y="196" width="8" height="8" dir="in" pin="100,720" />
+      <circ-port x="96" y="216" width="8" height="8" dir="in" pin="100,790" />
+      <circ-port x="96" y="236" width="8" height="8" dir="in" pin="100,860" />
+      <circ-port x="196" y="96" width="8" height="8" dir="out" pin="340,1160" />
+      <circ-port x="196" y="116" width="8" height="8" dir="out" pin="690,1160" />
+      <circ-port x="196" y="136" width="8" height="8" dir="out" pin="1040,1160" />
+      <circ-port x="196" y="156" width="8" height="8" dir="out" pin="1390,1160" />
+      <circ-anchor x="197" y="97" width="6" height="6" facing="east" />
     </appear>
   </circuit>
   <circuit name="ReplayHarness">
@@ -11272,16 +11294,16 @@
     </comp>
     <appear>
       <rect x="100" y="80" width="100" height="210" fill="none" stroke="#000000" />
-      <circ-port x="200" y="100" dir="out" pin="11300,100" />
-      <circ-port x="200" y="120" dir="out" pin="11300,140" />
-      <circ-port x="200" y="140" dir="out" pin="11300,180" />
-      <circ-port x="200" y="160" dir="out" pin="11300,220" />
-      <circ-port x="200" y="180" dir="out" pin="11300,260" />
-      <circ-port x="200" y="200" dir="out" pin="11300,300" />
-      <circ-port x="200" y="220" dir="out" pin="11300,340" />
-      <circ-port x="200" y="240" dir="out" pin="11300,380" />
-      <circ-port x="200" y="260" dir="out" pin="11300,420" />
-      <circ-anchor x="200" y="100" facing="east" />
+      <circ-port x="196" y="96" width="8" height="8" dir="out" pin="11300,100" />
+      <circ-port x="196" y="116" width="8" height="8" dir="out" pin="11300,140" />
+      <circ-port x="196" y="136" width="8" height="8" dir="out" pin="11300,180" />
+      <circ-port x="196" y="156" width="8" height="8" dir="out" pin="11300,220" />
+      <circ-port x="196" y="176" width="8" height="8" dir="out" pin="11300,260" />
+      <circ-port x="196" y="196" width="8" height="8" dir="out" pin="11300,300" />
+      <circ-port x="196" y="216" width="8" height="8" dir="out" pin="11300,340" />
+      <circ-port x="196" y="236" width="8" height="8" dir="out" pin="11300,380" />
+      <circ-port x="196" y="256" width="8" height="8" dir="out" pin="11300,420" />
+      <circ-anchor x="197" y="97" width="6" height="6" facing="east" />
     </appear>
   </circuit>
 </project>

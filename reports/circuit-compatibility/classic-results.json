@@ -1,0 +1,8 @@
+{
+  "source": "/mnt/shared/SEM3_/PCS/project/volcano-monitoring-system/runtime/logisim-compat/downloaded-volcano.circ",
+  "simulator": "/usr/share/logisim/logisim.jar",
+  "fixture_cases": 43,
+  "sequential_scenarios": 2,
+  "ticks_per_scenario": 635,
+  "passed": true
+}

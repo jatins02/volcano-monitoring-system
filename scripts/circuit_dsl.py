@@ -140,12 +140,25 @@ class Circuit:
                 ET.SubElement(
                     appear,
                     "circ-port",
-                    x="200" if output else "100",
-                    y=str(100 + i * 20),
+                    # SVG coordinates describe the bounding box, not its centre.
+                    # Classic Logisim requires explicit dimensions; omitting them
+                    # drops the port and leaves child-instance wires disconnected.
+                    x="196" if output else "96",
+                    y=str(96 + i * 20),
+                    width="8",
+                    height="8",
                     dir="out" if output else "in",
                     pin=f"{px},{py}",
                 )
-        ET.SubElement(appear, "circ-anchor", x="200", y="100", facing="east")
+        ET.SubElement(
+            appear,
+            "circ-anchor",
+            x="197",
+            y="97",
+            width="6",
+            height="6",
+            facing="east",
+        )
 
     def instance(
         self, child: "Circuit | CircuitInterface", inputs: dict[str, Signal], label: str

@@ -215,7 +215,10 @@ def check():
         assert server.request("GET", prefix + "/export")["revision"] == 1
         source = server.request("GET", "/api/source/assembly")
         assert source["source_sha256"] == result["provenance"]["source_sha256"]
-        assert "MonitorCore" in server.request("GET", "/api/circuit/project")
+        downloaded = server.request("GET", "/api/circuit/project")
+        assert downloaded == (ROOT / "circuit/volcano-demo.circ").read_text()
+        assert "MonitorGUI" in downloaded and "MonitorAux" in downloaded
+        assert "ReplayHarness" not in downloaded
         # Reset while a real long replay is queued/running, then immediately evaluate the new generation.
         batch = server.request(
             "POST",

@@ -110,6 +110,9 @@ class Schematic(Circuit):
             width=signal.width,
             label=label,
             output=output,
+            # Classic Logisim otherwise starts editable pins at floating X.
+            # Evolution additionally honours the explicit initial value below.
+            tristate=False,
             facing="west" if output else "east",
             radix="16" if signal.width == 32 else "10unsigned",
             labelfont="SansSerif plain 12",
@@ -201,7 +204,7 @@ class Schematic(Circuit):
         self.sources[name] = (x, y)
         return Signal(name, 3)
 
-    def finish(self, outputs: dict[str, Signal], *, pin_y: int = 1120) -> None:
+    def finish(self, outputs: dict[str, Signal], *, pin_y: int = 1160) -> None:
         # Keep protocol outputs along a single instrumentation row; the normal
         # path above remains the same comparator/adder circuit as the website.
         super().finish(
@@ -225,6 +228,10 @@ def build_monitor_gui(
         60,
         75,
         "Unsigned sensor values 0..100. Strict > comparison: equality leaves the digital input OFF.",
+    )
+    gui.caption(
+        60, 95,
+        "Manual setup: mask=15 connects all sensors; sample_enable=1 enables clocked sampling.",
     )
     raw, flags, extended = [], [], []
     valid = Signal("VALID", 1)
@@ -354,7 +361,7 @@ def build_monitor_gui(
             outputs[name] = value
     gui.caption(
         60,
-        1080,
+        1060,
         "Instrument outputs for verification: B2 status, B3 current counters, B4 completed counters, B5 window metadata",
     )
     gui.finish(outputs)

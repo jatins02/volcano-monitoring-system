@@ -606,25 +606,25 @@
       },
       {
         "label": "status",
-        "location": "(340,1120)",
+        "location": "(340,1160)",
         "width": 32,
         "output": true
       },
       {
         "label": "current_counts",
-        "location": "(690,1120)",
+        "location": "(690,1160)",
         "width": 32,
         "output": true
       },
       {
         "label": "last_completed",
-        "location": "(1040,1120)",
+        "location": "(1040,1160)",
         "width": 32,
         "output": true
       },
       {
         "label": "window_meta",
-        "location": "(1390,1120)",
+        "location": "(1390,1160)",
         "width": 32,
         "output": true
       }

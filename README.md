@@ -65,6 +65,7 @@ Open http://127.0.0.1:8000 after `make run`. Stop with Ctrl+C. For development u
 | make smoke-bridge | Encode four sensor rows and verify two fresh actual Logisim replays |
 | make test-bridge | Four actual RAM/clock/comparator/reset integration tests |
 | make test-combinational |43 fixed cases on actual core and GUI |
+| make test-download |Actual standalone download: 43 logic cases and two 635-tick GUI counter/reset scenarios |
 | make test-counters |600 commits, boundary/hold/reset/restart hardware checks |
 | make test-replay |17 actual full-harness scenarios and malformed images |
 | make test-native |12 native/hardware comparisons, statistics and malformed binaries |
@@ -110,4 +111,6 @@ Follow the [demo script](docs/demo-script.md), [browser checks](tests/e2e/README
 
 The Code tab shows a labelled display-only teaching example in `assembly/teaching-example.s`; `assembly/monitor.s` still runs and produces all native results/statistics. The simplified page keeps technical metadata in APIs/evidence downloads. See [demo instructions](docs/demo-script.md) for explaining the example.
 
-The native Logisim circuit is downloadable from the website: open it in4.1.0 and choose MonitorGUI. The web circuit is a labelled visualization of actual returned probes. Statistics come from native assembly; motion/history/drafts never create samples. Results include immutable source/circuit/executable provenance. Reset archives older generations, Retry adds no readings, and a mismatch remains visible with the previous confirmed result.
+The website downloads a standalone `volcano.circ` for classic Logisim 2.7.1 or Logisim-evolution 4.1.0. It opens on MonitorGUI and contains the exact GUI, validity and counter circuits from `circuit/volcano-demo.circ`. The backend keeps its Evolution-only RAM replay in `circuit/volcano.circ`. The web circuit is a labelled visualization of actual returned probes. Statistics come from native assembly; motion/history/drafts never create samples. Results include immutable source/circuit/executable provenance. Reset archives older generations, Retry adds no readings, and a mismatch remains visible with the previous confirmed result.
+
+For manual classic Logisim use the hand (poke) tool. Pins start at zero and display binary: set `mask=1111` (15) to connect all sensors and `sample_enable=1` to enable counting. V=`01000111` (71) gives WATCH; adding T=`00111101` (61) gives DANGER. A clock transition 0→1 commits a reading; reset clears the counters. Classic does not restore Evolution's saved input defaults. See [native circuit guide](circuit/README.md).
